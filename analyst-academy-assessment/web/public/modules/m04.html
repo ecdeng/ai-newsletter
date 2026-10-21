@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 04 — Why Stocks Move Up and Down · Analyst Academy Blueprint</title>
+<meta name="description" content="Scope. The mechanics module: what actually moves a price over different horizons, and how to decompose a move into its parts. Together with M10 this is the analytical heart of the course. Topic What mastery looks like --- --- Supply and demand; market price as capital-weighted co">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Module 04 — Why Stocks Move Up and Down · Analyst Academy Blueprint">
+<meta property="og:description" content="Scope. The mechanics module: what actually moves a price over different horizons, and how to decompose a move into its parts. Together with M10 this is the analytical heart of the course. Topic What mastery looks like --- --- Supply and demand; market price as capital-weighted co">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">
+  <button class="iconbtn" data-nav-toggle aria-label="Open navigation">☰</button>
+  <a class="brand" href="../index.html">Assessment Blueprint</a>
+  <span class="spacer"></span>
+  <button class="iconbtn" data-theme-toggle>☾</button>
+</div>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html">Assessment&nbsp;Blueprint</a>
+    <p class="brand-sub">Fundamental Edge · Analyst Academy
+      <button class="iconbtn" data-theme-toggle style="float:right;margin-top:-.3rem">☾</button>
+    </p>
+    <div class="nav-group"><p class="nav-label">Start</p><nav class="nav"><a class="" href="../index.html">Overview</a><a class="" href="../approach.html">The approach</a></nav></div><div class="nav-group"><p class="nav-label">The blueprint</p><nav class="nav"><a class="" href="../modules.html"><span class="n">15</span>Modules</a></nav><nav class="nav" style="margin:.2rem 0 .4rem .5rem"><a class="" href="../modules/m01.html"><span class="n">01</span>Fundamental Foundations</a><a class="" href="../modules/m02.html"><span class="n">02</span>Life on the Buy-Side</a><a class="" href="../modules/m03.html"><span class="n">03</span>Thesis Development</a><a class="active" href="../modules/m04.html"><span class="n">04</span>Why Stocks Move Up and Down</a><a class="" href="../modules/m05.html"><span class="n">05</span>Idea Generation</a><a class="" href="../modules/m06.html"><span class="n">06</span>Buyside Modeling</a><a class="" href="../modules/m07.html"><span class="n">07</span>Analyze a Business</a><a class="" href="../modules/m08.html"><span class="n">08</span>Analyze an Industry</a><a class="" href="../modules/m09.html"><span class="n">09</span>Management &amp; Capital Allocation</a><a class="" href="../modules/m10.html"><span class="n">10</span>Assessing Expectations</a><a class="" href="../modules/m11.html"><span class="n">11</span>Applied Valuation</a><a class="" href="../modules/m12.html"><span class="n">12</span>Short Selling</a><a class="" href="../modules/m13.html"><span class="n">13</span>Earnings Season</a><a class="" href="../modules/m14.html"><span class="n">14</span>Pitch Like a Pro</a><a class="" href="../modules/m15.html"><span class="n">15</span>Wrapping Up / Bringing It All Together</a></nav><nav class="nav"><a class="" href="../exercises.html"><span class="n">58</span>Exercise catalogue</a><a class="" href="../intensives.html"><span class="n">9</span>Topical intensives</a></nav></div><div class="nav-group"><p class="nav-label">Build</p><nav class="nav"><a class="" href="../infrastructure.html"><span class="n">7</span>Shared infrastructure</a><a class="" href="../case-engine.html">Case engine spec</a><a class="" href="../roadmap.html">Build roadmap</a></nav></div><div class="nav-group"><p class="nav-label">Appendix</p><nav class="nav"><a class="" href="../provenance.html">Provenance &amp; corrections</a><a class="" href="../verification.html">Verification queue</a><a class="" href="../sources.html">Sources</a></nav></div>
+  </aside>
+  <main class="main" id="main">
+    <div class="wrap">
+      
+<p class="eyebrow">Module 04</p>
+<h1>Why Stocks Move Up and Down</h1>
+<p class="lede">4 exercises.
+1 rated advanced.</p>
+
+<div class="toc"><p class="toc-title">Exercises in this module</p><ul><li><a href="#m04-e1return-decomposition-with-the-cross-term">M04-E1 — Return Decomposition with the Cross Term</a></li><li><a href="#m04-e2flow-or-information-the-move-diagnostic">★ M04-E2 — Flow or Information? The Move Diagnostic</a></li><li><a href="#m04-e3the-visibility-re-rating">M04-E3 — The Visibility Re-Rating</a></li><li><a href="#m04-e4index-effect-vintage-check">M04-E4 — Index-Effect Vintage Check</a></li></ul></div>
+
+<h2 id="coverage">Expected content coverage</h2>
+<div class="prose"><p><strong>Scope.</strong> The mechanics module: what actually moves a price over different horizons, and how to decompose a move into its parts. Together with M10 this is the analytical heart of the course.</p>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>What mastery looks like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Supply and demand; market price as capital-weighted consensus</td>
+<td>Price is the capital-weighted marginal opinion, not the average opinion. The wisdom-of-crowds conditions (cognitive diversity, effective aggregation, meaningful incentives) and the fact that <strong>diversity is the one that breaks</strong> — which is what a crowded trade or a de-grossing is.</td>
+</tr>
+<tr>
+<td>The four driver families</td>
+<td>Fundamentals, expectations, valuation, and non-fundamental factors. Caughran's horizon claim: over short windows price reflects positioning, sentiment and flows; <strong>"fundamentals are all that matter with an investment horizon longer than 3 months."</strong></td>
+</tr>
+<tr>
+<td>Stock price vs. business value</td>
+<td>Two different objects on two different clocks. The weighing machine is the earnings stream; the voting machine is the multiple.</td>
+</tr>
+<tr>
+<td>EPS growth, revisions, re-ratings</td>
+<td><strong>Caughran's own evidence (March 2024):</strong> of the top 25 S&amp;P 500 YTD performers, <strong>25 of 25</strong> had positive EPS or revenue revisions; of the bottom 25, <strong>24 of 25</strong> had negative revisions, with P/E change "notable, but not dramatic." Revisions do the work, not re-rating.</td>
+</tr>
+<tr>
+<td>Return decomposition</td>
+<td>Total return = EPS growth + multiple change + the <strong>cross term</strong> (+ shareholder yield). The cross term is negligible over one year and material over three — which is itself the horizon lesson.</td>
+</tr>
+<tr>
+<td>Risk reduction and visibility</td>
+<td>A 50bp fall in the discount rate on a long-duration multiple is worth more than most earnings beats. This is why de-risking events re-rate stocks more than good quarters do.</td>
+</tr>
+<tr>
+<td>Non-fundamental drivers</td>
+<td>Index inclusion/rebalance, passive flows, factor rotations, vol-control and CTA flows, dealer gamma, de-grossing cascades, tax-loss selling, lockups, buyback blackouts. Crucially: <strong>the index effect has decayed</strong> — one study's migration returns fall from ~6.7% (late 1990s) to ~2.7% (2000s) to ~−1.8% (2010s), and another finds the announcement effect has "disappeared." Teaching the 1990s version of this as current is a live error.</td>
+</tr>
+<tr>
+<td>Inflections and themes</td>
+<td>The second derivative is what re-rates a stock; the first derivative is already priced.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Proprietary terms — provenance.</strong> <strong>"Focus Five"</strong> is named in the syllabus but <strong>its five components are unverified.</strong> The only recovered trace of Caughran's own words is from a disfluent, machine-generated podcast transcript: <em>"organic revenue, growth, margin, sort of trajectory, margins, capital intensity, capital deployment, and terminal value visibility"</em> — which does not cleanly parse into five items. A separate critical distinction surfaced in research and should be preserved: <strong>Focus Five ≠ "the three key drivers."</strong> Focus Five is a universal value-driver taxonomy applied to every name; the three key drivers are the stock-specific subset that is both material <em>and</em> contested. Conflating them would look like not having read the material. <strong>"Model linkage," "exceptionalism," "perception shifts"</strong> and <strong>"the 7-Year Test"</strong> likewise have no retrievable definitions. <strong>Recommendation: assess the <em>function</em> (decompose value into its drivers; identify which are contested) using the published Rappaport–Mauboussin value-driver set, not the FE label, until FE supplies the list.</strong></p>
+<p><strong>Prerequisites.</strong> Multiples; forward vs. trailing EPS; CAGR arithmetic; what a consensus estimate and a revision are; the idea that a multiple is shorthand for a DCF.</p>
+<p><strong>Junior vs. strong.</strong> A junior explains a move by finding a news story that matches its direction. A strong analyst decomposes the move into earnings, multiple and flow components, and can say which part is informative about the business and which is not.</p></div>
+
+<h2 id="exercises">Exercises</h2>
+
+<section class="exercise" id="m04-e1return-decomposition-with-the-cross-term">
+  <h3>M04-E1 — Return Decomposition with the Cross Term</h3>
+  <div class="exrow-meta"><span class="chip chip-t1">Beginner–Intermediate</span><span class="chip chip-neutral">Build: Low</span><span class="chip chip-neutral">50 minutes</span><span class="chip chip-accent">Fully auto-gradeable</span><span class="chip chip-accent">LLM-graded</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Disaggregating returns; voting vs. weighing; EPS growth and re-ratings</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Own the identity cold, including the cross term most analysts drop, and understand why dropping it is harmless over one year and wrong over three.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>For six real historical names (dates masked), decompose the total shareholder return into EPS growth, multiple change, cross term and dividend contribution, over both a 1-year and a 3-year window. Then answer: for which names does the cross term exceed 10% of the total return, and what does that tell you about the character of the return? <strong>50 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Existing: spreadsheet with a named-output template. Fully auto-gradeable.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (85 pts, fully auto):</em> all decomposition cells against the key, relative tolerance 1e-3; the three components plus cross term must sum <strong>exactly</strong> to the total (a hard tie-check worth 25 pts on its own — if it doesn't tie, the student has made an algebra error, not a rounding error).</li>
+<li><em>Qualitative (15 pts, LLM-graded):</em> the interpretation must connect a large cross term to the co-movement of earnings growth and re-rating, i.e. a "double-barrelled" return where the market both raised numbers and paid more for them — which is the signature of a perception shift rather than a beat.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p>Entry: price $100.00, forward EPS $5.00, so entry multiple <strong>20.0x</strong>. Hold three years. EPS compounds at 12.0%; exit multiple 17.0x.</p>
+<p>EPS₃ = 5.00 × 1.12³ = 5.00 × 1.404928 = <strong>$7.02464</strong>. Exit price = 7.02464 × 17.0 = <strong>$119.4189</strong>. Total return = <strong>+19.41888%</strong>.</p>
+<p>Cumulative decomposition: EPS growth <strong>+40.49280%</strong>; multiple change (17/20 − 1) <strong>−15.00000%</strong>; cross term 0.4049280 × (−0.15) = <strong>−6.07392%</strong>. Sum: 40.49280 − 15.00000 − 6.07392 = <strong>+19.41888%</strong> ✓ exact.</p>
+<p>Annualised: EPS <strong>+12.00000%</strong>, multiple <strong>−5.27318%</strong>, cross <strong>−0.63278%</strong>, total <strong>+6.09404%</strong>. Check: 1.12 × (17/20)^(1/3) = 1.12 × 0.9472682 = 1.0609404 ✓.</p>
+<p><strong>The horizon lesson:</strong> over one year the cross term here would be 0.12 × (−0.0527) = −0.63pp, which you could ignore. Over three years it is −6.07pp, or <strong>31% of the magnitude of the total return</strong>. Over three years you cannot ignore it.</p>
+<p><strong>Note on shareholder yield, which is the trap:</strong> if you add a buyback-driven share-count reduction as a separate "yield" term, you have <strong>double-counted</strong> — buyback accretion is already inside EPS growth. Only <em>dividends</em> belong in a separate (1+y)³ term. Getting this wrong inflates expected return by roughly 200–300bp a year, and it is a standard junior error.</p>
+</blockquote></div></details>
+</section>
+<section class="exercise" id="m04-e2flow-or-information-the-move-diagnostic">
+  <h3>★ M04-E2 — Flow or Information? The Move Diagnostic</h3>
+  <div class="exrow-meta"><span class="chip chip-flag">★ Flagship</span><span class="chip chip-t2">Intermediate</span><span class="chip chip-neutral">Build: Medium</span><span class="chip chip-neutral">60 minutes</span><span class="chip chip-accent">Auto-graded component</span><span class="chip chip-accent">LLM-graded</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Non-fundamental factors; supply/demand; perception shifts; drivers</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>The single most practically valuable skill in the module: when a stock moves 8% and you own it, decide in ten minutes whether anything you believe should change.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>Twelve vignettes, each a 1-page evidence pack around a single sharp price move (the move itself, sector and market moves over the same window, estimate-revision activity, volume vs. ADV, short-interest and borrow-fee change, option open-interest change, index-event calendar, any news, and whether peers moved). For each: classify the move as <strong>information / flow / factor / mixed</strong>; state the single piece of evidence that most discriminates; and state what you would do with an existing 200bp long. <strong>60 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Custom vignette bank. Deliverable is structured fields, so grading is mostly automatic.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (60 pts, auto):</em> classification against a key with accepted alternates for the two deliberately ambiguous vignettes; the "most discriminating evidence" field is scored against a ranked list (full credit for the top discriminator, partial for second).</li>
+<li><em>Qualitative (40 pts, LLM-graded):</em> the action recommendation must follow from the classification — a flow-classified move with an unchanged thesis should produce "add or hold," and an information-classified move should produce "re-underwrite before acting." <strong>Internal inconsistency between classification and action is the main thing being detected</strong> and should cost most of the 40.</li>
+<li><strong>Design note:</strong> two vignettes have no clean answer, by design, and the key awards full marks for either classification <em>with correct reasoning</em>. Tell students this in advance. It prevents the exercise from teaching false confidence, which would be the opposite of the module's lesson.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p><em>Vignette 7:</em> Your 200bp long falls 9.1% over four sessions. The S&amp;P is flat; the sector ETF is −0.8%. No company news, no filings. Consensus FY+1 EPS unchanged across all 14 contributors. Volume 3.4x ADV. Borrow fee moved 40bp → 310bp. The stock sits in the 96th percentile of a widely-followed "hedge fund crowded long" basket, and that basket is −6.2% over the same four sessions while the equal-weight market is flat. Next earnings in six weeks. Two other names in your book, in unrelated sectors, are also down sharply.</p>
+<p><strong>Model answer:</strong> Classification <strong>flow</strong> (de-grossing). Most discriminating evidence: <strong>the crowded-long basket being −6.2% while the equal-weight market is flat, combined with unchanged estimates from all 14 contributors.</strong> Not the volume (consistent with either), not the borrow-fee move (a consequence, not a cause), and crucially not the news vacuum — absence of news is weak evidence on its own. The tell that upgrades this from "no news" to "positioning" is the <em>basket</em> move plus your own book's unrelated names moving together. Action: hold or add, subject to sleeve risk limits; nothing you believe has changed, and a de-grossing is a liquidity event with a predictable end. State the limits check explicitly.</p>
+<p><strong>The common wrong answer</strong> is to classify this as information on the theory that "the market knows something." Full credit requires noting that all 14 estimate contributors are unchanged — if someone knew something material, the sell-side distribution would normally show at least one mark. <strong>Partial credit</strong> is available for flagging that de-grossing and genuine information can coincide, which is the honest caveat.</p>
+</blockquote></div></details>
+</section>
+<section class="exercise" id="m04-e3the-visibility-re-rating">
+  <h3>M04-E3 — The Visibility Re-Rating</h3>
+  <div class="exrow-meta"><span class="chip chip-t2">Intermediate</span><span class="chip chip-neutral">Build: Low</span><span class="chip chip-neutral">40 minutes</span><span class="chip chip-accent">Auto-graded component</span><span class="chip chip-accent">LLM-graded</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Risk reduction and visibility impact valuations; perception shifts; re-ratings</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Quantify why de-risking moves long-duration stocks more than earnings do — the mechanism behind most large re-ratings and the one juniors systematically under-model.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>Given a stock's forward EPS, payout, growth and cost of equity, compute the justified forward multiple. Then compute the multiple and price impact of (a) a 50bp fall in the cost of equity with growth unchanged, (b) a 5% beat with the multiple unchanged, (c) both. Rank the three by price impact and write 150 words on which corporate events in practice produce (a) rather than (b). <strong>40 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Existing: spreadsheet. Auto-gradeable.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (75 pts, auto):</em> six numeric answers, tolerance ±0.05x on multiples and ±0.1pp on returns.</li>
+<li><em>Qualitative (25 pts, LLM-graded):</em> the written answer must name real de-risking events — a litigation settlement, a refinancing that removes a maturity wall, a long-term contract renewal, a regulatory approval, the end of a strategic review, a major customer re-signing, cessation of a cash drain — and must explain that these change the <em>denominator</em>, not the numerator. An answer that lists "good earnings" as de-risking scores zero on this dimension.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p>Forward EPS $4.00, payout 35%, cost of equity 8.5%, growth 7.10%. Justified forward P/E = payout/(r − g) = 0.35/(0.085 − 0.0710) = 0.35/0.0140 = <strong>25.00x</strong>. Price = 25.00 × 4.00 = <strong>$100.00</strong>.</p>
+<p><strong>(a) Cost of equity falls 50bp to 8.00%, growth unchanged.</strong> P/E = 0.35/(0.080 − 0.0710) = 0.35/0.0090 = <strong>38.89x</strong>. Price = 38.89 × 4.00 = <strong>$155.56</strong>, i.e. <strong>+55.6%</strong>.</p>
+<p><strong>(b) A 5% EPS beat, multiple unchanged.</strong> EPS $4.20 × 25.00x = <strong>$105.00</strong>, i.e. <strong>+5.0%</strong>.</p>
+<p><strong>(c) Both:</strong> 38.89 × 4.20 = <strong>$163.33</strong>, i.e. <strong>+63.3%</strong>.</p>
+<p><strong>Ranking: (c) &gt; (a) &gt; (b), and (a) beats (b) by more than eleven times.</strong> Fifty basis points of perceived risk is worth over 55% here, while a 5% beat is worth 5%.</p>
+<p><strong>The caveat that earns the last points:</strong> this sensitivity is an artefact of a <em>narrow spread</em> — r − g is only 140bp, so the multiple is enormously convex in r. A student who notes that the same 50bp on a value stock with r − g = 600bp produces only about +9% has understood the real lesson, which is that <strong>long-duration stocks are where visibility is worth the most</strong>, and that is why they also de-rate violently when visibility is withdrawn.</p>
+</blockquote></div></details>
+</section>
+<section class="exercise" id="m04-e4index-effect-vintage-check">
+  <h3>M04-E4 — Index-Effect Vintage Check</h3>
+  <div class="exrow-meta"><span class="chip chip-t3">Advanced</span><span class="chip chip-neutral">Build: Low</span><span class="chip chip-neutral">35 minutes</span><span class="chip chip-accent">Auto-graded component</span><span class="chip chip-accent">LLM-graded</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Non-fundamental factors; evidence evaluation</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>A deliberately contrarian item: teach students that a well-known market effect has <strong>decayed</strong>, and that citing its original magnitude is an error. Doubles as training in reading evidence by vintage.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>Given four research abstracts on the index-inclusion effect spanning different sample periods, plus a current situation (a stock about to be added to a major index), the student must: state what the evidence implies the trade is worth <em>today</em>; identify which abstract a careless analyst would cite and why it would mislead; and state what they would need to check before trading it. <strong>35 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Existing. Abstract pack is the build.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (30 pts, auto):</em> a numeric estimate of the expected effect with a stated range, scored for being in the right neighbourhood (the key accepts a wide band and awards zero for a 1990s-magnitude answer).</li>
+<li><em>Qualitative (70 pts, LLM-graded):</em> 30 pts — correctly identifies that the effect has decayed and attributes the decay to a mechanism (index-fund scale, front-running by arbitrageurs, pre-announcement anticipation, improved liquidity); 25 pts — names what else to check (the float-adjusted size of the required buy relative to ADV, whether the add is pre-announced, whether it is a migration between indices rather than a true add, borrow conditions); 15 pts — appropriately hedges rather than asserting a trade.</li>
+<li><strong>This item's answer key must be re-verified before each cohort.</strong> The decay is itself a moving target, and an assessment that teaches a stale magnitude commits the exact error it is testing for. Flag the key with a review date.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p><strong>Model answer skeleton:</strong> Evidence across vintages shows migration/addition returns falling from mid-single-digit percentages in the late 1990s to roughly low-single-digit in the 2000s and to approximately zero or negative in the 2010s, with at least one study finding the announcement effect has disappeared and long-run performance is negative. A careless analyst cites the earliest study — it is the most-quoted and has the largest, most attractive number — and sizes a trade for a 5% pop that no longer exists. Before trading: size the required index-fund buy against float-adjusted ADV; check whether the add was pre-announced and how much has already been front-run; check whether this is a true add or an inter-index migration; and check the borrow if any leg is short. <strong>Full credit does not require a precise number — it requires the student to say the effect is small-to-nil now and to explain why.</strong></p>
+</blockquote></div></details>
+</section>
+
+      <div class="pagenav"><a href="../modules/m03.html"><span class="dir">← Previous</span>Module 03 — Thesis Development</a><a href="../modules/m05.html" style="text-align:right"><span class="dir">Next →</span>Module 05 — Idea Generation</a></div>
+      <footer class="site">
+        <p>Assessment blueprint for the Fundamental Edge Analyst Academy syllabus.
+        Every quantitative example was independently verified; see
+        <a href="../provenance.html">provenance &amp; corrections</a> for what is
+        sourced, what is unpublished, and what still needs checking.</p>
+      </footer>
+    </div>
+  </main>
+</div>
+<script src="../static/app.js" defer></script>
+</body>
+</html>

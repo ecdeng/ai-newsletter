@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The approach · Analyst Academy Blueprint</title>
+<meta name="description" content="The evidence base behind the assessment design: low-validity domains, calibration as the one honest outcome measure, OSCE station design, and what the assessment layer actually sells.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="The approach · Analyst Academy Blueprint">
+<meta property="og:description" content="The evidence base behind the assessment design: low-validity domains, calibration as the one honest outcome measure, OSCE station design, and what the assessment layer actually sells.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="static/style.css">
+<link rel="icon" href="static/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">
+  <button class="iconbtn" data-nav-toggle aria-label="Open navigation">☰</button>
+  <a class="brand" href="index.html">Assessment Blueprint</a>
+  <span class="spacer"></span>
+  <button class="iconbtn" data-theme-toggle>☾</button>
+</div>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="index.html">Assessment&nbsp;Blueprint</a>
+    <p class="brand-sub">Fundamental Edge · Analyst Academy
+      <button class="iconbtn" data-theme-toggle style="float:right;margin-top:-.3rem">☾</button>
+    </p>
+    <div class="nav-group"><p class="nav-label">Start</p><nav class="nav"><a class="" href="index.html">Overview</a><a class="active" href="approach.html">The approach</a></nav></div><div class="nav-group"><p class="nav-label">The blueprint</p><nav class="nav"><a class="" href="modules.html"><span class="n">15</span>Modules</a><a class="" href="exercises.html"><span class="n">58</span>Exercise catalogue</a><a class="" href="intensives.html"><span class="n">9</span>Topical intensives</a></nav></div><div class="nav-group"><p class="nav-label">Build</p><nav class="nav"><a class="" href="infrastructure.html"><span class="n">7</span>Shared infrastructure</a><a class="" href="case-engine.html">Case engine spec</a><a class="" href="roadmap.html">Build roadmap</a></nav></div><div class="nav-group"><p class="nav-label">Appendix</p><nav class="nav"><a class="" href="provenance.html">Provenance &amp; corrections</a><a class="" href="verification.html">Verification queue</a><a class="" href="sources.html">Sources</a></nav></div>
+  </aside>
+  <main class="main" id="main">
+    <div class="wrap">
+      
+<h1>The approach</h1>
+<p class="lede">Why the exercises are shaped the way they are. Read this before the
+module detail, or the rubrics will look arbitrary.</p>
+<div class="toc"><p class="toc-title">On this page</p><ul><li><a href="#2-1-the-binding-constraint-investing-is-a-low-validity-domai">2.1 The binding constraint: investing is a low-validity domain</a></li><li><a href="#2-2-calibration-is-the-one-honest-outcome-measure">2.2 Calibration is the one honest outcome measure</a></li><li><a href="#2-3-many-short-standardised-stations-beat-one-big-exam">2.3 Many short standardised stations beat one big exam</a></li><li><a href="#2-4-structure-is-the-differentiator-not-modality">2.4 Structure is the differentiator, not modality</a></li><li><a href="#2-5-what-the-assessment-layer-actually-sells">2.5 What the assessment layer actually sells</a></li><li><a href="#2-6-the-eleven-layer-architecture">2.6 The eleven-layer architecture</a></li><li><a href="#2-7-two-rules-about-graders-that-the-evidence-has-recently-c">2.7 Two rules about graders that the evidence has recently changed</a></li></ul></div>
+<div class="prose"><p>Everything in this blueprint follows from one constraint, so it is worth stating before the exercises.</p>
+<h2 id="2-1-the-binding-constraint-investing-is-a-low-validity-domai">2.1 The binding constraint: investing is a low-validity domain</h2>
+<p>Deliberate practice requires four conditions: a well-defined task at an appropriate difficulty, immediate informative feedback, opportunity for repetition, and opportunity to correct errors. <strong>Stock picking satisfies none of them natively.</strong> That is precisely the gap an assessment layer exists to manufacture.</p>
+<p>The evidence sharpens the point. A meta-analysis of deliberate practice found accumulated practice explains roughly <strong>26% of performance variance in games, 21% in music, 18% in sports, 4% in education, and under 1% in the professions</strong> (pooled 12%, CI 9–15%; the figures are exact and the professions number is the one that matters, though the finding is contested by Ericsson &amp; Harwell). And Kahneman &amp; Klein's conditions for trustworthy intuition require (a) an environment with sufficiently valid cues and (b) adequate opportunity to learn them through feedback. Equity markets are the canonical violation of both. Their notion of <strong>"fractionated expertise"</strong> matters just as much: within one domain an expert can be highly skilled on some tasks and no better than a novice on others, <strong>and cannot tell which is which.</strong></p>
+<p>Two consequences govern this entire document:</p>
+<ol>
+<li><strong>Assess task by task; never issue a single composite "analyst score."</strong> Fractionated expertise means a composite hides exactly the gaps that matter.</li>
+<li><strong>Weight process over outcome.</strong> In a low-validity environment, outcome scoring is mostly noise and actively teaches the wrong lesson by rewarding lucky bad process.</li>
+</ol>
+<p>The arithmetic is unforgiving: at an information ratio of 0.50 it takes <strong>15.37 years</strong> to establish skill at 95% confidence. <strong>The program literally cannot assess whether a student will make money.</strong> It can assess process fidelity and forecast calibration. Tell students this in week one — it reframes every low score as diagnostic rather than evaluative.</p>
+<h2 id="2-2-calibration-is-the-one-honest-outcome-measure">2.2 Calibration is the one honest outcome measure</h2>
+<p>Given the above, the only outcome-based measure that is both valid and tractable over a 15-module course is the <strong>calibration of probabilistic forecasts</strong>: it generates many resolvable data points quickly, is scored by a strictly proper rule so it cannot be gamed, is demonstrably trainable, and is exactly what the syllabus already demands in Modules 10, 11, 13 and 15.</p>
+<pre><code>Brier score (binary):   BS = (1/N) Σ (f_t − o_t)²            range 0–1; 0 perfect, 0.25 = always 50%
+Murphy decomposition:   BS = Reliability − Resolution + Uncertainty
+Skill score:            BSS = 1 − BS/BS_ref
+</code></pre>
+<p><strong>Report all three components, not just the score.</strong> The reliability/resolution split is pedagogically decisive: an analyst who says "60% confident" about everything has <strong>excellent calibration and zero resolution</strong> — and zero resolution means zero alpha. That distinction <em>is</em> the syllabus's "develop a differentiated view."</p>
+<p>Two cautions. The multi-category Brier form has <strong>range 0–2</strong>, not 0–1, which is a standard source of confusion when comparing published scores — always state your convention. And the trainability evidence most people cite as "Mellers 2014" is more precisely <strong>Chang, Chen, Mellers &amp; Tetlock (2016)</strong>: roughly <strong>10–12% Brier improvement from under an hour of probabilistic-reasoning training</strong>, sustained into a second year, with a 2024 reanalysis disputing it. Mellers (2014) establishes the training/teaming/tracking structure and uses the 0–2 convention.</p>
+<p>Across 15 modules at 5–10 resolvable questions each, that is <strong>75–150 scored forecasts per student</strong> — enough for genuine individual measurement, which no competitor offers, and the basis for the one marketing claim the program can actually defend: not <em>"we'll make you money"</em> but <em>"we measurably improved your forecast calibration."</em></p>
+<h2 id="2-3-many-short-standardised-stations-beat-one-big-exam">2.3 Many short standardised stations beat one big exam</h2>
+<p>The superday is already an OSCE — a circuit of short, standardised stations with pre-built scoring instruments. Medical education has spent fifty years solving its reliability problem, and the findings transfer directly.</p>
+<p>The dominant source of measurement error in performance assessment is <strong>case specificity, not rater disagreement</strong>: performance on one case predicts performance on another poorly. <strong>Therefore more stations with one rater each beats fewer stations with multiple raters.</strong> That is the most actionable single finding in this architecture.</p>
+<p>On station count, be careful with the numbers in circulation. The defensible claim is that <strong>minimal reliability requires on the order of 3–4 hours of testing time</strong> (Van der Vleuten &amp; Schuwirth, <em>Medical Education</em> 2005 — <strong>not</strong> the 1996 paper, which is where this is usually mis-cited). <strong>Derive your station count arithmetically from that</strong> — 3.5 hours ÷ station length — and say so. Do not print "a 10-station OSCE lands at 0.5–0.7"; those specific cell values are unverified.</p>
+<p>On instruments, the evidence is precise and slightly counter-intuitive. Across 53 surgical residents and eight 15-minute stations, inter-station reliability was <strong>α = 0.79 for a checklist, 0.85 for global ratings alone, and 0.89 for checklist-then-global</strong>. So expert global ratings beat checklists, and adding a checklist on top of global ratings adds almost nothing. But <strong>α = 0.79 is respectable — checklists are not unreliable</strong>, they are just less good for judgment. (A separate finding that checklists actively <em>penalise</em> experts, because experts skip steps checklists reward, comes from Hodges et al. 2003 and is frequently conflated with the above. Keep them distinct.)</p>
+<p><strong>The design rule: checklists for procedural stations, global rating scales for judgment stations, and never average the two into one number.</strong></p>
+<h2 id="2-4-structure-is-the-differentiator-not-modality">2.4 Structure is the differentiator, not modality</h2>
+<p>The familiar claim that work-sample tests are the highest-validity selection method (the "0.54" figure) is <strong>no longer the best-supported reading.</strong> A major 2022 re-analysis argued prior meta-analyses systematically over-corrected for range restriction, and re-ranked the methods: <strong>structured interviews ~.42, job knowledge tests ~.40, empirically keyed biodata ~.38, work samples ~.33, cognitive ability ~.31, integrity ~.31, assessment centres ~.29, conscientiousness ~.19, unstructured interviews ~.19.</strong> (A circulating variant that omits the already-selected-sample adjustment puts job knowledge at .31 — state which variant you quote. There is also a 2023 rebuttal exchange worth citing alongside.)</p>
+<p>The lesson is <strong>structure, not modality</strong>. So the Academy's differentiator is not "we use work samples" — everyone sells modelling tests. It is: <strong>fixed stimuli, pre-built scoring instruments, behaviourally anchored scales, calibrated raters, and published reliability coefficients.</strong></p>
+<p>One honest caveat: those coefficients predict <em>job performance</em>, not <em>learning</em>. Do not borrow them to claim the course's assessment predicts analyst success — that would require your own validation study.</p>
+<h2 id="2-5-what-the-assessment-layer-actually-sells">2.5 What the assessment layer actually sells</h2>
+<p>Cognitive apprenticeship names six methods: modelling, coaching, scaffolding, articulation, reflection, exploration. Mapping them onto the Academy identifies exactly what a pre-recorded video course is missing:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>In the syllabus?</th>
+<th>What the assessment layer must add</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Modelling</strong></td>
+<td><strong>Yes</strong> — 30+ hours of Caughran and Carr working through TSLA, NVST, the frameworks. The product's core strength.</td>
+<td>Think-aloud annotation of the expert's own screen recordings</td>
+</tr>
+<tr>
+<td><strong>Coaching</strong></td>
+<td><strong>Weakly</strong> — three Q&amp;A office hours plus kickoff and wrap-up. <strong>The biggest gap.</strong></td>
+<td>Rubric-based feedback on submitted work: LLM for volume, human for the capstone</td>
+</tr>
+<tr>
+<td><strong>Scaffolding</strong></td>
+<td><strong>Partly</strong> — FEV, MIC, Focus Five, the nine-step process, ETIK</td>
+<td>Faded exercise series; framework templates that progressively blank out</td>
+</tr>
+<tr>
+<td><strong>Articulation</strong></td>
+<td><strong>Barely</strong> — the second big gap</td>
+<td>Mandatory verbalisation: recorded pitches, written "why I believe this" memos, the live defence. <strong>Articulation is also what makes work gradable, so it solves two problems at once</strong></td>
+</tr>
+<tr>
+<td><strong>Reflection</strong></td>
+<td>Named in M14 but not instrumented</td>
+<td>Side-by-side comparison against expert exemplars; forced post-mortem against the original thesis; calibration feedback</td>
+</tr>
+<tr>
+<td><strong>Exploration</strong></td>
+<td>Implicitly the end state</td>
+<td>The open capstone: the student's own name, no scaffolding</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A video library is pure "modelling." The assessment layer is how you buy the other five — and coaching plus articulation are where a $4,750 price point is actually justified.</strong></p>
+<p>Two further design consequences:</p>
+<ul>
+<li><strong>Fade, don't stream.</strong> The cohort spans a Citadel-bound intern and a career-switching engineer. The expertise-reversal effect means instructional support that helps novices actively <em>harms</em> experts. So fade scaffolding within each exercise series (complete model → revenue build blanked → operating section blanked → raw build) and <strong>route by diagnostic, not by self-report.</strong></li>
+<li><strong>Interleave, because selection is the skill.</strong> Blocked practice (all the DCF problems inside the DCF module) teaches execution but not <em>choice of tool</em> — and the real buy-side task is "which tool does this situation call for." Every module's question set should end with a <strong>mixed, unlabelled</strong> set drawing on all prior modules, and the capstone should present situations with no indication of which framework applies.</li>
+<li><strong>Manage the NPS conflict honestly.</strong> Desirable difficulties depress performance <em>during</em> learning while improving retention and transfer. A $4,750 self-paced product with hard, low-scoring practice sets will generate complaints unless you teach the learner the learning science up front and show them their <strong>own improvement trajectory</strong> rather than an absolute score.</li>
+<li><strong>Keep running after the course ends.</strong> The optimal review gap is roughly 10–20% of the desired retention interval. For a program whose value is realised on the desk 6–12 months later, that implies review gaps of <strong>3–8 weeks</strong>, which means the assessment layer must outlive the 15 modules.</li>
+</ul>
+<h2 id="2-6-the-eleven-layer-architecture">2.6 The eleven-layer architecture</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Volume</th>
+<th>Instrument</th>
+<th>Grader</th>
+<th>Modules</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A. Retrieval drills</strong></td>
+<td>20–40 items/module, spaced and interleaved</td>
+<td>MCQ, numeric entry</td>
+<td>Auto</td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>B. Vignette item sets</strong></td>
+<td>10–15 vignettes × 4 items per cluster</td>
+<td>MCQ on a 1–2pp case with exhibits</td>
+<td>Auto</td>
+<td>01, 04, 05, 07, 08, 10, 11, 12, 13, 15</td>
+</tr>
+<tr>
+<td><strong>C. Faded modelling exercises</strong></td>
+<td>4–6 per modelling module</td>
+<td>Workbook upload</td>
+<td>Auto: check cells + perturbation + hygiene</td>
+<td>06, 07, 11, 13</td>
+</tr>
+<tr>
+<td><strong>D. Print-update drills</strong></td>
+<td>1 per earnings-related module</td>
+<td>Fixed template + real release, 30–45 min</td>
+<td>Auto — <strong>the highest-fidelity autograde in the program</strong></td>
+<td>06, 10, 13</td>
+</tr>
+<tr>
+<td><strong>E. Constructed response</strong></td>
+<td>3–5 per module</td>
+<td>Short written answers, minutes = points</td>
+<td>LLM, reference-guided</td>
+<td>03, 04, 09, 10, 11, 12, 14, 15</td>
+</tr>
+<tr>
+<td><strong>F. Calibration ledger</strong></td>
+<td>5–10 resolvable questions/module → 75–150 total</td>
+<td>Probability entry, auto-resolved</td>
+<td>Auto: Brier + Murphy components</td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>G. Role-play stations</strong></td>
+<td>Unlimited ungraded practice + 2 graded</td>
+<td>AI management meeting; AI PM grilling</td>
+<td>Checklist (deterministic) + LLM global ratings</td>
+<td>02, 05, 09, 14</td>
+</tr>
+<tr>
+<td><strong>H. Five-minute pitch</strong></td>
+<td>5–6 across the program</td>
+<td>3–5 min recording</td>
+<td>ASR → LLM on anchored dimensions</td>
+<td>03, 05, 07, 11, 12, 14</td>
+</tr>
+<tr>
+<td><strong>I. Idea ledger / paper book</strong></td>
+<td>Continuous</td>
+<td>Structured submission with mandatory fields</td>
+<td>Auto attribution + credibility-weighted peer review</td>
+<td>05, 12, 15</td>
+</tr>
+<tr>
+<td><strong>J. Capstone pitch + defence</strong></td>
+<td>1</td>
+<td>Page-limited memo + model + live defence</td>
+<td><strong>Human, double-scored</strong>, ICD-203-derived rubric + separate defence rubric</td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>K. Entrustment report</strong></td>
+<td>1</td>
+<td>Per-activity levels 1–5, not a percentage</td>
+<td>Human, from the evidence in A–J</td>
+<td>All</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Layers A–F and I are roughly 95% of the volume at 5% of the cost. G, H and J are the differentiation. K is the credential.</strong></p>
+<p>On K: borrow medical education's <strong>entrustable professional activities</strong> scale — 1 may observe only; 2 may act with direct supervision; 3 may act with indirect supervision; 4 may act unsupervised; 5 may supervise others. Reporting "can maintain a comp sheet and universe tracker unsupervised (4); can run a management meeting with indirect supervision (3); can size a position: observe only (1)" is <strong>instantly legible to a hiring PM</strong> and commercially far stronger than a percentage. It also fits the syllabus's own stated endpoint — "analyst progression: junior to full-stack partner."</p>
+<p><strong>Governance:</strong> no single assessment can be both authentic and reliable, so collect <strong>many low-stakes data points of varied type and aggregate them</strong> for any high-stakes decision. Dozens of cheap auto-graded items plus a handful of expensive human judgments, aggregated into a portfolio decision.</p>
+<h2 id="2-7-two-rules-about-graders-that-the-evidence-has-recently-c">2.7 Two rules about graders that the evidence has recently changed</h2>
+<p><strong>Rule 1: do not send a numeric answer to an LLM when a deterministic check exists.</strong> The evidence on LLM grading of quantitative work is poor — in one evaluation <strong>GPT-5 passed 7 of 48 proofs that all contained critical errors.</strong> Every number in this blueprint is checked arithmetically first; the LLM grades only reasoning, and only with the worked key in context. Reference-guided grading is the critical mitigation and it is not optional for finance.</p>
+<p><strong>Rule 2: the "panel of models" recommendation is now contested — start with one strong judge.</strong> The 2024 finding that a panel of small models beats a single large judge has been challenged by 2026 work showing that nine judges across seven families behave like roughly <strong>two independent votes</strong>, that panel accuracy falls 8–22 points short of what independent voting would predict, and that <strong>the best single judge matches or beats the full panel in all conditions tested.</strong> Panels do still help on <em>process-error</em> marking (κ 0.82 → 0.87). So: <strong>one strong judge, calibrated against a human-labelled golden set; add a panel only if you measure independence and demonstrate it beats your best single judge on your own labels.</strong></p>
+<p>Three more practical findings worth building in:
+- <strong>Use a 0–5 scale per dimension.</strong> Human–LLM alignment is highest there.
+- <strong>Expect weaker agreement than the hype.</strong> Many 2024–25 automated-essay-scoring studies report QWK <strong>below the 0.70 benchmark</strong>; one higher-education study found QWK of −0.04 to 0.02, none significant; another reports near-zero kappa with poor run-to-run repeatability. Better results exist (~0.68; ~0.60 holistic and worse on analytic traits; one physics preprint reports 0.80). The real lesson is in that preprint's own title: <strong>validity is strongly task-dependent across assessment formats.</strong> So <strong>measure and report your own QWK per station type</strong>, and do not claim human parity.
+- <strong>Build the golden set first.</strong> It is the most durable asset in the grading stack and it is what lets you swap models later. The six-step human rater-calibration pipeline — anchor papers, training, qualification, seeded validity papers, double-scoring, recalibration — maps onto an LLM judge <strong>unchanged</strong>, and drift monitoring becomes essential because the underlying model will be silently updated. Pin model versions and record the version on every score.</p>
+<p><strong>And one product-risk item that is not a footnote:</strong> the moment an LLM-produced score is used by funds in hiring, the Academy is arguably supplying an automated employment decision tool, which engages NYC Local Law 144 and the EU AI Act's high-risk classification for education and vocational assessment. Mitigations: position outputs as <strong>learning diagnostics, not employment recommendations</strong>; keep a human in the loop for any certification decision; retain subgroup-level score analyses; document the rubric and model version behind every score. Also: <strong>never score video or facial features</strong> — score transcript substance plus a narrow, clearly-labelled set of prosodic features (pace, filler rate, pauses). Anything else is an avoidable fairness liability for marginal signal.</p></div>
+
+      <div class="pagenav"><a href="index.html"><span class="dir">← Previous</span>Overview</a><a href="modules.html" style="text-align:right"><span class="dir">Next →</span>Modules</a></div>
+      <footer class="site">
+        <p>Assessment blueprint for the Fundamental Edge Analyst Academy syllabus.
+        Every quantitative example was independently verified; see
+        <a href="provenance.html">provenance &amp; corrections</a> for what is
+        sourced, what is unpublished, and what still needs checking.</p>
+      </footer>
+    </div>
+  </main>
+</div>
+<script src="static/app.js" defer></script>
+</body>
+</html>

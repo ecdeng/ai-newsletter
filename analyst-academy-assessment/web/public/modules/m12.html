@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 12 — Short Selling · Analyst Academy Blueprint</title>
+<meta name="description" content="Scope. Mechanics, taxonomy, timing and risk management on the short side — plus using the short mindset to improve long work. ⚠ Regulatory currency warning — the highest-risk content in the blueprint. Short-selling rules have moved repeatedly and recently. One fact verified durin">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Module 12 — Short Selling · Analyst Academy Blueprint">
+<meta property="og:description" content="Scope. Mechanics, taxonomy, timing and risk management on the short side — plus using the short mindset to improve long work. ⚠ Regulatory currency warning — the highest-risk content in the blueprint. Short-selling rules have moved repeatedly and recently. One fact verified durin">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">
+  <button class="iconbtn" data-nav-toggle aria-label="Open navigation">☰</button>
+  <a class="brand" href="../index.html">Assessment Blueprint</a>
+  <span class="spacer"></span>
+  <button class="iconbtn" data-theme-toggle>☾</button>
+</div>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html">Assessment&nbsp;Blueprint</a>
+    <p class="brand-sub">Fundamental Edge · Analyst Academy
+      <button class="iconbtn" data-theme-toggle style="float:right;margin-top:-.3rem">☾</button>
+    </p>
+    <div class="nav-group"><p class="nav-label">Start</p><nav class="nav"><a class="" href="../index.html">Overview</a><a class="" href="../approach.html">The approach</a></nav></div><div class="nav-group"><p class="nav-label">The blueprint</p><nav class="nav"><a class="" href="../modules.html"><span class="n">15</span>Modules</a></nav><nav class="nav" style="margin:.2rem 0 .4rem .5rem"><a class="" href="../modules/m01.html"><span class="n">01</span>Fundamental Foundations</a><a class="" href="../modules/m02.html"><span class="n">02</span>Life on the Buy-Side</a><a class="" href="../modules/m03.html"><span class="n">03</span>Thesis Development</a><a class="" href="../modules/m04.html"><span class="n">04</span>Why Stocks Move Up and Down</a><a class="" href="../modules/m05.html"><span class="n">05</span>Idea Generation</a><a class="" href="../modules/m06.html"><span class="n">06</span>Buyside Modeling</a><a class="" href="../modules/m07.html"><span class="n">07</span>Analyze a Business</a><a class="" href="../modules/m08.html"><span class="n">08</span>Analyze an Industry</a><a class="" href="../modules/m09.html"><span class="n">09</span>Management &amp; Capital Allocation</a><a class="" href="../modules/m10.html"><span class="n">10</span>Assessing Expectations</a><a class="" href="../modules/m11.html"><span class="n">11</span>Applied Valuation</a><a class="active" href="../modules/m12.html"><span class="n">12</span>Short Selling</a><a class="" href="../modules/m13.html"><span class="n">13</span>Earnings Season</a><a class="" href="../modules/m14.html"><span class="n">14</span>Pitch Like a Pro</a><a class="" href="../modules/m15.html"><span class="n">15</span>Wrapping Up / Bringing It All Together</a></nav><nav class="nav"><a class="" href="../exercises.html"><span class="n">58</span>Exercise catalogue</a><a class="" href="../intensives.html"><span class="n">9</span>Topical intensives</a></nav></div><div class="nav-group"><p class="nav-label">Build</p><nav class="nav"><a class="" href="../infrastructure.html"><span class="n">7</span>Shared infrastructure</a><a class="" href="../case-engine.html">Case engine spec</a><a class="" href="../roadmap.html">Build roadmap</a></nav></div><div class="nav-group"><p class="nav-label">Appendix</p><nav class="nav"><a class="" href="../provenance.html">Provenance &amp; corrections</a><a class="" href="../verification.html">Verification queue</a><a class="" href="../sources.html">Sources</a></nav></div>
+  </aside>
+  <main class="main" id="main">
+    <div class="wrap">
+      
+<p class="eyebrow">Module 12</p>
+<h1>Short Selling</h1>
+<p class="lede">4 exercises.
+2 rated advanced.</p>
+
+<div class="toc"><p class="toc-title">Exercises in this module</p><ul><li><a href="#m12-e1full-short-p-l-and-the-carry-clock">★ M12-E1 — Full Short P&amp;L and the Carry Clock</a></li><li><a href="#m12-e2the-asymmetry-engine-and-the-forced-rebalance">M12-E2 — The Asymmetry Engine and the Forced Rebalance</a></li><li><a href="#m12-e3forensic-screen-and-the-three-lens-convergence">M12-E3 — Forensic Screen and the Three-Lens Convergence</a></li><li><a href="#m12-e4de-grossing-recognition-in-real-time">M12-E4 — De-Grossing Recognition, in Real Time</a></li></ul></div>
+
+<h2 id="coverage">Expected content coverage</h2>
+<div class="prose"><p><strong>Scope.</strong> Mechanics, taxonomy, timing and risk management on the short side — plus using the short mindset to improve long work.</p>
+<p><strong>⚠ Regulatory currency warning — the highest-risk content in the blueprint.</strong> Short-selling rules have moved repeatedly and recently. One fact verified during this work, which a research pass had wrong: the SEC's institutional short-position reporting is on <strong>Form SHO</strong> (not "Form SHORT") under <strong>Rule 13f-2</strong>, and its compliance date has been <strong>deferred to 2 January 2028, with first filings due 14 February 2028</strong>. The Fifth Circuit <strong>remanded the rule to the SEC without vacating it</strong> (August 2025), directing the Commission to quantify the cumulative economic impact of Rule 13f-2 together with the securities-lending rule; the SEC's December 2025 exemptive order extended the dates while it considers its response, which may include proposed amendments. <strong>Design rule: write short-selling regulation items <em>conceptually</em>, not factually</strong> — ask "why would a regulator publish aggregated rather than attributed short data?" rather than "when must Form SHO be filed?" Conceptual items survive rule changes; factual ones become wrong silently. Where a factual item is unavoidable, date-stamp the answer key and put it on a review cycle.</p>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>What mastery looks like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mechanics</td>
+<td>Locate and borrow; stock-loan rate and rebate; hard-to-borrow vs. general collateral; Reg T's 150% requirement and portfolio margin; <strong>the short pays the dividend</strong>; recall and buy-in risk; Reg SHO's locate and close-out requirements and the alternative uptick rule's 10%-decline trigger.</td>
+</tr>
+<tr>
+<td>Challenges and risks</td>
+<td>The P&amp;L asymmetry: gains cap at 100%, losses are unbounded, <strong>and the position grows against you</strong> while a losing long shrinks. That is the squeeze engine and it is pure arithmetic.</td>
+</tr>
+<tr>
+<td>Shorting approaches</td>
+<td>Alpha / structural / event-driven / hedging. <strong>The syllabus never states how this axis relates to the separate "short alpha buckets" bullet</strong>; the defensible authoring decision is a 2×2 of <em>purpose</em> against <em>thesis type</em>.</td>
+</tr>
+<tr>
+<td>Short alpha buckets</td>
+<td>Fraud/accounting; structural decline ("melting ice cubes" — <strong>verbatim Caughran</strong>, from M08); overvaluation/multiple compression; broken-growth/deceleration; cyclical peak; balance-sheet/refinancing; promotional management; serial acquirers; index/flow; hedge and pair legs. <strong>Broken-growth/deceleration is the best bucket for a junior capstone</strong> — modellable, dated catalyst, fits a carry budget. <strong>Overvaluation is the worst</strong> — no catalyst, unbounded carry.</td>
+</tr>
+<tr>
+<td>Timing and risk management</td>
+<td>The carry clock; why shorts need catalysts and tighter stops; the structural headwind of long-run equity drift.</td>
+</tr>
+<tr>
+<td>Earnings-season tactics for shorts</td>
+<td>Pre-print squeeze risk; trimming into catalysts. Overlaps M13.</td>
+</tr>
+<tr>
+<td>De-grossing</td>
+<td>Mechanically, simultaneous risk-limit-driven gross reduction across many pods. The real-time signature matters more than the definition.</td>
+</tr>
+<tr>
+<td>Quantitative short <em>selection</em></td>
+<td>Note the syllabus says <strong>selection</strong>, not "selling" — this implies screening and ranking, not execution. Short-side factor evidence, and why short anomalies are harder to harvest (borrow cost, capacity, squeeze risk).</td>
+</tr>
+<tr>
+<td>The short mindset applied to longs</td>
+<td>Inversion; the disconfirming-evidence habit; "what does the short case look like" as a required section of every long thesis.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Scope flag.</strong> Forensic accounting (Beneish, Sloan, the Schilit taxonomy) is <strong>not named anywhere in the Module 12 bullets</strong>. It is genuinely useful here but is a candidate <strong>optional/advanced track</strong> rather than core — decide before building items.</p>
+<p><strong>Provenance.</strong> Caughran's own words for the short alpha buckets and for de-grossing were <strong>not recoverable</strong>; the taxonomy above is assembled, not his. Verified as genuinely his from the syllabus: "Short melting ice cubes with structural headwinds" (M08) and "peak-on-peak"/"spring-loaded" (M13).</p></div>
+
+<h2 id="exercises">Exercises</h2>
+
+<section class="exercise" id="m12-e1full-short-p-l-and-the-carry-clock">
+  <h3>★ M12-E1 — Full Short P&amp;L and the Carry Clock</h3>
+  <div class="exrow-meta"><span class="chip chip-flag">★ Flagship</span><span class="chip chip-t2">Intermediate</span><span class="chip chip-neutral">Build: Low</span><span class="chip chip-neutral">65 minutes</span><span class="chip chip-accent">Fully auto-gradeable</span><span class="chip chip-accent">LLM-graded</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Mechanics; timing and risk management; challenges of shorting</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Make carry visceral. Most junior short pitches are long pitches with a minus sign and no carry budget.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>Compute the complete P&amp;L of a short over a stated holding period, including borrow fee, rebate, dividend liability and margin; compute the return on notional and on posted equity under both Reg T and portfolio margin; compute the carry at a flat price and annualise it; compute the break-even borrow fee; and compute the unhedged return hurdle a beta-1 short must clear. <strong>65 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Existing spreadsheet. Fully auto-gradeable.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (85 pts, fully auto):</em> every line, tolerance 1e-3. <strong>Two convention checks worth 20 pts:</strong> the borrow fee must be computed on <em>average</em> market value with the entry-value alternative noted, and the day-count basis must be stated — conventions genuinely differ and an answer that does not declare its convention is incomplete, not wrong.</li>
+<li><em>Qualitative (15 pts, LLM-graded):</em> must state the carry at a flat price as an annualised figure and say what it implies for the maximum tolerable time-to-catalyst.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p>Short 10,000 shares at <strong>$50</strong>, cover at <strong>$42</strong>, 90 days, borrow 350bp, rebate 430bp, Act/360, two $0.20 dividends.</p>
+<p>Price P&amp;L = (50 − 42) × 10,000 = <strong>+$80,000</strong>. Borrow fee on average market value ($460,000) = <strong>−$4,025</strong> (on the entry-value convention it is −$4,375 — <strong>declare which you used</strong>). Rebate = <strong>+$5,375</strong>. Dividend liability = <strong>−$4,000</strong> (the short pays). <strong>Net $77,350 = 15.47% of notional.</strong> On Reg T equity of $250,000 that is <strong>30.94%</strong>; at a 15% portfolio-margin requirement, <strong>103.13%</strong>.</p>
+<p><strong>The number that matters most: at a flat price the carry is −$3,000, or −2.40% annualised.</strong> Note what produced it — the net rebate is <em>positive</em> (rebate 430bp exceeds borrow 350bp), and <strong>the dividend liability alone flips the carry negative.</strong> Students routinely model borrow and forget the dividend.</p>
+<p>A second verified case shows the full hurdle: an unhedged beta-1 short must overcome equity drift plus borrow plus dividends, a <strong>10.80%–13.00% annual hurdle</strong>, compounding to <strong>37.01% over five years.</strong> The useful heuristic: <strong>1,200bp of borrow ≈ 1% per month.</strong></p>
+</blockquote></div></details>
+</section>
+<section class="exercise" id="m12-e2the-asymmetry-engine-and-the-forced-rebalance">
+  <h3>M12-E2 — The Asymmetry Engine and the Forced Rebalance</h3>
+  <div class="exrow-meta"><span class="chip chip-t2">Intermediate</span><span class="chip chip-neutral">Build: Low</span><span class="chip chip-neutral">50 minutes</span><span class="chip chip-accent">Fully auto-gradeable</span><span class="chip chip-accent">LLM-graded</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Challenges and risks; timing; de-grossing</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Show arithmetically why shorts require active management that longs do not — the position grows as it goes wrong, forcing you to buy at the worst price.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>For a short sized at 3.00% of a $100m NAV: compute the P&amp;L, the new NAV, the new position market value and the new position weight after the stock rises 50% and 100%; compute what fraction of the original share count must be covered to restore the target weight, and at what price; compute the same for a long that falls 40%; and write 150 words on what this implies for stop discipline. <strong>50 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Existing spreadsheet. Fully auto-gradeable.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (80 pts, fully auto):</em> all figures, tolerance 1e-4.</li>
+<li><em>Qualitative (20 pts, LLM-graded):</em> must conclude that shorts need <em>pre-committed</em> stops because the rebalance trade is forced and happens at the worst available price. An answer that says "shorts are riskier" without the mechanism scores ≤6.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p>Short 3.00% of a $100m NAV: 60,000 shares at $50 = $3.0m.</p>
+<p><strong>Stock rises 50% to $75.</strong> Loss = <strong>$1.5m</strong>. NAV falls to <strong>$98.5m</strong>. Position market value rises to <strong>$4.5m</strong>. New weight = 4.5/98.5 = <strong>4.5685%</strong> — the position has inflated by a factor of <strong>1.523</strong> without a single trade. To restore 3.00% you must <strong>buy back 20,600 of 60,000 shares (34.33%) at $75</strong>, the worst price so far.</p>
+<p><strong>At +100%:</strong> you must <strong>cover 51.50% at the top.</strong></p>
+<p><strong>The mirror long, falling 40%:</strong> 3.00% becomes <strong>1.8219%</strong> — it shrinks, and no action is forced.</p>
+<p><strong>The asymmetry stated plainly:</strong> a short that goes to zero returns +100%; a short that triples returns −200%. <strong>The long shrinks as it goes wrong; the short grows.</strong> That is why short stops must be pre-committed and mechanical: by the time you are deciding whether to cover, the position is already larger than you sized it, and the decision is being made under duress at the worst price.</p>
+</blockquote></div></details>
+</section>
+<section class="exercise" id="m12-e3forensic-screen-and-the-three-lens-convergence">
+  <h3>M12-E3 — Forensic Screen and the Three-Lens Convergence</h3>
+  <div class="exrow-meta"><span class="chip chip-t3">Advanced</span><span class="chip chip-neutral">Build: Low</span><span class="chip chip-neutral">70 minutes</span><span class="chip chip-accent">Fully auto-gradeable</span><span class="chip chip-accent">LLM-graded</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Identifying short ideas; quantitative short selection; fundamentals leg of FEV</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Compute the standard forensic scores correctly, and — the real lesson — recognise when three "independent" lenses are detecting one underlying event.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>From a full two-year income statement and balance sheet: compute all eight Beneish components and the M-score; compute Sloan accruals and the CFO/net-income ratio; compute the five-variable Beneish variant; then state in 150 words whether the three lenses constitute independent evidence. <strong>70 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Existing spreadsheet. Fully auto-gradeable.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (80 pts, fully auto):</em> all eight components plus the score, tolerance 1e-4; accruals and CFO/NI.</li>
+<li><em>Qualitative (20 pts, LLM-graded):</em> <strong>full credit requires recognising that the lenses are not independent</strong> — a receivables-driven revenue overstatement shows up as a high DSRI, as high accruals, and as collapsing CFO/NI, because all three are measuring the same gap between revenue and cash. A student who reports "three independent red flags" has misread the evidence and scores ≤6.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p>Components: DSRI <strong>1.666667</strong>, GMI <strong>1.111111</strong>, AQI <strong>1.066667</strong>, SGI <strong>1.400000</strong>, DEPI <strong>1.142857</strong>, SGAI <strong>0.944444</strong>, TATA <strong>0.072222</strong>, LVGI <strong>1.030303</strong>.</p>
+<p>M = −4.84 + 0.920(1.666667) + 0.528(1.111111) + 0.404(1.066667) + 0.892(1.400000) + 0.115(1.142857) − 0.172(0.944444) + 4.679(0.072222) − 0.327(1.030303) = <strong>−1.070264</strong>.</p>
+<p><strong>Threshold: the commonly cited cutoff is −1.78, and −1.070 exceeds it, so the company is flagged.</strong> But state the caveat in the key: <strong>sources genuinely conflict on the threshold (−1.78 vs −2.22)</strong>, and Beneish's own paper frames the cutoff as depending on the relative cost of Type I versus Type II errors rather than as a fixed line. On either threshold this company flags, which is why it is a good teaching case — but a question keyed to a single threshold is fragile, and the five-variable variant gives <strong>−1.928048</strong>, which flags on one cutoff and not the other. <strong>Teach the ambiguity; it is the more useful lesson.</strong></p>
+<p>The score is driven by <strong>DSRI (+1.533 contribution) and SGI (+1.249)</strong>. The same financials give Sloan accruals of <strong>8.67%</strong> and <strong>CFO/net income collapsing from 0.9167 to 0.1333</strong>.</p>
+<p><strong>The convergence point.</strong> DSRI is the receivables tell. Accruals are the same gap expressed as a balance-sheet change. CFO/NI is the same gap expressed as a cash ratio. <strong>These are three views of one event, not three independent confirmations</strong> — and an analyst who treats them as independent will overstate their confidence by a wide margin.</p>
+</blockquote></div></details>
+</section>
+<section class="exercise" id="m12-e4de-grossing-recognition-in-real-time">
+  <h3>M12-E4 — De-Grossing Recognition, in Real Time</h3>
+  <div class="exrow-meta"><span class="chip chip-t3">Advanced</span><span class="chip chip-neutral">Build: Medium</span><span class="chip chip-neutral">50 minutes</span><span class="chip chip-accent">Auto-graded component</span><span class="chip chip-accent">LLM-graded</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">De-grossing; contrarian positioning; earnings-season tactics for shorts</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Distinguish a positioning event from an information event while it is happening — the decision that most often destroys a pod analyst's year.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>A timed, staged exercise. Over four releases of information spaced 10 minutes apart (simulating four hours of a trading day), the student receives market, sector, factor, basket and single-name data and must, at each stage, state: what is happening, their confidence, and what they would do with a stated book of three longs and two shorts. They cannot revise earlier answers. <strong>50 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Needs staged release and answer locking — medium build, or runnable live. Shares the event-clock engine with M13.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (50 pts, auto):</em> classification at each stage against a key, with the key <strong>changing as evidence accumulates</strong> — a student who calls de-grossing at stage 1 on insufficient evidence scores <em>lower</em> than one who says "unclear" and calls it at stage 2. Premature confidence is penalised, which is the opposite of how students expect to be graded.</li>
+<li><em>Qualitative (50 pts, LLM-graded):</em> 25 pts for action consistency with the stated classification; 25 pts for a <strong>calibration-style confidence statement</strong> that updates monotonically with evidence. Score the confidence trajectory, not just the final answer.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p><strong>Stage 1:</strong> your market-neutral book is −1.8% on the day; the index is +0.1%. <em>Correct answer: unclear. Could be idiosyncratic.</em>
+<strong>Stage 2:</strong> both legs are losing — your longs are down and your shorts are <strong>up</strong>. The index is still flat. <em>Now it is diagnostic.</em> <strong>"Index flat, market-neutral book down, both legs losing" is the de-grossing signature</strong>, because information cannot move both your longs and your shorts against you simultaneously; only forced position unwinding does that.
+<strong>Stage 3:</strong> a widely-followed crowded-long basket is −4.2%, a crowded-short basket is +3.1%, and momentum is sharply negative. <strong>Confirmed.</strong> Note the corollary students find counter-intuitive: <strong>your best shorts hurt most, because "best short" and "most crowded short" are correlated.</strong>
+<strong>Stage 4:</strong> borrow fees on your two shorts have spiked. <em>This is a consequence, not new information</em> — and a student who upgrades their confidence on it has double-counted.</p>
+<p><strong>The action key:</strong> in a confirmed de-grossing with theses intact, the correct action is to <strong>do nothing or add within limits</strong>, and explicitly to <em>not</em> cover shorts into the squeeze — which is precisely what the risk system and the P&amp;L pressure are pushing you to do. Full credit requires naming that tension.</p>
+</blockquote></div></details>
+</section>
+
+      <div class="pagenav"><a href="../modules/m11.html"><span class="dir">← Previous</span>Module 11 — Applied Valuation</a><a href="../modules/m13.html" style="text-align:right"><span class="dir">Next →</span>Module 13 — Earnings Season</a></div>
+      <footer class="site">
+        <p>Assessment blueprint for the Fundamental Edge Analyst Academy syllabus.
+        Every quantitative example was independently verified; see
+        <a href="../provenance.html">provenance &amp; corrections</a> for what is
+        sourced, what is unpublished, and what still needs checking.</p>
+      </footer>
+    </div>
+  </main>
+</div>
+<script src="../static/app.js" defer></script>
+</body>
+</html>

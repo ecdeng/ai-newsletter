@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shared infrastructure · Analyst Academy Blueprint</title>
+<meta name="description" content="Seven shared-infrastructure proposals ordered by value per unit of build effort, plus an explicit list of what not to build.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Shared infrastructure · Analyst Academy Blueprint">
+<meta property="og:description" content="Seven shared-infrastructure proposals ordered by value per unit of build effort, plus an explicit list of what not to build.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="static/style.css">
+<link rel="icon" href="static/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">
+  <button class="iconbtn" data-nav-toggle aria-label="Open navigation">☰</button>
+  <a class="brand" href="index.html">Assessment Blueprint</a>
+  <span class="spacer"></span>
+  <button class="iconbtn" data-theme-toggle>☾</button>
+</div>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="index.html">Assessment&nbsp;Blueprint</a>
+    <p class="brand-sub">Fundamental Edge · Analyst Academy
+      <button class="iconbtn" data-theme-toggle style="float:right;margin-top:-.3rem">☾</button>
+    </p>
+    <div class="nav-group"><p class="nav-label">Start</p><nav class="nav"><a class="" href="index.html">Overview</a><a class="" href="approach.html">The approach</a></nav></div><div class="nav-group"><p class="nav-label">The blueprint</p><nav class="nav"><a class="" href="modules.html"><span class="n">15</span>Modules</a><a class="" href="exercises.html"><span class="n">58</span>Exercise catalogue</a><a class="" href="intensives.html"><span class="n">9</span>Topical intensives</a></nav></div><div class="nav-group"><p class="nav-label">Build</p><nav class="nav"><a class="active" href="infrastructure.html"><span class="n">7</span>Shared infrastructure</a><a class="" href="case-engine.html">Case engine spec</a><a class="" href="roadmap.html">Build roadmap</a></nav></div><div class="nav-group"><p class="nav-label">Appendix</p><nav class="nav"><a class="" href="provenance.html">Provenance &amp; corrections</a><a class="" href="verification.html">Verification queue</a><a class="" href="sources.html">Sources</a></nav></div>
+  </aside>
+  <main class="main" id="main">
+    <div class="wrap">
+      
+<h1>Shared infrastructure</h1>
+<p class="lede">Seven pieces of infrastructure carry almost every exercise in the
+blueprint. They are ordered by value per unit of build effort — not by how interesting
+they are to build.</p>
+<div class="cards cards-2"><a class="card" href="#inf-1"><p class="card-eyebrow">INF-1 · the keystone; build this first</p><p class="card-title">The Historical Case Engine</p><div class="card-foot"><span class="chip chip-neutral">Build: high</span></div></a><a class="card" href="#inf-2"><p class="card-eyebrow">INF-2</p><p class="card-title">The Model Auto-Grader</p><div class="card-foot"><span class="chip chip-neutral">Build: medium</span></div></a><a class="card" href="#inf-3"><p class="card-eyebrow">INF-3</p><p class="card-title">The Role-Play Station Engine</p><div class="card-foot"><span class="chip chip-neutral">Build: high</span></div></a><a class="card" href="#inf-4"><p class="card-eyebrow">INF-4</p><p class="card-title">The Calibration Ledger and Forecast Resolution Engine</p><div class="card-foot"><span class="chip chip-neutral">Build: low–medium</span></div></a><a class="card" href="#inf-5"><p class="card-eyebrow">INF-5</p><p class="card-title">The Fake-Company Data Generator</p><div class="card-foot"><span class="chip chip-neutral">Build: medium</span></div></a><a class="card" href="#inf-6"><p class="card-eyebrow">INF-6</p><p class="card-title">The Golden Set and Rubric Store</p><div class="card-foot"><span class="chip chip-neutral">Build: low technically, high in expert time</span></div></a><a class="card" href="#inf-7"><p class="card-eyebrow">INF-7</p><p class="card-title">The Idea Ledger</p><div class="card-foot"><span class="chip chip-neutral">Build: medium</span></div></a></div>
+
+<section id="inf-1">
+<h2>INF-1 — The Historical Case Engine
+<span class="chip chip-accent" style="vertical-align:middle;margin-left:.5rem">the keystone; build this first</span></h2>
+<div class="prose"><p><strong>You asked whether a full market simulator is worth building. My answer is no — and the reasoning matters more than the verdict.</strong></p>
+<p>Fundamental analysis runs on a quarters-to-years clock. A real-time trading simulator is a category error for this syllabus: it optimises for execution and price feedback, when the skills in these fifteen modules are thesis formation, expectations inference, and position maintenance. Worse, <strong>the one thing a trading simulator uniquely supplies — price feedback — is the least valid assessment signal available</strong> (§2.1). You would spend the most money to buy the least useful measurement.</p>
+<p>What you should build instead is a <strong>historical case engine</strong>: a replay harness over point-in-time data.</p>
+<p><strong>The core insight: the simulator's value is not realism. It is time compression plus free ground truth.</strong> Freeze a date, serve only what was knowable then, and a three-year holding period collapses into a 40-minute exercise in which the correct answer already exists.</p>
+<p><strong>Core features.</strong>
+1. Freeze a date <strong>T</strong> for a real company.
+2. Serve <strong>only</strong> information available at T — as-filed financials, transcripts, the then-prevailing consensus, the then-prevailing price, option chain and positioning data.
+3. Demand a thesis, a model, a price target, scenario probabilities and a sizing recommendation, with structured fields.
+4. Advance the clock to T+1 quarter, release the actual print, and demand an updated view — which <em>is</em> the Module 13 drill.
+5. At T+N, reveal the outcome and force a <strong>post-mortem against the student's own original thesis document.</strong>
+6. Score on process fidelity and calibration; score outcome only as a small, explicitly noisy component.</p>
+<p><strong>Exercises it supports:</strong> M13-E1 (the event clock), M14-E2 (the forced re-underwrite — impossible without it), M10-E1/E2/E3, M07-E1, M05-E1, M12-E4, M01-E3, M01-E6, M06-E3, and the calibration ledger's resolution engine. <strong>That is roughly half the blueprint.</strong></p>
+<p><strong>MVP versus full version.</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>MVP</th>
+<th>Full</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cases</td>
+<td>8–12, hand-built</td>
+<td>30–40 across sectors and situation types</td>
+</tr>
+<tr>
+<td>Clock</td>
+<td>Static before/after reveal</td>
+<td>Staged intra-day release with answer locking</td>
+</tr>
+<tr>
+<td>Consensus</td>
+<td>Hand-curated from contemporaneous coverage</td>
+<td>Licensed historical estimate data</td>
+</tr>
+<tr>
+<td>Positioning</td>
+<td>Hand-assembled</td>
+<td>Automated from vendor feeds</td>
+</tr>
+<tr>
+<td>Grading</td>
+<td>Check cells + LLM rubric</td>
+<td>Full perturbation testing + dependency-graph comparison</td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td>Files plus a form</td>
+<td>Web app with timers and locking</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Point-in-time data: the one real engineering problem.</strong> Four distinct look-ahead leaks must each be closed — <strong>restated financials</strong> (today's database shows restatements; the analyst at T saw as-first-reported numbers and often a different segment structure); <strong>index-membership survivorship</strong>; <strong>delisting survivorship</strong> in prices (cheap APIs usually drop dead tickers, so the worst outcomes silently vanish from your case set); and <strong>historical consensus estimates</strong>, which is both the hardest and the one Modules 10 and 13 most need.</p>
+<p><strong>SEC EDGAR is the free backbone and it solves the hardest leak for nothing.</strong> The Financial Statement Data Sets (2009Q2 onward) and the <code>data.sec.gov</code> XBRL APIs — <code>companyconcept</code>, <code>companyfacts</code>, and the <strong><code>frames</code> API</strong> for cross-sections — tie <strong>every fact to an accession number and a filing date</strong>, so "what did the filing say when it was filed" is always reconstructible. Free, no licence, redistributable. Requirements: a 10 requests/second limit and a User-Agent that <strong>must contain an email address</strong> — a URL-only User-Agent is rejected with HTTP 403 (verified).</p>
+<p><strong>One correction from prototyping this layer</strong> (see <code>case-engine/SPEC.md</code>): <code>frames</code> rows carry no <code>filed</code> field, so <strong>frames is not point-in-time safe on its own</strong> — use it for discovery and screening, and use <code>companyconcept</code>, which does carry <code>filed</code>, for actual values. Also note <code>data.sec.gov</code> and <code>www.sec.gov</code> are separate hosts with separate reachability: you can end up with every number and no documents. Limits: XBRL coverage starts around 2009–2011, so pre-2009 cases need manual construction; no prices, no index membership, no estimates; US only; and tag inconsistency across filers makes normalisation real work.</p>
+<p><strong>Historical consensus is the unsolved gap, and the recommended workaround is deliberately low-tech:</strong> hand-curate a consensus table for a fixed case library. For 20–40 cases that is a few hundred data points, and historical consensus figures are frequently quoted verbatim in contemporaneous coverage and in the transcripts themselves ("versus the Street's $1.42"). Labour-intensive, legally clean, sufficient. The alternative — using <strong>management guidance as the bar instead of consensus</strong> — is free, point-in-time, unambiguous, and supports most of what Modules 10 and 13 teach; the guidance-versus-consensus gap can then be taught conceptually.</p>
+<p><strong>On the data vendors: do not budget from the figures circulating in secondary sources.</strong> Verification found that <strong>Sharadar SF1 no longer publishes pricing</strong> (quote-based, and its non-professional/professional tiering means a paid training product very likely needs the professional tier — the <strong>licensing question matters more than the price</strong>); <strong>Norgate pricing could not be found at all</strong>; and EODHD and Tiingo tiers conflict badly across sources. Treat all of these as "request a quote," not as line items. Confirmed public prices: <strong>Stock-Trak at $12–$49.95 per student</strong> depending on tier, and <strong>Polygon.io at $0 / $29 / $79 / $199</strong> (note it rebranded to "Massive" in late 2025).</p>
+<p><strong>The apparent limitation is the design virtue.</strong> A <em>fixed</em> case library is <strong>better assessment</strong> than a dynamic any-company-any-date simulator, because identical stimuli across students is the OSCE property that makes scores comparable — and it lets you reuse answer keys, anchor papers and golden sets. A dynamic simulator would be more impressive, cost far more, and measure worse.</p>
+<p><strong>Build complexity: high</strong> (the highest in the blueprint, and worth it). <strong>MVP: medium.</strong></p><p><a href="case-engine.html"><strong>Full technical spec for the case engine, including five worked example cases →</strong></a></p></div>
+</section>
+<section id="inf-2">
+<h2>INF-2 — The Model Auto-Grader
+</h2>
+<div class="prose"><p><strong>What it does.</strong> Ingests an uploaded workbook and scores it on four independent axes: correctness, liveness, structure and hygiene.</p>
+<p><strong>The techniques that actually work, in descending value:</strong>
+1. <strong>Named-range submission contracts.</strong> Require students to name output cells, or supply a template with a locked, pre-labelled <code>SUBMISSION</code> sheet they link into. <strong>This single decision eliminates roughly 80% of autograding fragility</strong> — you stop having to find the EPS cell.
+2. <strong>Perturbation / shock testing.</strong> Change an <em>input</em>, recalculate, and verify the <em>outputs moved the right way by the right amount</em>. <strong>This is the only way to distinguish a genuinely live, correctly-linked model from one with the right numbers hardcoded</strong> — no static value check can do it. Run 3–5 shocks per model against deltas from the golden model.
+3. <strong>Three-statement integrity ties.</strong> Balance sheet balances every period; ending cash ties; net income ties from P&amp;L to cash flow to retained earnings; sum of segments ties to consolidated. Objective, high-signal, fully automatable — <strong>the best value per engineering hour in the whole stack.</strong>
+4. <strong>R1C1 formula-consistency across forecast rows.</strong> Convert formulas to R1C1 and check that every cell in a forecast row shares one string. Inconsistency along a time axis is the classic model bug and what a PM spots in five seconds.
+5. <strong>Hardcode detection</strong>, as a hygiene sub-score rather than a hard fail (some hardcodes are correct), with a whitelist for legitimate constants.
+6. <strong>Circular-reference detection</strong> via the dependency graph, distinguishing intentional circularity with iterative calc enabled from accidental.
+7. <strong>Dependency-wiring tests</strong> — "does the revenue line depend on <strong>both</strong> a volume cell and a price cell?" <strong>Ungameable by labelling</strong>, and the single best check for whether a student built a real driver model.
+8. <strong>Error-cascade containment.</strong> Limit how far one upstream error propagates into downstream wrong answers, or a single early slip zeroes an otherwise competent model. Score check-cell clusters against the student's <em>own</em> upstream values where the dependency is isolable.</p>
+<p><strong>Tooling.</strong> <code>openpyxl</code> as the structural backbone (reads formulas but does not compute them); <strong><code>formulas</code></strong> or <strong><code>pycel</code></strong> to build the dependency DAG and actually evaluate — these are what make perturbation testing possible without Excel (note <code>pycel</code>'s last release was a 2021 beta, so test coverage before committing); LibreOffice headless for free recalculation with imperfect fidelity on edge cases; or the <strong>Microsoft Graph Workbook API</strong> for real-Excel fidelity without local Excel, which is the best fidelity-per-ops-effort option if M365 licensing is acceptable.</p>
+<p><strong>Commercial precedent that this works at scale:</strong> <strong>McGraw Hill's "Integrated Excel"</strong> runs inside their platform with no file transfer and lets instructors choose to auto-grade <strong>by formula accuracy or by solution value</strong> — which answers "results only or formulas too?" with "both, instructor's choice." Pearson's MyLab Grader Projects use a download/upload model, and have one feature worth stealing: <strong>different starting values per student.</strong> The <strong>Financial Modeling World Cup</strong> proves high-stakes competitive spreadsheet assessment is viable, and its scoring mechanics are richer than usually described — 1,000 points per stage, with a <strong>time bonus of 10 points per minute for the first 10 minutes saved then 1 point per minute, gated on scoring at least 90% of the regular points.</strong> That 90% gate is a genuinely good mechanic to borrow: it rewards speed only once accuracy is established. (The "designated submission cells, tolerance-matched" mechanic is widely described but <strong>could not be confirmed</strong> — do not cite it as sourced.)</p>
+<p><strong>Why hygiene deserves its own score:</strong> field audits converge on <strong>cell error rates of roughly 1–5%</strong> in operational spreadsheets, with a large majority of substantial real-world spreadsheets containing at least one error; an analysis of ~15,770 spreadsheets from the Enron corpus found roughly <strong>24% of those containing formulas had at least one error value.</strong> Given those base rates, scoring hygiene teaches a skill the industry demonstrably lacks. <strong>It also means your own golden models will contain errors — budget for independent review of every answer key.</strong></p>
+<p><strong>Exercises supported:</strong> M06-E1/E2/E3/E4, M07-E2/E3, M08-E1/E2, M09-E1/E2/E3, M10-E2/E3/E4, M11-E1/E2/E3/E4, M12-E1/E2/E3, M13-E1/E2/E3, M15-E1/E2/E3. <strong>Nearly every quantitative exercise in the blueprint.</strong></p>
+<p><strong>Build complexity: medium.</strong> <strong>This is the highest-ROI build in the program</strong> and should be second after the MVP case library.</p></div>
+</section>
+<section id="inf-3">
+<h2>INF-3 — The Role-Play Station Engine
+</h2>
+<div class="prose"><p><strong>What it does.</strong> Runs two station types against a scripted persona: a <strong>management meeting</strong> (CFO/IR) and a <strong>PM grilling</strong>.</p>
+<p><strong>The design device, borrowed from medical education's standardised patient:</strong> give the agent a <strong>fact pack</strong> (ground truth), a <strong>disclosure policy</strong> (what it volunteers unprompted versus what it releases <strong>only if asked a specific question</strong>), a <strong>deflection repertoire</strong>, and a <strong>consistency constraint</strong> (never contradict the pack, never invent numbers). Because extraction of gated facts is <strong>binary and logged</strong>, the station achieves near-perfect reliability — rare in judgment assessment.</p>
+<p><strong>Honest positioning, corrected from an earlier assumption.</strong> This is <strong>less of a moat than it first appears.</strong> Generic AI role-play with custom personas <em>and custom scoring rubrics</em> is now close to a commodity — several products offer it, some with explicit financial-services positioning and user-defined rubrics. The medical analogue is a mature commercial product that <strong>already scores "essential interview components" on exactly the only-if-asked pattern</strong>, so the device is proven rather than novel. And a 2026 study of an AI pitch simulator playing a VC investor, scored on an 8-point rubric, found participants valued the repeatable structured practice but noted reduced emotional and non-verbal fidelity. <strong>What remains defensible is the content, not the capability:</strong> the case library, the only-if-asked disclosure scripts, the behaviourally-anchored rubrics, and the golden set. Build on a commodity engine; invest in the scripts.</p>
+<p><strong>Technical requirements.</strong> Speech-native APIs or an orchestration framework handling turn-taking, VAD and interruption. <strong>Barge-in matters more than raw latency for adversarial role-play — a PM who cannot interrupt you is not a PM.</strong> Natural turn gaps are ~200ms; under 500–800ms voice-to-voice is acceptable; cascaded ASR→LLM→TTS stacks land at 1–2.5s and feel stilted. Accept slightly higher latency to get interruption.</p>
+<p><strong>Two design elements that carry most of the value:</strong> the <strong>planted unknowable question</strong> (grading whether the student fabricates — a critical failure), and the <strong>planted MNPI bait</strong> in the management meeting. And run <strong>unlimited ungraded practice plus one graded instance on a fresh scenario</strong> — the aviation training/evaluation split. Unlimited practice is nearly free and is the actual product value; the graded run is what the certificate rests on. It also defuses the desirable-difficulties complaint problem.</p>
+<p><strong>Exercises supported:</strong> M02-E4, M05-E4, M09-E4, M14-E1 (defence), M14-E3.</p>
+<p><strong>Build complexity: high.</strong> Amortised across five exercises in four modules.</p></div>
+</section>
+<section id="inf-4">
+<h2>INF-4 — The Calibration Ledger and Forecast Resolution Engine
+</h2>
+<div class="prose"><p><strong>What it does.</strong> Every module ends with 5–10 resolvable questions carrying a stated resolution date. Students submit probabilities. The system resolves them automatically from filings and prices and returns Brier, reliability, resolution, and a skill score against a base-rate forecast.</p>
+<p><strong>Why it is the highest-value-per-dollar item in the blueprint:</strong> it is cheap, fully automatic, generates 75–150 scored forecasts per student, is the only valid outcome measure available (§2.2), and produces the program's one defensible efficacy claim. Because the case engine serves masked historical data, <strong>resolution is instant</strong> — you do not wait a quarter for ground truth.</p>
+<p><strong>It also comes free from a decision made elsewhere.</strong> Because the idea ledger and capstone enforce <strong>mandatory structured fields</strong> (target, horizon, conviction, catalyst with date, falsification condition), every student submission is <em>already</em> a timestamped, horizon-bounded forecast. No extra student effort. <strong>This is why structured fields are the single most important technical design decision in the blueprint</strong> — free-form memos are not scoreable at scale, and structured fields make both auto-grading and calibration scoring essentially free.</p>
+<p><strong>Exercises supported:</strong> all 15 modules, plus the TI5 pre/post battery.</p>
+<p><strong>Build complexity: low–medium.</strong> <strong>Build this second or third.</strong></p></div>
+</section>
+<section id="inf-5">
+<h2>INF-5 — The Fake-Company Data Generator
+</h2>
+<div class="prose"><p><strong>What it does.</strong> Generates internally consistent synthetic companies — three statements that tie, plausible segment structure, a comp set, consensus estimates, an ownership profile — with <strong>planted defects drawn from a defect register.</strong></p>
+<p><strong>Why synthetic as well as historical.</strong> Real cases have ground truth but are finite, effortful, and googleable. Synthetic cases are unlimited, cheaply parameterised, and let you plant a <em>specific</em> defect to test a <em>specific</em> skill. Use real cases where ground truth matters (calibration, the event clock, the re-underwrite) and synthetic where you need volume and control (forensic screens, comp-sheet traps, the booby-trapped DCF, the planted-error exercises).</p>
+<p><strong>The key asset is the defect register.</strong> Research for Module 06 alone produced a 25-item register of which <strong>18 are fully auto-detectable.</strong> Each defect maps to an exercise, a check, and a curriculum section — which also lets feedback point students back at the right video.</p>
+<p><strong>Exercises supported:</strong> M08-E2, M11-E4, M12-E3, M06-E1/E2, M01-E3, M01-E6, M03-E1, M14-E3, plus all vignette item sets.</p>
+<p><strong>Build complexity: medium.</strong></p></div>
+</section>
+<section id="inf-6">
+<h2>INF-6 — The Golden Set and Rubric Store
+</h2>
+<div class="prose"><p><strong>What it does.</strong> Holds, for every rubric: behaviourally anchored scale definitions, pre-scored anchor submissions at each score point with written rationales, a human-scored golden set of ≥100 submissions per rubric, and seeded validity items for drift monitoring.</p>
+<p><strong>Why it is infrastructure rather than content.</strong> It is what makes every LLM grader trustworthy, what lets you swap models without re-validating from scratch, and what lets you publish reliability coefficients. <strong>Build the golden set before the graders that depend on it.</strong></p>
+<p><strong>Where the anchors come from, cheaply:</strong> run a behaviourally-anchored-rating-scale development process with Caughran, Carr and the guest speakers, harvesting <strong>real critical incidents</strong> — "the analyst who said 'I don't know, I'll find out by 4pm'" versus "the analyst who bluffed a number." Concrete behavioural anchors in PM vernacular are also what make an LLM judge reliable; vague anchors like "demonstrates strong analysis" produce wide variance.</p>
+<p><strong>Build complexity: low technically, high in expert time.</strong> The expert time is the point — it is the thing a competitor cannot copy.</p></div>
+</section>
+<section id="inf-7">
+<h2>INF-7 — The Idea Ledger
+</h2>
+<div class="prose"><p><strong>What it does.</strong> A continuous, tracked paper book. Every student idea is logged with mandatory structured fields, timestamped, and tracked to a fixed horizon, producing per-student attribution: hit rate, slugging ratio, expectancy, factor-adjusted residual, and sizing-versus-conviction alignment.</p>
+<p><strong>Precedent.</strong> This is the industry's own answer to assessing someone before outcomes exist — juniors run shadow books. The industrialised version is an alpha-capture platform, where contributors submit ideas with conviction and horizon and are size-weighted by measured skill. Value Investors Club supplies the community mechanics worth copying: membership is gated on a write-up, members must post <strong>2 ideas a year <em>and rate 20</em></strong>, and ideas are released publicly after <strong>45 days</strong>. (Its rating scale is reported as 1–5 by third parties only, so <strong>the 1–5 versus 1–10 question is unresolved</strong>, and the FAQ is roughly eight years old while a 2026 profile says "2 to 6 ideas/year" — verify before copying the quota.) SumZero requires business/product analysis, valuation, <strong>target price justification</strong>, risks, <strong>timeline/horizon</strong> and <strong>trade feasibility</strong>, and <strong>rejects ideas with less than 5–10% expected upside.</strong></p>
+<p><strong>Guard against the known failure mode:</strong> peer ratings in enthusiast communities drift upward and correlate with length and author reputation rather than accuracy. Mitigate by weighting each student's ratings by their own demonstrated rating accuracy, using <strong>pairwise comparison against anchors</strong> rather than absolute scores for anything high-stakes, and seeding pre-scored validity items invisibly.</p>
+<p><strong>Exercises supported:</strong> M05-E1, M12 ideas, M15-E1, M14-E2, and the calibration ledger.</p>
+<p><strong>Build complexity: medium.</strong></p>
+<h2>What NOT to build</h2>
+<ul>
+<li><strong>A real-time market or trading simulator.</strong> Category error, as above. If you want students to touch borrow mechanics and order types, a free paper-trading account at a real broker does it for nothing.</li>
+<li><strong>A P&amp;L-scored trading competition.</strong> Outcome-dominated, and it rewards precisely the overconfidence the program should be training out. Research for Module 15 recommended explicitly de-weighting these.</li>
+<li><strong>A bias-recognition quiz.</strong> Low validity. Students learn to name biases without becoming less biased.</li>
+<li><strong>Your own data terminal.</strong> Licensing for a commercial trainer is the blocker, not the engineering — academic-rate access to the gold-standard datasets is generally unavailable to a for-profit training company, which is a hard constraint worth knowing before anyone scopes it.</li>
+<li><strong>Video or facial analysis of pitches.</strong> Fairness liability, marginal signal, and there is a well-known cautionary precedent of a hiring vendor withdrawing exactly this capability after external audit.</li>
+</ul></div>
+</section>
+<hr>
+<h2 id="not-build">What <em>not</em> to build</h2>
+<div class="prose"><ul>
+<li><strong>A real-time market or trading simulator.</strong> Category error, as above. If you want students to touch borrow mechanics and order types, a free paper-trading account at a real broker does it for nothing.</li>
+<li><strong>A P&amp;L-scored trading competition.</strong> Outcome-dominated, and it rewards precisely the overconfidence the program should be training out. Research for Module 15 recommended explicitly de-weighting these.</li>
+<li><strong>A bias-recognition quiz.</strong> Low validity. Students learn to name biases without becoming less biased.</li>
+<li><strong>Your own data terminal.</strong> Licensing for a commercial trainer is the blocker, not the engineering — academic-rate access to the gold-standard datasets is generally unavailable to a for-profit training company, which is a hard constraint worth knowing before anyone scopes it.</li>
+<li><strong>Video or facial analysis of pitches.</strong> Fairness liability, marginal signal, and there is a well-known cautionary precedent of a hiring vendor withdrawing exactly this capability after external audit.</li>
+</ul></div>
+
+      <div class="pagenav"><a href="intensives.html"><span class="dir">← Previous</span>Topical intensives</a><a href="case-engine.html" style="text-align:right"><span class="dir">Next →</span>Case engine spec</a></div>
+      <footer class="site">
+        <p>Assessment blueprint for the Fundamental Edge Analyst Academy syllabus.
+        Every quantitative example was independently verified; see
+        <a href="provenance.html">provenance &amp; corrections</a> for what is
+        sourced, what is unpublished, and what still needs checking.</p>
+      </footer>
+    </div>
+  </main>
+</div>
+<script src="static/app.js" defer></script>
+</body>
+</html>

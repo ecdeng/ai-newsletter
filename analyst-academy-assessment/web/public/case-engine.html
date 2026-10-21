@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case engine spec · Analyst Academy Blueprint</title>
+<meta name="description" content="Technical specification for the historical case engine: architecture, data sourcing, point-in-time discipline, case manifest, and five worked example cases.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Case engine spec · Analyst Academy Blueprint">
+<meta property="og:description" content="Technical specification for the historical case engine: architecture, data sourcing, point-in-time discipline, case manifest, and five worked example cases.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="static/style.css">
+<link rel="icon" href="static/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">
+  <button class="iconbtn" data-nav-toggle aria-label="Open navigation">☰</button>
+  <a class="brand" href="index.html">Assessment Blueprint</a>
+  <span class="spacer"></span>
+  <button class="iconbtn" data-theme-toggle>☾</button>
+</div>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="index.html">Assessment&nbsp;Blueprint</a>
+    <p class="brand-sub">Fundamental Edge · Analyst Academy
+      <button class="iconbtn" data-theme-toggle style="float:right;margin-top:-.3rem">☾</button>
+    </p>
+    <div class="nav-group"><p class="nav-label">Start</p><nav class="nav"><a class="" href="index.html">Overview</a><a class="" href="approach.html">The approach</a></nav></div><div class="nav-group"><p class="nav-label">The blueprint</p><nav class="nav"><a class="" href="modules.html"><span class="n">15</span>Modules</a><a class="" href="exercises.html"><span class="n">58</span>Exercise catalogue</a><a class="" href="intensives.html"><span class="n">9</span>Topical intensives</a></nav></div><div class="nav-group"><p class="nav-label">Build</p><nav class="nav"><a class="" href="infrastructure.html"><span class="n">7</span>Shared infrastructure</a><a class="active" href="case-engine.html">Case engine spec</a><a class="" href="roadmap.html">Build roadmap</a></nav></div><div class="nav-group"><p class="nav-label">Appendix</p><nav class="nav"><a class="" href="provenance.html">Provenance &amp; corrections</a><a class="" href="verification.html">Verification queue</a><a class="" href="sources.html">Sources</a></nav></div>
+  </aside>
+  <main class="main" id="main">
+    <div class="wrap">
+      
+<p class="eyebrow">INF-1 · Technical specification</p>
+<h1>The historical case engine</h1>
+<p class="lede">A replay harness. Freeze a date, serve only what was knowable then, make
+the student produce a thesis and a position, advance the clock, reveal what happened.
+<strong>The value is not realism — it is time compression plus free ground truth.</strong></p>
+
+<div class="callout">
+<p class="callout-title">Status</p>
+<p>The point-in-time data layer is a <strong>working prototype, tested against the live
+SEC XBRL API</strong> — 13/13 smoke tests passing. Layers 3 and 4 (runtime clock,
+grading integration) are specified but unbuilt. Code lives in
+<code>case-engine/pit/</code> with tests in <code>case-engine/test_pit.py</code>.</p>
+</div>
+
+<div class="toc"><p class="toc-title">On this page</p><ul><li><a href="#s1">1. What this is, and the one idea behind it</a></li><li><a href="#s2">2. Architecture</a></li><li><a href="#s3">3. Data sourcing</a></li><li><a href="#s4">4. Point-in-time discipline: four leaks and how each is closed</a></li><li><a href="#s5">5. The case manifest</a></li><li><a href="#s6">6. Case authoring workflow</a></li><li><a href="#s7">7. Grading integration</a></li><li><a href="#s8">8. Build plan</a></li><li><a href="#s9">9. Example test cases</a></li><li><a href="#s10">10. Risks and open questions</a></li></ul></div>
+<section id="s1"><h2>1. What this is, and the one idea behind it</h2><div class="prose"><p>A replay harness. You freeze a date <strong>T</strong> for a real company, serve the student <em>only</em> what was knowable at T, make them produce a thesis and a position, advance the clock, and reveal what happened.</p>
+<p><strong>The value is not realism. It is time compression plus free ground truth.</strong> A three-year holding period becomes a 40-minute exercise in which the correct answer already exists and costs nothing to obtain. That is why this beats a market simulator for a fundamental-analysis curriculum: a simulator's distinguishing feature is live price feedback, and price feedback is the <em>least</em> valid assessment signal available in a low-validity domain (see <code>../BLUEPRINT.md</code> §2.1).</p>
+<p>A second, less obvious benefit: because every student in a cohort gets the <strong>identical stimulus</strong>, their scores are comparable. That is the property that makes an OSCE work, and it is why a <em>fixed</em> library of 20–40 cases is better assessment than a dynamic any-company-any-date engine — which would also cost far more and require data licences you probably cannot get.</p>
+<p><strong>Scope boundary.</strong> This engine serves <em>fundamental</em> cases on a quarters clock. It is not a trading simulator, it does not model execution or market impact, and it should never score a student on P&amp;L.</p>
+<hr></div></section><section id="s2"><h2>2. Architecture</h2><div class="prose"><pre><code>                    ┌──────────────────────────────────────────┐
+                    │  SOURCES                                 │
+                    │  SEC XBRL (free, PIT by construction)    │
+                    │  price/options vendor (paid)             │
+                    │  transcripts (IR sites / vendor)         │
+                    │  consensus (hand-curated — see §3.4)     │
+                    └───────────────────┬──────────────────────┘
+                                        │
+                    ┌───────────────────▼──────────────────────┐
+         LAYER 1    │  pit/client.py    as-of filtering        │  BUILT + TESTED
+         data       │  pit/comps.py     PIT comp sets          │
+                    │  on-disk cache → reproducible builds     │
+                    └───────────────────┬──────────────────────┘
+                                        │
+                    ┌───────────────────▼──────────────────────┐
+         LAYER 2    │  pit/case.py      CaseManifest           │  BUILT + TESTED
+         authoring  │  validate_pit_safety()  ← the guardrail  │
+                    │  facts_from_sec()       ← leak-proof     │
+                    └───────────────────┬──────────────────────┘
+                                        │
+                    ┌───────────────────▼──────────────────────┐
+         LAYER 3    │  clock: step → reveal payload            │  SPECIFIED
+         runtime    │  submission store (append-only, locked)  │
+                    │  student_view() strips key + resolutions │
+                    └───────────────────┬──────────────────────┘
+                                        │
+                    ┌───────────────────▼──────────────────────┐
+         LAYER 4    │  deterministic graders (cells, traps)    │  SPECIFIED
+         grading    │  model auto-grader  → INF-2              │  (INF-2 separate)
+                    │  LLM rubric grader  → INF-6 golden set   │
+                    │  calibration scorer → INF-4              │
+                    └──────────────────────────────────────────┘
+</code></pre>
+<p><strong>Design decisions worth defending:</strong></p>
+<ul>
+<li><strong>Manifests are JSON on disk, not rows in a database.</strong> Cases are reviewable, diffable, and survive a platform rewrite. A case is editorial content with an answer key; it should be in version control.</li>
+<li><strong>The cache is part of the contract, not an optimisation.</strong> A case built today must rebuild identically in two years. Cache every API response and commit the cache alongside the manifest, or a later SEC restatement silently changes your case.</li>
+<li><strong><code>student_view()</code> is a method on the manifest, not a separate file.</strong> One object, one source of truth, and the stripping logic is testable. Maintaining parallel "student" and "instructor" copies of a case is how answer keys leak.</li>
+<li><strong>Append-only submission store with hard locks.</strong> Several exercises (M03-E4's two-phase design, M13-E1's pre-commitment, M14-E2's re-underwrite) are <em>only</em> valid if the earlier submission cannot be revised. The lock is the instrument.</li>
+</ul>
+<hr></div></section><section id="s3"><h2>3. Data sourcing</h2><div class="prose"><h3>3.1 What is free, verified reachable, and sufficient</h3>
+<p><strong>SEC XBRL via <code>data.sec.gov</code> is the backbone and it is genuinely excellent for this purpose.</strong> Verified working from a sandboxed container on 21 Oct 2026.</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>What it gives</th>
+<th>Verified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/xbrl/companyconcept/CIK{cik}/us-gaap/{tag}.json</code></td>
+<td>every reported value of one concept, <strong>each stamped with <code>filed</code> + <code>accn</code></strong></td>
+<td>✅ 200</td>
+</tr>
+<tr>
+<td><code>/api/xbrl/companyfacts/CIK{cik}.json</code></td>
+<td>all facts for one company (tens of MB for large filers)</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>/submissions/CIK{cik}.json</code></td>
+<td>full filing history with dates and accession numbers</td>
+<td>✅ 200</td>
+</tr>
+<tr>
+<td><code>/api/xbrl/frames/us-gaap/{tag}/USD/CY2019Q4I.json</code></td>
+<td>one fact per entity for one period — <strong>6,180 entities</strong> on the Assets frame tested</td>
+<td>✅ 200</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why this single-handedly solves the hardest problem:</strong> every fact carries the filing date of the document it came from. So "what did the filings say on date T" is <em>always</em> reconstructible. No commercial point-in-time licence is needed for financials.</p>
+<h3>3.2 Two access gotchas, both found the hard way</h3>
+<p><strong>(a) The SEC requires an email-style User-Agent. A URL is not enough.</strong> Tested directly:</p>
+<table>
+<thead>
+<tr>
+<th>User-Agent</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>analyst-academy-case-engine (github.com/ecdeng/ai-newsletter)</code></td>
+<td><strong>HTTP 403</strong></td>
+</tr>
+<tr>
+<td><code>AnalystAcademy CaseEngine research@domain.test</code></td>
+<td><strong>HTTP 200</strong></td>
+</tr>
+</tbody>
+</table>
+<p><code>pit/client.py</code> fails fast with a clear error rather than letting you debug a 403. Rate limit is 10 req/s; the client self-throttles to 8.</p>
+<p><strong>(b) <code>www.sec.gov</code> and <code>data.sec.gov</code> are different hosts with different reachability.</strong> In this container <code>data.sec.gov</code> returned 200 while <code>www.sec.gov</code> returned 403 at the egress proxy. The XBRL APIs live on <code>data.sec.gov</code>; <strong>document retrieval (the actual 10-K HTML/PDF) lives on <code>www.sec.gov/Archives/</code>.</strong> If your build environment can reach one but not the other, you can get all the <em>numbers</em> and none of the <em>documents</em> — which is survivable for the financial exhibits but not for the filing-reading exercises (M07-E1). Check both hosts before scoping.</p>
+<h3>3.3 What costs money</h3>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Options</th>
+<th>Reality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Prices with delistings</strong></td>
+<td>Polygon.io (<strong>$0 / $29 / $79 / $199</strong> per month — publicly listed; note it rebranded to "Massive" in late 2025), Tiingo, EODHD</td>
+<td>Cheapest real gap-filler. <strong>Do not use free Yahoo-style feeds for a case library</strong> — they carry survivorship bias, so your worst outcomes silently disappear.</td>
+</tr>
+<tr>
+<td><strong>Historical index membership</strong></td>
+<td>Norgate Data; CRSP via academic channels</td>
+<td><strong>Norgate pricing could not be found</strong> — treat as quote-based. Needed only if you build index-flow cases.</td>
+</tr>
+<tr>
+<td><strong>Option chains (historical)</strong></td>
+<td>vendor-specific, generally expensive</td>
+<td>Needed for M10-E4 and M13-E1's implied-move work. <strong>Consider hand-curating the straddle price for a fixed case library instead</strong> — it is one number per case.</td>
+</tr>
+<tr>
+<td><strong>Transcripts</strong></td>
+<td>IR sites (free, patchy), AlphaSense/Tegus, Quartr</td>
+<td>For a <em>fixed</em> library you need a few dozen. <strong>Manual collection is entirely tractable</strong> and legally cleanest.</td>
+</tr>
+<tr>
+<td><strong>Point-in-time fundamentals</strong></td>
+<td>Sharadar SF1, Compustat PIT</td>
+<td><strong>Not needed — EDGAR covers it.</strong> Note Sharadar no longer publishes pricing and its professional tier likely applies to a paid training product; the <strong>licensing question matters more than the price.</strong></td>
+</tr>
+<tr>
+<td><strong>Historical consensus</strong></td>
+<td>I/B/E/S, Visible Alpha, FactSet</td>
+<td>The one genuine gap. See §3.4.</td>
+</tr>
+</tbody>
+</table>
+<h3>3.4 Historical consensus: the unsolved gap and the recommended workaround</h3>
+<p>There is no cheap, licensable source of historical sell-side consensus. Four options, in order of preference:</p>
+<ol>
+<li><strong>Use management guidance as the bar instead of consensus.</strong> Guidance is in the 8-K, the press release and the transcript — free, point-in-time, unambiguous. It is a <em>different</em> bar than consensus, but it supports most of what Modules 10 and 13 teach, and the guidance-versus-consensus gap can then be taught conceptually. <strong>Start here.</strong></li>
+<li><strong>Hand-curate a consensus table for the fixed library.</strong> For 20–40 cases this is a few hundred data points, and historical consensus figures are quoted verbatim all over contemporaneous coverage and inside the transcripts themselves ("versus the Street's $1.42"). Labour-intensive, legally clean, sufficient. <strong>This is the recommended path for a production library.</strong></li>
+<li><strong>License I/B/E/S summary data</strong> for a bounded ticker/date universe. Cleanest, expensive. Use the <strong>unadjusted</strong> files and apply your own split adjustments — the adjusted files suffer rounding corruption on high-split stocks.</li>
+<li><strong>Reconstruct a proxy</strong> from estimates mentioned in public coverage. Noisy; disclose it as a proxy in the manifest's <code>curated_consensus.source</code> field.</li>
+</ol>
+<p>Whichever you choose, <strong>record the provenance in the manifest.</strong> A case whose bar is guidance and a case whose bar is consensus are testing subtly different skills, and the grader needs to know which.</p>
+<hr></div></section><section id="s4"><h2>4. Point-in-time discipline: four leaks and how each is closed</h2><div class="prose"><p>This is the section to get right. <strong>Authoring a case by hand <em>will</em> leak future information, and the leak is silent.</strong> Hence mechanical enforcement.</p>
+<h3>Leak 1 — Restated financials <em>(closed, free, and demonstrable)</em></h3>
+<p>Today's database shows restated history; the analyst at T saw as-first-reported numbers, often with a different segment structure.</p>
+<p><strong>Real, tested example.</strong> Envista Holdings (CIK 1757073), FY2019 revenue:</p>
+<table>
+<thead>
+<tr>
+<th>Filed</th>
+<th>Form</th>
+<th>FY2019 revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2020-02-21</td>
+<td>10-K</td>
+<td><strong>$2.7516bn</strong></td>
+</tr>
+<tr>
+<td>2021-02-19</td>
+<td>10-K</td>
+<td>$2.7516bn</td>
+</tr>
+<tr>
+<td>2022-02-24</td>
+<td>10-K</td>
+<td><strong>$2.2848bn</strong></td>
+</tr>
+</tbody>
+</table>
+<p>An analyst on 30 June 2021 saw <strong>$2.7516bn</strong>. A current database shows <strong>$2.2848bn</strong> — a <strong>−$467m, −17.0%</strong> difference (almost certainly a discontinued-operations reclassification). FY2020 shows the same pattern: $2.2820bn → $1.9291bn, <strong>−15.5%</strong>.</p>
+<p><strong>A case built from current data would hand the student a revenue base the market never saw, and every growth rate, margin and multiple computed from it would be wrong.</strong></p>
+<p><em>Closed by:</em> <code>client.as_of()</code> / <code>client.latest_as_of()</code> filter on the <code>filed</code> field; <code>case.facts_from_sec()</code> builds manifests straight from the as-filed record so the filing date travels with the value; <code>comps.leak_report()</code> lets an author check, before shipping, whether a given case even <em>has</em> a restatement problem.</p>
+<h3>Leak 2 — Index-membership survivorship</h3>
+<p>Today's index constituent list is not the list at T. Comp sets and any screening universe built on current membership are silently biased toward survivors.</p>
+<p><em>Closed by:</em> for a fixed library, <strong>hard-code the comp set in the manifest</strong> and source it from a contemporaneous document (the company's own proxy peer group, or the peer list in a contemporaneous sell-side note). Do not derive it from a current index. If you build index-flow cases, you need a historical-constituents dataset.</p>
+<h3>Leak 3 — Delisting survivorship in prices</h3>
+<p>Cheap price APIs routinely omit dead tickers, so the worst outcomes vanish from your case set and your library quietly over-represents companies that made it.</p>
+<p><em>Closed by:</em> use a price vendor whose reference data includes delisted tickers, and <strong>deliberately include failures in the library.</strong> A case library with no zeros teaches that bear cases do not happen.</p>
+<h3>Leak 4 — The author's own knowledge</h3>
+<p>The subtlest leak. An author who knows how the story ended writes a case whose exhibits quietly foreshadow it — including the wrong three key drivers in the expert key, or a trap that is only "obvious" in hindsight.</p>
+<p><em>Closed by:</em> process, not code. <strong>Have the expert key written by a second person who is shown only the T-dated materials</strong> and asked to produce the driver ranking cold. Where the two keys disagree, that disagreement is itself information about how answerable the case is — and if they disagree badly, the case is not gradeable.</p>
+<h3>The validator</h3>
+<p><code>case.validate_pit_safety()</code> checks four things and is <strong>tested to catch all three mechanical leak classes</strong>:</p>
+<ol>
+<li>No served fact has <code>filed &gt; T</code>.</li>
+<li><strong>Every served fact actually exists in the SEC record with that value under that accession number.</strong> This is the check that catches a value pasted from a current database — tested against the Envista restatement, and the error message names the failure mode explicitly.</li>
+<li>No served filing is dated after T.</li>
+<li>No calibration question resolves on or before T (which would make it already knowable).</li>
+</ol>
+<pre><code>TEST 10 — the validator catches the leak it exists to catch
+  MISMATCH: Revenues 2019-12-31 manifest says 2,284,800,000 but accn
+  0001628280-20-001914 reports 2,751,600,000. This is the signature of a value
+  copied from a CURRENT database rather than from the as-filed document.
+  LEAK: fact GrossProfit 2019-01-01..2019-12-31 was filed 2022-02-24, after
+  the freeze date 2020-06-30.
+  DEGENERATE: calibration question Q9 resolves 2020-01-01, on or before the
+  freeze date 2020-06-30 — it is already knowable.
+</code></pre>
+<p><strong>Run the validator in CI on every manifest.</strong> A leaked case is worse than no case, because it teaches students that the information was gettable.</p>
+<h3>One thing the prototype corrected about the original plan</h3>
+<p><code>../BLUEPRINT.md</code> described the <code>frames</code> endpoint as "excellent for building point-in-time cross-sectional comp sets." <strong>Testing showed that overclaims it.</strong> Frame rows carry <code>{cik, entityName, loc, end, val, accn}</code> and <strong>no <code>filed</code> field</strong>, so you cannot tell from the payload whether a value was filed before your cutoff, and the SEC has already chosen which filing to surface.</p>
+<p><strong>Corrected guidance, now implemented in <code>pit/comps.py</code>: use <code>frames</code> for discovery and screening; use <code>companyconcept</code> for values.</strong> A comp set is 8–15 names, so the per-name cost is trivial; resolving 6,000+ frame rows to filing dates would not be.</p>
+<hr></div></section><section id="s5"><h2>5. The case manifest</h2><div class="prose"><pre><code class="language-python">CaseManifest(
+    case_id, title, entity_name, cik,
+    freeze_date,          # T — the single most important field
+    reveal_steps,         # [{step, label, payload_ref, unlock_rule}, ...]
+    served_facts,         # [ServedFact(tag, period, value, filed, accn, form)]
+    served_filings,       # filing history as of T
+    curated_consensus,    # {source, provenance, values} — see §3.4
+    deliverables,         # [Deliverable(did, name, due_at_step, time_limit, artifact)]
+    traps,                # [Trap(tid, description, detect, points)] — scored independently
+    check_cells,          # {name: {expected, rel_tol}} for the model auto-grader
+    calibration,          # [CalibrationQuestion(...)] with resolutions withheld
+    notes,
+)
+</code></pre>
+<p>Three fields carry most of the design weight:</p>
+<ul>
+<li><strong><code>served_facts</code> with provenance.</strong> Each fact carries <code>filed</code> and <code>accn</code>. This is what makes the validator possible and what makes a case auditable two years later when a student disputes a grade.</li>
+<li><strong><code>traps</code> scored independently.</strong> A student who catches three of four traps should score 75% of the trap points, not fail the case. Independent scoring also makes the case <em>diagnostic</em> — you learn which trap class a cohort systematically misses, which tells you which video to fix.</li>
+<li><strong><code>calibration</code> with resolutions withheld at serve time.</strong> <code>student_view()</code> strips them. Because the case is historical, resolution is instant, which is what makes the forecast ledger (INF-4) cheap.</li>
+</ul>
+<hr></div></section><section id="s6"><h2>6. Case authoring workflow</h2><div class="prose"><p>Roughly <strong>6–10 hours per case</strong> once the engine exists, dropping toward 4 as the authors build pattern libraries.</p>
+<ol>
+<li><strong>Pick the situation, not the company.</strong> The library should span situation <em>types</em> — a guidance raise smaller than the beat, a cyclical peak misread as secular, a crowded long in a de-grossing, an accounting red flag, a capital-allocation error, a spin-off with a broken comp set. Sector diversity matters far less than situation diversity, because the skills are situation-specific.</li>
+<li><strong>Choose T so the interesting decision is live.</strong> Usually 1–10 days before a print, or immediately after a disclosure that changes the debate. A T where nothing is pending produces a case with no decision in it.</li>
+<li><strong>Build facts mechanically:</strong> <code>case.facts_from_sec(cik, tags, T)</code>. Never hand-type financials.</li>
+<li><strong>Run <code>comps.leak_report(cik, tag, T)</code>.</strong> If the case has a large restatement between T and today, you have two choices — and both are fine: serve as-filed and never mention it, or make the restatement <em>the teaching point</em> (see Case C in §9).</li>
+<li><strong>Collect documents and the transcript</strong> for T and earlier.</li>
+<li><strong>Curate the bar</strong> — guidance, or hand-curated consensus, with provenance recorded.</li>
+<li><strong>Write the expert key cold, via a second author</strong> who sees only T-dated materials (Leak 4).</li>
+<li><strong>Plant traps</strong>, each with a mechanical detection rule.</li>
+<li><strong>Write calibration questions</strong> that resolve after T, with sources.</li>
+<li><strong>Run the validator</strong>, then dry-run with two pilot students before the case enters the graded pool.</li>
+</ol>
+<p><strong>Build the first 8–12 cases as files plus a form. Do not build the web app until the cases have been run with real students twice.</strong> The content is the asset; the delivery layer is replaceable and will be rewritten anyway.</p>
+<hr></div></section><section id="s7"><h2>7. Grading integration</h2><div class="prose"><p>The engine produces submissions; three graders consume them.</p>
+<table>
+<thead>
+<tr>
+<th>Grader</th>
+<th>Consumes</th>
+<th>Owns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Deterministic</strong></td>
+<td>numeric fields, trap detections, calibration probabilities</td>
+<td><code>check_cells</code>, <code>traps</code>, Brier scoring</td>
+</tr>
+<tr>
+<td><strong>Model auto-grader (INF-2)</strong></td>
+<td>uploaded workbooks</td>
+<td>check cells, <strong>perturbation tests</strong>, hygiene, formula consistency</td>
+</tr>
+<tr>
+<td><strong>LLM rubric grader (INF-6)</strong></td>
+<td>memos, notes, transcripts</td>
+<td>rubric dimensions at 0–5, reference-guided, against anchors</td>
+</tr>
+</tbody>
+</table>
+<p>Three rules carried from <code>../BLUEPRINT.md</code> §2.7 and worth restating because they are easy to violate here:</p>
+<ol>
+<li><strong>Never send a numeric answer to an LLM when a deterministic check exists.</strong> Evidence on LLM grading of quantitative work is poor — in one evaluation a frontier model passed 7 of 48 proofs that all contained critical errors. Numbers go to the deterministic grader; the LLM grades only reasoning, and only with the worked key in context.</li>
+<li><strong>One strong judge calibrated against a golden set</strong>, not a panel. The 2024 panel-of-models recommendation was contested by 2026 work showing nine judges across seven families behave like ~2 independent votes and that the best single judge matches or beats the panel.</li>
+<li><strong>Score outcome only as calibration.</strong> The engine <em>knows</em> what happened, which makes it tempting to grade on it. Don't. Reveal the outcome, score the student's stated probabilities with a proper scoring rule, and leave the P&amp;L out of the grade entirely.</li>
+</ol>
+<hr></div></section><section id="s8"><h2>8. Build plan</h2><div class="prose"><p><strong>MVP (≈4–6 weeks, one engineer plus an analyst author)</strong>
+- <code>pit/</code> layer — <strong>done and tested</strong>
+- 8–12 cases as JSON manifests plus a static document bundle
+- Clock as a manual instructor action (release step 2 by email or on a schedule)
+- Deterministic grading of numeric fields and calibration
+- Submissions in an append-only store with a hard lock</p>
+<p><strong>v1 (+8–10 weeks)</strong>
+- Web runtime with timers, staged release and answer locking
+- INF-2 integration for workbook grading
+- INF-6 anchor set and LLM rubric grading for memos
+- 20–25 cases
+- Validator in CI</p>
+<p><strong>v2</strong>
+- 30–40 cases spanning the situation taxonomy
+- Cohort analytics: which traps are systematically missed, per-case difficulty calibration
+- Dependency-graph comparison in the model grader</p>
+<p><strong>Deliberately out of scope, permanently:</strong> live market data, order execution, market-impact modelling, P&amp;L leaderboards.</p>
+<hr></div></section><section id="s9"><h2>9. Example test cases</h2><div class="prose"><p>Five cases, each specified to the point where an author could build it. Case A is the flagship. <strong>Data-availability reality is stated per case</strong>, because three of the five are buildable from free sources alone and two are not.</p>
+<hr></div><div class="cards cards-2"><a class="card" href="#case-a"><p class="card-eyebrow">Case A</p><p class="card-title">The Raise That Was Smaller Than the Beat</p><p class="card-body">guidance raise concealing 2H deceleration
+<strong>Data:</strong> free (EDGAR + transcript + hand-curated guidance). Add a straddle price by hand for the implied-move component</p><div class="card-foot"><div class="chips"><span class="chip chip-t2">Needs paid data</span><span class="chip chip-neutral">M13-E1 (earnings event clock), M06-E3 (guidance </span></div></div></a><a class="card" href="#case-b"><p class="card-eyebrow">Case B</p><p class="card-title">Eight Years of Twelve Percent</p><p class="card-body">high-multiple compounder where the debate is duration, not growth
+<strong>Data:</strong> free (EDGAR) + price. Fully buildable from <code>pit/</code></p><div class="card-foot"><div class="chips"><span class="chip chip-t2">Needs paid data</span><span class="chip chip-neutral">M10-E2 (reverse DCF as a frontier), M11-E1, M04-</span></div></div></a><a class="card" href="#case-c"><p class="card-eyebrow">Case C</p><p class="card-title">The Numbers You Were Never Shown</p><p class="card-body">a restatement/reclassification that changes the entire growth narrative
+<strong>Data:</strong> free, and <strong>this case already exists in the tested data</strong> — Envista, CIK 1757073</p><div class="card-foot"><div class="chips"><span class="chip chip-t2">Needs paid data</span><span class="chip chip-neutral">M07-E1 (filing craft), M06 (restatements), M08-E</span></div></div></a><a class="card" href="#case-d"><p class="card-eyebrow">Case D</p><p class="card-title">Both Legs Losing</p><p class="card-body">positioning-driven drawdown with theses intact
+<strong>Data:</strong> <strong>needs market data</strong> — prices, a crowding proxy, short interest, borrow. Not buildable from EDGAR alone. The cheapest honest version uses prices plus a hand-built basket of names documented as crowded at the time</p><div class="card-foot"><div class="chips"><span class="chip chip-t2">Needs paid data</span><span class="chip chip-neutral">M12-E4 (de-grossing recognition), M04-E2 (flow v</span></div></div></a><a class="card" href="#case-e"><p class="card-eyebrow">Case E</p><p class="card-title">Your Own Thesis, Twelve Weeks Later</p><p class="card-body">longitudinal thesis-creep test
+<strong>Data:</strong> free (EDGAR) + prices. The student picks the company; the engine supplies the subsequent tape</p><div class="card-foot"><div class="chips"><span class="chip chip-t2">Needs paid data</span><span class="chip chip-neutral">M14-E2 (forced re-underwrite), M03-E3 (falsifica</span></div></div></a></div><section id="case-a"><h3>Case A — The Raise That Was Smaller Than the Beat</h3><div class="prose"><p><strong>Serves:</strong> M13-E1 (earnings event clock), M06-E3 (guidance bridge), M10-E1 (expectations gap)
+<strong>Situation type:</strong> guidance raise concealing 2H deceleration
+<strong>Data:</strong> free (EDGAR + transcript + hand-curated guidance). Add a straddle price by hand for the implied-move component.</p>
+<p><strong>Setup.</strong> T is the morning of the Q2 print. The student gets: eight quarters of as-filed segment financials, the last two transcripts, management's FY guidance as given at Q1, the current price and multiple, and a hand-curated consensus FY revenue and EPS. Deliverable 1 is a preview memo with a <strong>pre-commitment table</strong> — what they will do in each of four outcomes. Then the print is released.</p>
+<p><strong>The print.</strong> Q2 revenue beats by <strong>$30m</strong>. FY guidance is raised by <strong>$20m</strong>. Management's call language is confident.</p>
+<p><strong>The planted arithmetic (verified).</strong> The raise is <strong>$10m smaller than the beat</strong>, so implied 2H revenue <em>falls</em> from $2,030m to $2,020m. 1H growth was <strong>+12.71%</strong>; implied 2H growth is <strong>−1.46%</strong> — <strong>14.17 points of deceleration inside a guidance raise.</strong> Decomposed: <strong>2.70 points is a harder comp, 11.47 points is genuine implied slowdown</strong> (2.70 + 11.47 = 14.17 ✓). Implied Q4 is <strong>−2.86% y/y</strong> against an FY+1 consensus requiring <strong>+6.16%</strong> — a <strong>9-point reacceleration nobody has underwritten</strong>, derivable with no view at all.</p>
+<p><strong>Traps (independently scored).</strong> The raise-smaller-than-beat arithmetic (20 pts); the comp-base effect (10); guidance given only on the call, not in the release (10); a tax-rate-driven component of the EPS beat (10); the exit-rate gap vs. next year's consensus (15); an after-hours overshoot that retraces by the open (10).</p>
+<p><strong>Grading.</strong> Deterministic: the bridge, the implied 2H figures, the two-year stacks under both conventions, the exit rate. LLM: preview-memo quality, first-read discipline, and — the highest-value dimension — <strong>pre-commitment consistency</strong>, i.e. did the action match what they committed to, and if not, is the deviation justified by new information rather than by the price.</p>
+<p><strong>Why it is the flagship.</strong> It integrates modelling, expectations, earnings mechanics and decision discipline; every trap is objectively detectable; and the central insight is pure arithmetic, so the answer key is not a matter of taste.</p>
+<hr></div></section><section id="case-b"><h3>Case B — Eight Years of Twelve Percent</h3><div class="prose"><p><strong>Serves:</strong> M10-E2 (reverse DCF as a frontier), M11-E1, M04-E3
+<strong>Situation type:</strong> high-multiple compounder where the debate is duration, not growth
+<strong>Data:</strong> free (EDGAR) + price. Fully buildable from <code>pit/</code>.</p>
+<p><strong>Setup.</strong> T is an ordinary day, no catalyst pending — deliberately, because this case is about what is <em>already priced</em>. The student gets as-filed financials, the current price, and a WACC. <strong>Two-phase with a lock:</strong> Phase 1 (20 min) they state the core debate and three key drivers from financials alone; this locks. Phase 2 (40 min) they receive consensus, the multiple vs. history, and a reverse-DCF template, and re-write.</p>
+<p><strong>The frontier (verified).</strong> Sales $10.0bn, tax 21%, WACC 8%, 8-year horizon, EV $25.0bn (2.50x sales). Steady-state value is 1.185/0.08 = <strong>$14.812bn = 59% of price</strong>, so <strong>41% of the price is future value creation</strong>. Holding margin at 15.0% and incremental investment at 30%, <strong>implied sales CAGR is 9.935%</strong> (PV explicit $7.926bn + PV CV $17.074bn = $25.000bn ✓). The frontier: at 4.0% CAGR the price needs a <strong>20.37% margin</strong>; at a 12.0% margin it needs a <strong>14.59% CAGR</strong>; at a 45% investment rate it needs <strong>10.89%</strong>. Companion solve: with IC₀ $10.0bn, ROIC 18%, WACC 8% and IC growing 8%, <strong>the market-implied CAP at EV $22.0bn is 12.96 years</strong> (10.0 + 12.96 × 0.926 = 22.000 ✓).</p>
+<p><strong>Grading.</strong> Deterministic: every solve, with the PV required to reconcile to the given price. <strong>The measured quantity is the delta between the two phases</strong> — which specific expectations datapoint changed the debate, and whether the student retrofits Phase 1 as having been right. The grader receives both submissions and is instructed to detect retrofitting.</p>
+<p><strong>Why it works.</strong> It is robust to prior knowledge of the company, because the scored thing is a reasoning shift, not an answer.</p>
+<hr></div></section><section id="case-c"><h3>Case C — The Numbers You Were Never Shown</h3><div class="prose"><p><strong>Serves:</strong> M07-E1 (filing craft), M06 (restatements), M08-E2 (comp-set normalisation)
+<strong>Situation type:</strong> a restatement/reclassification that changes the entire growth narrative
+<strong>Data:</strong> free, and <strong>this case already exists in the tested data</strong> — Envista, CIK 1757073.</p>
+<p><strong>Setup.</strong> This is the one case where the point-in-time leak <em>is</em> the lesson. Run it in two halves.</p>
+<p><strong>Half 1.</strong> T = 30 June 2021. Students get Envista's as-filed financials and are asked for the three-year revenue trajectory, the growth algorithm, and a view. The as-filed record at T shows FY2017 <strong>$2.8109bn</strong>, FY2018 <strong>$2.8445bn</strong>, FY2019 <strong>$2.7516bn</strong> — a business with essentially flat-to-declining revenue around $2.8bn.</p>
+<p><strong>Half 2.</strong> Students are then shown the <em>current</em> record for the same periods: FY2019 <strong>$2.2848bn</strong>, FY2020 <strong>$1.9291bn</strong>. <strong>FY2019 is 17.0% lower and FY2020 15.5% lower than what an analyst saw at the time.</strong> They must: identify what happened (a discontinued-operations reclassification — the filings say so), recompute every growth rate and margin on the restated basis, and answer the real question: <em>which basis should a comp sheet use, and what does that do to a multiple built on the other one?</em></p>
+<p><strong>Grading.</strong> Deterministic: both sets of growth rates and margins, and the multiple computed on each basis. LLM: a 200-word note on what this implies for any screen, backtest or comp sheet built from a current database. Full credit requires the student to state that <strong>both figures are correct answers to different questions</strong>, and to say which question a comp sheet is asking.</p>
+<p><strong>Why include it.</strong> It inoculates students against the single most common error in quantitative equity work, using a real company and real numbers rather than a parable — and it is free to build, because the SEC serves both versions with their filing dates attached. It also does something no other case does: it teaches students to distrust their own data.</p>
+<hr></div></section><section id="case-d"><h3>Case D — Both Legs Losing</h3><div class="prose"><p><strong>Serves:</strong> M12-E4 (de-grossing recognition), M04-E2 (flow vs. information)
+<strong>Situation type:</strong> positioning-driven drawdown with theses intact
+<strong>Data:</strong> <strong>needs market data</strong> — prices, a crowding proxy, short interest, borrow. Not buildable from EDGAR alone. The cheapest honest version uses prices plus a hand-built basket of names documented as crowded at the time.</p>
+<p><strong>Setup.</strong> The student holds a stated book of three longs and two shorts. Over four releases spaced 10 minutes apart (simulating four hours), they receive market, sector, factor, basket and single-name data. At each stage they state what is happening, their confidence, and what they would do. <strong>Earlier answers lock.</strong></p>
+<p><strong>The staged evidence.</strong> Stage 1: the market-neutral book is −1.8%, the index +0.1% — correctly <em>unclear</em>. Stage 2: <strong>both legs are losing</strong> — longs down and shorts up, index flat. This is the diagnostic moment, because information cannot move both legs against you; only forced unwinding does. Stage 3: a crowded-long basket −4.2%, crowded-short +3.1%, momentum sharply negative — confirmed. Stage 4: borrow fees spike on both shorts — <strong>a consequence, not new information</strong>, and a student who upgrades confidence on it has double-counted.</p>
+<p><strong>Grading.</strong> The key <strong>changes as evidence accumulates</strong>: calling de-grossing at stage 1 scores <em>lower</em> than saying "unclear" and calling it at stage 2. Premature confidence is penalised, which is the opposite of what students expect. The scored quantity is the <strong>confidence trajectory</strong>, not the final answer. Action key: with theses intact, do nothing or add within limits, and explicitly do <strong>not</strong> cover shorts into the squeeze — which is exactly what the P&amp;L pressure pushes toward.</p>
+<hr></div></section><section id="case-e"><h3>Case E — Your Own Thesis, Twelve Weeks Later</h3><div class="prose"><p><strong>Serves:</strong> M14-E2 (forced re-underwrite), M03-E3 (falsification clause)
+<strong>Situation type:</strong> longitudinal thesis-creep test
+<strong>Data:</strong> free (EDGAR) + prices. The student picks the company; the engine supplies the subsequent tape.</p>
+<p><strong>Setup.</strong> Not a case so much as a <strong>harness around the student's own capstone.</strong> Three sittings.</p>
+<ul>
+<li><strong>Sitting 1.</strong> The student locks a thesis, a trading plan, and three kill criteria. Each criterion must parse into <code>{metric, threshold, direction, resolution_date}</code> — <strong>a criterion that cannot be mechanically evaluated scores zero</strong>, which is a hard, objective and genuinely discriminating check. "If the competitive environment deteriorates" is not a kill criterion.</li>
+<li><strong>Sitting 2 (weeks later).</strong> The engine serves the real subsequent tape — the next print, the price action, two news items — from masked historical data. The student must state whether any criterion triggered and then exit, hold unchanged, or hold with an <strong>explicitly amended</strong> thesis naming the new information that justifies the amendment.</li>
+<li><strong>Sitting 3.</strong> Full post-mortem against the sitting-1 document.</li>
+</ul>
+<p><strong>Grading.</strong> The trigger check is <strong>binary and mechanical</strong>, because sitting 1's criteria were stored as structured records and the tape either crosses them or does not. <strong>This is the cleanest measurement in the whole program.</strong> The qualitative half asks whether an amendment is justified by new information rather than by the price — the grader gets both documents plus the intervening tape and must quote the specific new information cited.</p>
+<p><strong>The failure mode it exists to catch.</strong> Criterion: "exit if services attach is below 32% at the Q4 print." Attach reports at <strong>29.5%</strong> and the stock is <strong>up 11%</strong> on a revenue beat elsewhere. The trigger has objectively fired. The student writes: <em>"Attach came in at 29.5%, but revenue beat and the stock is working, so the thesis is intact and the attach ramp is just delayed a quarter."</em> That is textbook thesis creep, in the student's own handwriting, against their own pre-commitment, with the price doing the arguing. <strong>Showing them those two documents side by side is the most valuable single output of the program</strong>, and it is impossible without a longitudinal instrument.</p>
+<hr>
+<h3>Coverage check</h3>
+<table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Free data?</th>
+<th>Modules served</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A — raise smaller than beat</td>
+<td>✅ (+1 hand-curated straddle)</td>
+<td>M13, M06, M10</td>
+</tr>
+<tr>
+<td>B — eight years of 12%</td>
+<td>✅</td>
+<td>M10, M11, M04</td>
+</tr>
+<tr>
+<td>C — numbers you were never shown</td>
+<td>✅ <strong>already in tested data</strong></td>
+<td>M07, M06, M08</td>
+</tr>
+<tr>
+<td>D — both legs losing</td>
+<td>❌ needs market/positioning data</td>
+<td>M12, M04</td>
+</tr>
+<tr>
+<td>E — your own thesis, 12 weeks later</td>
+<td>✅ (+prices)</td>
+<td>M14, M03</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Three of five are buildable today from free, verified-reachable sources.</strong> Start there.</p>
+<hr></div></section></section><section id="s10"><h2>10. Risks and open questions</h2><div class="prose"><table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>An authored case leaks the future and nobody notices</strong></td>
+<td>The validator, run in CI on every manifest. Plus the second-author cold key for Leak 4, which code cannot catch.</td>
+</tr>
+<tr>
+<td><strong>The SEC changes or rate-limits the API</strong></td>
+<td>Cache everything and commit the cache. A case must be reproducible from its cache with no network.</td>
+</tr>
+<tr>
+<td><strong><code>www.sec.gov</code> unreachable in the build environment</strong></td>
+<td>You can get all the numbers and none of the documents. Check both hosts before scoping; collect documents manually for a fixed library if needed.</td>
+</tr>
+<tr>
+<td><strong>Hand-curated consensus is wrong</strong></td>
+<td>Record provenance per figure; prefer management guidance as the bar where possible; have a second author verify the bar for any case where the gap is the graded quantity.</td>
+</tr>
+<tr>
+<td><strong>Cases become googleable</strong></td>
+<td>Mask tickers and dates, which also removes the temptation to pattern-match. Accept that a determined student can identify the company — and note that identifying it does not give them the T-dated view, which is the actual skill.</td>
+</tr>
+<tr>
+<td><strong>Answer keys contain errors</strong></td>
+<td>Given documented spreadsheet error base rates, assume yours do too. Independent review of every key, and treat the first two student cohorts per case as pilots.</td>
+</tr>
+<tr>
+<td><strong>Outcome-grading creep</strong></td>
+<td>The engine knows what happened, so the temptation is structural. Make it a code-level constraint: the grader interface should not expose the realised return to anything except the calibration scorer.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Open questions for Fundamental Edge:</strong>
+1. Can you reach <code>www.sec.gov/Archives/</code> from your build environment? It determines whether filing-reading exercises are in or out of the MVP.
+2. Guidance or consensus as the default bar? It changes what the preview-memo exercises test, and it is cheaper to decide now than to re-author.
+3. Who writes the cold expert keys? This is the one part of the workflow that cannot be automated and that determines whether the cases are gradeable at all.</p></div></section>
+
+      <div class="pagenav"><a href="infrastructure.html"><span class="dir">← Previous</span>Shared infrastructure</a><a href="roadmap.html" style="text-align:right"><span class="dir">Next →</span>Build roadmap</a></div>
+      <footer class="site">
+        <p>Assessment blueprint for the Fundamental Edge Analyst Academy syllabus.
+        Every quantitative example was independently verified; see
+        <a href="provenance.html">provenance &amp; corrections</a> for what is
+        sourced, what is unpublished, and what still needs checking.</p>
+      </footer>
+    </div>
+  </main>
+</div>
+<script src="static/app.js" defer></script>
+</body>
+</html>

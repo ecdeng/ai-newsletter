@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topical intensives · Analyst Academy Blueprint</title>
+<meta name="description" content="The nine topical intensives, with a recommended thin assessment layer each.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Topical intensives · Analyst Academy Blueprint">
+<meta property="og:description" content="The nine topical intensives, with a recommended thin assessment layer each.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="static/style.css">
+<link rel="icon" href="static/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">
+  <button class="iconbtn" data-nav-toggle aria-label="Open navigation">☰</button>
+  <a class="brand" href="index.html">Assessment Blueprint</a>
+  <span class="spacer"></span>
+  <button class="iconbtn" data-theme-toggle>☾</button>
+</div>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="index.html">Assessment&nbsp;Blueprint</a>
+    <p class="brand-sub">Fundamental Edge · Analyst Academy
+      <button class="iconbtn" data-theme-toggle style="float:right;margin-top:-.3rem">☾</button>
+    </p>
+    <div class="nav-group"><p class="nav-label">Start</p><nav class="nav"><a class="" href="index.html">Overview</a><a class="" href="approach.html">The approach</a></nav></div><div class="nav-group"><p class="nav-label">The blueprint</p><nav class="nav"><a class="" href="modules.html"><span class="n">15</span>Modules</a><a class="" href="exercises.html"><span class="n">58</span>Exercise catalogue</a><a class="active" href="intensives.html"><span class="n">9</span>Topical intensives</a></nav></div><div class="nav-group"><p class="nav-label">Build</p><nav class="nav"><a class="" href="infrastructure.html"><span class="n">7</span>Shared infrastructure</a><a class="" href="case-engine.html">Case engine spec</a><a class="" href="roadmap.html">Build roadmap</a></nav></div><div class="nav-group"><p class="nav-label">Appendix</p><nav class="nav"><a class="" href="provenance.html">Provenance &amp; corrections</a><a class="" href="verification.html">Verification queue</a><a class="" href="sources.html">Sources</a></nav></div>
+  </aside>
+  <main class="main" id="main">
+    <div class="wrap">
+      
+<h1>Topical intensives</h1>
+<p class="lede">Nine recorded guest sessions. Their content, length and instructors are
+unknown — all scope below is inferred from titles alone, which makes this the
+lowest-confidence material in the blueprint. The recommendation is a thin assessment
+layer (retrieval items plus one computational exercise each), not full modules.</p>
+<div class="prose"><p>The nine guest intensives are recorded sessions whose <strong>content, length and instructors are unknown</strong> — scope below is inferred from titles, and all of it is lower-confidence than the core modules. Treat these as a <strong>thin assessment layer</strong> (retrieval items plus one computational exercise each), not as full modules.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Intensive</th>
+<th>Expected coverage</th>
+<th>Recommended assessment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TI1</strong></td>
+<td>Introduction to Equity Risk Models</td>
+<td>Factor model structure (factor returns × exposures + specific risk); fundamental vs. statistical models; style and industry factors; predicted vs. historical beta; tracking error; VaR and expected shortfall; factor P&amp;L attribution; why multi-manager risk desks force factor neutrality. <strong>Do not print a specific style-factor list as any vendor's without a source — model generations change.</strong></td>
+<td><strong>Risk-tearsheet reading</strong> (a provided tearsheet, 12 questions, auto-graded) + <strong>parametric VaR and expected shortfall computation</strong> + Kupiec backtest. <em>Verified worked example:</em> $100m at 20% annual vol → daily σ <strong>1.2599%</strong>; 1-day 99% VaR <strong>$2.931mm</strong>; ES multiplier φ(z)/(1−α) = 2.66521 → <strong>ES $3.358mm</strong>. Kupiec: 9 breaches in 250 days → LR <strong>10.2290</strong> &gt; 3.841, <strong>reject the model.</strong></td>
+</tr>
+<tr>
+<td><strong>TI2</strong></td>
+<td>Quantitative Approaches to Stock Selection</td>
+<td>Factor investing; the main anomalies and <strong>their replication problems</strong>; backtest hygiene (look-ahead, survivorship, p-hacking, multiple testing, costs, capacity); IC/IR; the quantamental workflow.</td>
+<td><strong>Backtest critique</strong> — give students a backtest with planted methodological errors and score each find independently. Plus a multiple-testing item: <em>20 tests at α = 0.05 gives a <strong>64.15%</strong> chance of at least one false positive</em> — verified, and the single most useful number in the intensive.</td>
+</tr>
+<tr>
+<td><strong>TI3</strong></td>
+<td>Making Sense of Macro</td>
+<td>What a bottom-up stock picker needs: the discount-rate channel and equity duration; FX translation; input costs; the credit cycle; inflation pass-through and pricing power; the consumer; inventory cycles; neutralising macro within a sleeve.</td>
+<td><strong>The 100bp drill</strong>, verified: at g = 3%, a 100bp rate rise takes the multiple <strong>16.667x → 14.286x = −14.29%</strong>; at g = 6%, <strong>33.333x → 25.000x = −25.00%</strong>; at g = 0%, −10.00%. The Macaulay duration of a 6%-growth perpetuity is <strong>~36 years — longer than a 30-year Treasury.</strong> And the item that earns the lesson: <strong>if the risk-free rate rises 100bp but the equity risk premium falls 100bp, the multiple does not move at all.</strong></td>
+</tr>
+<tr>
+<td><strong>TI4</strong></td>
+<td>Analyst Toolkit: Field Research</td>
+<td>Expert calls and how to run one; channel checks; survey design; alternative data and its biases and decay; regulatory-database mining; <strong>and the compliance perimeter.</strong></td>
+<td><strong>Survey-statistics item</strong> (verified): n = 400 gives <strong>±4.90pp</strong>; ±3pp needs <strong>n = 1,068</strong>. The high-value part: <strong>a 6pp wave-over-wave move at n = 400 per wave is NOT significant</strong> — MoE on the <em>difference</em> is 6.92pp, z = 1.700, p = 0.0890; you need <strong>534 per wave</strong>. Note the asymmetry — MoE on a difference exceeds MoE on a level, so <strong>the comparisons analysts care about most are the ones their samples support least.</strong> Plus an <strong>alt-data critique</strong> exercise and the MNPI vignette sort from M02-E4.</td>
+</tr>
+<tr>
+<td><strong>TI5</strong></td>
+<td>Your Market Mindset</td>
+<td>Documented biases that cost analysts money; decision journals; <strong>calibration training</strong>; process-vs-outcome accountability; handling drawdowns and public wrongness.</td>
+<td><strong>The calibration battery — the single best-evidenced instrument in the program.</strong> Pre- and post-course, 20+ resolvable questions, Brier-scored with the Murphy decomposition. <em>Verified example:</em> BS <strong>0.1700</strong> = reliability 0.0035 − resolution 0.0826 + uncertainty 0.2491; skill score <strong>+0.3175</strong>. The contrast cases are what teach: a coin-flipper scores <strong>0.2500</strong>, and <strong>always saying 0.90 scores 0.3860 — worse than the coin-flipper.</strong> <strong>De-weight bias-recognition quizzes</strong> (low validity) and <strong>do not run P&amp;L-scored trading sims</strong> (outcome-dominated; they reward exactly the overconfidence you are training out).</td>
+</tr>
+<tr>
+<td><strong>TI6</strong></td>
+<td>The Value of Growth</td>
+<td>Growth is only valuable above the cost of capital; the ROIC/growth matrix; duration and CAP.</td>
+<td>Folded into <strong>M11-E1</strong>; add 6–8 retrieval items on the grid.</td>
+</tr>
+<tr>
+<td><strong>TI7</strong></td>
+<td>Wisdom From 30 Years on the Street</td>
+<td>Career and judgment narrative.</td>
+<td><strong>Not assessable.</strong> Use as reflective prompts in the decision journal; do not score.</td>
+</tr>
+<tr>
+<td><strong>TI8</strong></td>
+<td>Valuation Q&amp;A</td>
+<td><strong>No published content</strong> — treat as free-response/oral.</td>
+<td>Folded into <strong>M11</strong>; use as the question bank for the capstone defence.</td>
+</tr>
+<tr>
+<td><strong>TI9</strong></td>
+<td>Stock-Based Comp for Investors</td>
+<td>ASC 718; expense vs. dilution; FCF treatment; the share-count roll-forward.</td>
+<td>Folded into <strong>M09-E2</strong>, which already covers it in full.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A cross-cutting design principle that emerged repeatedly across the intensives and is worth stating generally: "here is a flawed artefact — find the flaws" beats "produce an artefact" on almost every axis</strong> — it is faster to grade, more reliable, more discriminating, and it maps better onto what analysts actually do all day.</p></div>
+
+      <div class="pagenav"><a href="exercises.html"><span class="dir">← Previous</span>Exercise catalogue</a><a href="infrastructure.html" style="text-align:right"><span class="dir">Next →</span>Shared infrastructure</a></div>
+      <footer class="site">
+        <p>Assessment blueprint for the Fundamental Edge Analyst Academy syllabus.
+        Every quantitative example was independently verified; see
+        <a href="provenance.html">provenance &amp; corrections</a> for what is
+        sourced, what is unpublished, and what still needs checking.</p>
+      </footer>
+    </div>
+  </main>
+</div>
+<script src="static/app.js" defer></script>
+</body>
+</html>

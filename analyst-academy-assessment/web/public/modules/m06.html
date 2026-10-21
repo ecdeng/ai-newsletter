@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 06 — Buyside Modeling · Analyst Academy Blueprint</title>
+<meta name="description" content="Scope. Driver-based operating models built to locate variance versus the Street and to drive stock selection. Explicitly not investment-banking modeling: no LBO, no accretion/dilution, no three-statement-for-its-own-sake. The framing quote that should govern all assessment here. ">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Module 06 — Buyside Modeling · Analyst Academy Blueprint">
+<meta property="og:description" content="Scope. Driver-based operating models built to locate variance versus the Street and to drive stock selection. Explicitly not investment-banking modeling: no LBO, no accretion/dilution, no three-statement-for-its-own-sake. The framing quote that should govern all assessment here. ">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">
+  <button class="iconbtn" data-nav-toggle aria-label="Open navigation">☰</button>
+  <a class="brand" href="../index.html">Assessment Blueprint</a>
+  <span class="spacer"></span>
+  <button class="iconbtn" data-theme-toggle>☾</button>
+</div>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html">Assessment&nbsp;Blueprint</a>
+    <p class="brand-sub">Fundamental Edge · Analyst Academy
+      <button class="iconbtn" data-theme-toggle style="float:right;margin-top:-.3rem">☾</button>
+    </p>
+    <div class="nav-group"><p class="nav-label">Start</p><nav class="nav"><a class="" href="../index.html">Overview</a><a class="" href="../approach.html">The approach</a></nav></div><div class="nav-group"><p class="nav-label">The blueprint</p><nav class="nav"><a class="" href="../modules.html"><span class="n">15</span>Modules</a></nav><nav class="nav" style="margin:.2rem 0 .4rem .5rem"><a class="" href="../modules/m01.html"><span class="n">01</span>Fundamental Foundations</a><a class="" href="../modules/m02.html"><span class="n">02</span>Life on the Buy-Side</a><a class="" href="../modules/m03.html"><span class="n">03</span>Thesis Development</a><a class="" href="../modules/m04.html"><span class="n">04</span>Why Stocks Move Up and Down</a><a class="" href="../modules/m05.html"><span class="n">05</span>Idea Generation</a><a class="active" href="../modules/m06.html"><span class="n">06</span>Buyside Modeling</a><a class="" href="../modules/m07.html"><span class="n">07</span>Analyze a Business</a><a class="" href="../modules/m08.html"><span class="n">08</span>Analyze an Industry</a><a class="" href="../modules/m09.html"><span class="n">09</span>Management &amp; Capital Allocation</a><a class="" href="../modules/m10.html"><span class="n">10</span>Assessing Expectations</a><a class="" href="../modules/m11.html"><span class="n">11</span>Applied Valuation</a><a class="" href="../modules/m12.html"><span class="n">12</span>Short Selling</a><a class="" href="../modules/m13.html"><span class="n">13</span>Earnings Season</a><a class="" href="../modules/m14.html"><span class="n">14</span>Pitch Like a Pro</a><a class="" href="../modules/m15.html"><span class="n">15</span>Wrapping Up / Bringing It All Together</a></nav><nav class="nav"><a class="" href="../exercises.html"><span class="n">58</span>Exercise catalogue</a><a class="" href="../intensives.html"><span class="n">9</span>Topical intensives</a></nav></div><div class="nav-group"><p class="nav-label">Build</p><nav class="nav"><a class="" href="../infrastructure.html"><span class="n">7</span>Shared infrastructure</a><a class="" href="../case-engine.html">Case engine spec</a><a class="" href="../roadmap.html">Build roadmap</a></nav></div><div class="nav-group"><p class="nav-label">Appendix</p><nav class="nav"><a class="" href="../provenance.html">Provenance &amp; corrections</a><a class="" href="../verification.html">Verification queue</a><a class="" href="../sources.html">Sources</a></nav></div>
+  </aside>
+  <main class="main" id="main">
+    <div class="wrap">
+      
+<p class="eyebrow">Module 06</p>
+<h1>Buyside Modeling</h1>
+<p class="lede">4 exercises.
+2 rated advanced.</p>
+
+<div class="toc"><p class="toc-title">Exercises in this module</p><ul><li><a href="#m06-e1the-2-year-stack-ambiguity">★ M06-E1 — The 2-Year Stack Ambiguity</a></li><li><a href="#m06-e2incremental-margin-and-the-operating-leverage-identity">M06-E2 — Incremental Margin and the Operating-Leverage Identity</a></li><li><a href="#m06-e3the-guidance-bridge-find-the-variance">M06-E3 — The Guidance Bridge: Find the Variance</a></li><li><a href="#m06-e4faded-model-build-series">M06-E4 — Faded Model Build Series</a></li></ul></div>
+
+<h2 id="coverage">Expected content coverage</h2>
+<div class="prose"><p><strong>Scope.</strong> Driver-based operating models built to locate variance versus the Street and to drive stock selection. Explicitly <strong>not</strong> investment-banking modeling: no LBO, no accretion/dilution, no three-statement-for-its-own-sake.</p>
+<p><strong>The framing quote that should govern all assessment here.</strong> Caughran, verbatim: <em>"The basic act of modeling is a necessary but non-differentiating factor… The model is just <strong>table stakes, a 'thinking tool.'</strong>"</em> <strong>Implication for assessment: grading mechanics alone grades table stakes.</strong> The model exercises must therefore be scored on what the model <em>reveals</em> — the located variance — not only on whether it ties.</p>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>What mastery looks like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Six reasons buy-side analysts build models</td>
+<td><strong>Not published</strong> — reconstruction only. Anchored to the "thinking tool" quote.</td>
+</tr>
+<tr>
+<td>Raw build (TSLA walk-through)</td>
+<td>Segment/driver build from filings: volume × price, units × ASP, subs × ARPU, stores × AUV, backlog → revenue conversion. <strong>Quarterly, not annual</strong> — the buy-side model's defining structural choice, because the bar moves quarterly.</td>
+</tr>
+<tr>
+<td>Incremental margin</td>
+<td><strong>i = ΔEBIT/ΔRevenue.</strong> Caughran, verbatim: <em>"businesses with high fixed cost will have high incremental margins, and current incremental margins are a good predictor of future base margins. V and MA are the incremental margin GOATs."</em> Three identities students should own, all verified below.</td>
+</tr>
+<tr>
+<td>2-year stack</td>
+<td><strong>Three conventions in circulation, and sources genuinely conflict.</strong> This ambiguity is the single best assessment item in the module.</td>
+</tr>
+<tr>
+<td>Consensus &amp; revisions</td>
+<td>No single consensus exists — providers differ (the academic citation is Larocque, <em>Journal of Accounting Research</em>, "Consensus? An Examination of Differences in Earnings Information Across Forecast Data Providers"). <strong>Bloomberg BEst's documented staleness rule:</strong> an estimate is stale if more than 30 days before the most recent report date, guidance or corporate action. <strong>Visible Alpha</strong> carries line-item consensus — an average of <strong>161 line items per forecast, up to 1,000</strong> — which is why it is the buy-side tool: it tells you <em>where</em> your variance is before the print.</td>
+</tr>
+<tr>
+<td>Seven hacks for variance vs. street</td>
+<td><strong>NOT FOUND — heading only.</strong> Do not build an item keyed to "name the seven." Note also: do not conflate this with Caughran's public "Modeling: 12 Common Buy-Side Approaches" thread, which is a different list.</td>
+</tr>
+<tr>
+<td>Three statements for stock pickers</td>
+<td>Cash-flow quality, accruals, balance-sheet capacity for buybacks/M&amp;A, covenant headroom, leases, deferred revenue as a leading indicator, inventory/receivable builds as red flags.</td>
+</tr>
+<tr>
+<td>Mental frameworks for forecasting</td>
+<td>Base rates and reference classes; outside vs. inside view; the danger of straight-lining; guidance anchoring. Mauboussin's Base Rate Book: top 1,000 global companies since 1950, decile reference classes, full-sample mean sales growth <strong>8.1%/yr (1950–2015)</strong>, and an "operating margin beta" of roughly <strong>0.11</strong>.</td>
+</tr>
+<tr>
+<td>What your PM looks for</td>
+<td>Three numbers that matter, a stated variance, and a sensitivity — not forty tabs.</td>
+</tr>
+<tr>
+<td>NVST case</td>
+<td><strong>NVST = Envista Holdings</strong>, the Danaher dental spin-off, confirmed from SEC filings: IPO 20 Sep 2019, <strong>30.8m shares at $22.00 (19.4%)</strong>, ~$643m net; Envista paid Danaher ~$2.0bn and issued it 127.9m shares; split-off 18 Dec 2019 exchanging <strong>22,921,984 DHR shares for 127,868,000 NVST shares</strong> (implied ratio <strong>5.578</strong>). Brands: KaVo Kerr, Nobel Biocare, Ormco. <strong>No NVST operating financials were recoverable</strong> — pull EDGAR CIK <strong>1757073</strong> directly before building the case.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Prerequisites.</strong> Accounting through the three statements; Excel fluency (and note: <strong>Excel speed is the binding constraint in timed drills</strong> and should be assessed explicitly rather than left as a hidden variable); M04's return decomposition.</p>
+<p><strong>Modeling-test reality.</strong> Published specs are almost entirely IB/PE: LBO tests run <strong>1–3 hours</strong> and are "mostly a speed test"; build-from-10-K at <strong>180 minutes</strong>; one provider publishes a <strong>90-minute</strong> LBO test; one published rubric weights <strong>accuracy 40% / completeness 25% / structure 20% / formatting 15%</strong>; <strong>median scores are often below 50%</strong>; and <strong>no published pass mark exists anywhere.</strong> Grading is characterised as "check the box" — "the reviewer will not be questioning your assumptions." <strong>No published, specified <em>buy-side</em> modeling test could be found.</strong> Treat that as confirmed white space and the strongest commercial argument for building this assessment properly.</p></div>
+
+<h2 id="exercises">Exercises</h2>
+
+<section class="exercise" id="m06-e1the-2-year-stack-ambiguity">
+  <h3>★ M06-E1 — The 2-Year Stack Ambiguity</h3>
+  <div class="exrow-meta"><span class="chip chip-flag">★ Flagship</span><span class="chip chip-t2">Intermediate</span><span class="chip chip-neutral">Build: Low</span><span class="chip chip-neutral">55 minutes</span><span class="chip chip-accent">Fully auto-gradeable</span><span class="chip chip-accent">LLM-graded</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">2-year stack; bells &amp; whistles; comp effects</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Force the student to confront that a metric everyone quotes has three incompatible definitions, and that the most-used one breaks hardest in exactly the case it was adopted for.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>Given eight quarters of revenue through a COVID-shaped distortion, compute the 2-year stack under all three conventions (additive, geometric/cumulative, and 2-year CAGR) for every quarter; identify the quarter where the conventions diverge most and quantify the gap; prove algebraically why the additive and geometric conventions differ by exactly the cross-product g₁·g₂; and state which convention you would present to a PM and why. <strong>55 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Existing spreadsheet. Fully auto-gradeable.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (75 pts, fully auto):</em> three series of eight values each, tolerance 1e-4; the identified max-divergence quarter; the cross-product proof checked numerically at every quarter.</li>
+<li><em>Qualitative (25 pts, LLM-graded):</em> the recommendation must acknowledge that <strong>no convention is correct</strong> and justify a choice on grounds of what the PM is trying to see through. An answer asserting one convention is simply right scores ≤10.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p>Revenue indexed: 100 → 72 → 115. Year-1 growth = −28.0%; year-2 growth = +59.72%.</p>
+<p><strong>Additive 2-yr stack</strong> = −28.0% + 59.72% = <strong>+31.72%</strong>. <strong>Geometric (cumulative vs. two years ago)</strong> = (0.72 × 1.5972) − 1 = <strong>+15.00%</strong>. <strong>2-year CAGR</strong> = 1.15^(1/2) − 1 = <strong>+7.24%</strong>.</p>
+<p><strong>The spread between additive and geometric is 16.72pp</strong>, and that is exactly the cross-product: g₁ × g₂ = (−0.28) × (0.5972) = <strong>−0.1672</strong> ✓. In normal times the gap is trivial: at +6% and +8%, additive gives 14.00% and geometric gives 14.48%, a gap of 48bp (= 0.06 × 0.08).</p>
+<p><strong>The teaching punchline:</strong> the additive convention — the one most widely used — overstates the recovery by 16.7 points precisely in the COVID-distorted case the convention was popularised to see through. A student who presents "+31.7% two-year stack" to a PM on this data has told them the business is 31.7% bigger than two years ago when it is in fact 15.0% bigger.</p>
+<p><strong>The deeper item for advanced students:</strong> construct an eight-quarter series where year-over-year growth decelerates violently, the geometric stack rises monotonically, and the additive stack shows a <strong>fake peak</strong>. All three are "true"; only one is not actively misleading.</p>
+</blockquote></div></details>
+</section>
+<section class="exercise" id="m06-e2incremental-margin-and-the-operating-leverage-identity">
+  <h3>M06-E2 — Incremental Margin and the Operating-Leverage Identity</h3>
+  <div class="exrow-meta"><span class="chip chip-t2">Intermediate</span><span class="chip chip-neutral">Build: Low–Medium</span><span class="chip chip-neutral">60 minutes</span><span class="chip chip-accent">Fully auto-gradeable</span><span class="chip chip-accent">LLM-graded</span><span class="chip chip-accent">Perturbation test</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Incremental margin; bells &amp; whistles; forecasting</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Move from computing incremental margin to using it as a forecasting constraint, via three identities that most analysts never see written down.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>Given three years of segment revenue and EBIT: compute incremental margin for each period; use the identity m₁ = (m₀ + i·g)/(1+g) to forecast next year's margin from a revenue forecast; state the condition for margin expansion; compute degree of operating leverage and show it equals i/m₀; then compute incremental margin <strong>organically</strong> (stripping an acquisition and FX) and explain why the reported figure understated true operating leverage. <strong>60 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Existing spreadsheet with named outputs. Fully auto-gradeable including a perturbation test.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (85 pts, fully auto):</em> all computed values, tolerance 1e-4. <strong>Perturbation test (25 of the 85):</strong> the grader changes the revenue-growth input and checks the forecast margin moves per the identity — this distinguishes a live model from a hardcoded answer.</li>
+<li><em>Qualitative (15 pts, LLM-graded):</em> the explanation of why blending a low-incremental-margin acquisition into the reported figure understates organic operating leverage.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p>Revenue $1,000m at 15.0% EBIT margin. Revenue grows 12.0%; incremental margin 30.0%.</p>
+<p>New revenue $1,120m; EBIT = 150 + 0.30 × 120 = $186m; margin = 186/1,120 = <strong>16.6071%</strong>. Identity check: (0.15 + 0.30 × 0.12)/(1.12) = (0.15 + 0.036)/1.12 = 0.186/1.12 = <strong>0.166071</strong> ✓.</p>
+<p><strong>Condition for margin expansion: i &gt; m₀.</strong> At i = 30% &gt; m₀ = 15%, margin expands. Flip incremental margin to 10%: m₁ = (0.15 + 0.012)/1.12 = <strong>14.4643%</strong>, and margin contracts — verified that the condition holds in both directions.</p>
+<p><strong>DOL = i/m₀.</strong> Here 0.30/0.15 = <strong>2.00x</strong>. Empirical check: %ΔEBIT = 186/150 − 1 = 24.0%; %ΔRevenue = 12.0%; ratio = <strong>2.00</strong> ✓ exact. <strong>Operating leverage and incremental margin are the same fact expressed two ways</strong> — which is worth saying out loud, because students treat them as separate concepts.</p>
+<p><strong>The organic adjustment, which is the real lesson.</strong> Reported revenue +12.50% decomposes to organic +10.25pp, M&amp;A +4.50pp, FX −2.25pp. Recomputing incremental margin <strong>organically</strong> gives <strong>35.85%</strong> versus <strong>30.00%</strong> reported — the reported figure understated true operating leverage by <strong>585bp</strong>, purely because a 10%-incremental-margin acquisition was blended in. An analyst forecasting off the reported 30% will systematically under-forecast margin expansion in every future period.</p>
+<p><strong>Advanced extension — the decremental round trip.</strong> Revenue 4,000 → 4,500 → 4,000 with EBIT 600 → 750 gives an incremental margin of 30.0%. If the down-leg decremental margin is 34%, EBIT returns to <strong>580</strong>, not 600: a full revenue round trip <strong>permanently destroys $20m</strong>. When decremental exceeds incremental, that asymmetry is itself a short signal.</p>
+</blockquote></div></details>
+</section>
+<section class="exercise" id="m06-e3the-guidance-bridge-find-the-variance">
+  <h3>M06-E3 — The Guidance Bridge: Find the Variance</h3>
+  <div class="exrow-meta"><span class="chip chip-t3">Advanced</span><span class="chip chip-neutral">Build: Medium</span><span class="chip chip-neutral">90 minutes</span><span class="chip chip-accent">Auto-graded component</span><span class="chip chip-accent">LLM-graded</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Consensus and revisions; variance vs. street; forecasting; three statements</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>The module's capstone skill: find where your number differs from the Street's, and whether the difference is in the right place to matter.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>Given a company's Q2 release and updated FY guidance, plus the Street's FY model by line item, the student must: build the guidance bridge; compute implied 2H revenue growth and the 2-year stack; attribute the difference between their EPS and the Street's across revenue, margin, tax and share count, with the attribution tying exactly; compute the exit run-rate and the share of next year's consensus growth that is pure annualisation; and state in two sentences where the real variance is. <strong>90 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Existing spreadsheet + templated release. Mostly auto-gradeable.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (75 pts, auto):</em> the bridge, the implied 2H figures, the four-way attribution (with a hard tie-check worth 20 pts — the components must sum to the total difference), the exit run-rate, and the annualisation share.</li>
+<li><em>Qualitative (25 pts, LLM-graded):</em> the two-sentence conclusion must identify that offsetting drivers hide inside a small headline difference. An answer that reports "we're in line" without decomposing scores zero.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p><strong>Part 1 — the raise is smaller than the beat.</strong> Q2 revenue beat by $30m. FY guidance raised by $20m. <strong>Therefore implied 2H revenue falls by $10m</strong>, from $2,030m to $2,020m. 1H growth was +12.71%; implied 2H growth is <strong>−1.46%</strong>. That is <strong>14.17 points of deceleration</strong> embedded in a guidance <em>raise</em> — the single most important thing in the release, and invisible to anyone reading the headline.</p>
+<p>Decomposing that deceleration: <strong>2.70 points is the harder comp</strong> and <strong>11.47 points is genuine implied slowdown</strong> (2.70 + 11.47 = 14.17 ✓). Two-year stacks fall from 21.42 to 9.95 points additive, or from 10.69% to 4.78% on a 2-year CAGR basis.</p>
+<p><strong>Part 2 — the exit rate kills next year.</strong> Implied Q4 revenue is <strong>−2.86% year-over-year</strong>, while FY+1 consensus requires <strong>+6.16%</strong>. That is a <strong>9-point reacceleration that nobody has underwritten</strong>, derived from pure arithmetic with no view required. Separately, the exit run-rate of 4,800 means <strong>91% of the Street's FY+1 growth is annualisation of Q4</strong> with only <strong>+0.6% in-year progression</strong> — so consensus is far more fragile than its growth rate suggests.</p>
+<p><strong>Part 3 — the headline hides everything.</strong> Student EPS $2.810 vs. Street $2.800 = <strong>+0.37%, "in line."</strong> Stepwise attribution: revenue <strong>+0.692%</strong>, margin <strong>−1.298%</strong>, shares <strong>+0.974%</strong>; net <strong>+0.368%</strong> ✓ ties. Three large offsetting drivers inside a trivial headline. <strong>And the Street's number is simply the guidance midpoint</strong> — which means "consensus ≈ guidance midpoint" is itself the alpha opportunity, because nobody has done this arithmetic.</p>
+</blockquote></div></details>
+</section>
+<section class="exercise" id="m06-e4faded-model-build-series">
+  <h3>M06-E4 — Faded Model Build Series</h3>
+  <div class="exrow-meta"><span class="chip chip-t3">Advanced</span><span class="chip chip-neutral">Build: Medium–High</span><span class="chip chip-accent">Fully auto-gradeable</span><span class="chip chip-accent">LLM-graded</span><span class="chip chip-accent">Perturbation test</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Raw build; three statements; model architecture; PM expectations</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Build modeling capability across a heterogeneous cohort without boring the experienced or drowning the career-switcher — by fading scaffolding rather than varying difficulty.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>Four exercises on the same company, run in sequence. <strong>(1)</strong> A complete, correct model is supplied; the student annotates why each driver is structured as it is and answers eight questions requiring them to trace dependencies. <strong>(2)</strong> The revenue build is blanked; rebuild it. <strong>(3)</strong> The entire operating section is blanked. <strong>(4)</strong> Raw build from the 10-K with only a blank labelled template. Time limits 30 / 45 / 90 / 180 minutes respectively.</p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Excel/Sheets with locked submission sheets. The auto-grader is the significant build and is shared with M07, M11 and M13.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (70 pts, fully auto):</em> check cells against the golden model with relative tolerance; three-statement integrity ties (balance sheet balances every period; ending cash ties; sum of segments ties to consolidated); <strong>3–5 perturbation shocks</strong> verifying outputs move correctly; <strong>hardcode detection</strong> (numeric literals outside a whitelist, reported as a hygiene sub-score not a hard fail); <strong>R1C1 formula-consistency</strong> across forecast rows; circular-reference detection.</li>
+<li><em>Qualitative (30 pts, LLM-graded):</em> exercise 1's annotations and, in exercise 4, a required 150-word note on where the variance versus consensus sits. <strong>Per the governing quote, the variance note is worth more than any single mechanical check</strong> — a model that ties perfectly and locates nothing scores in the 60s, which should be stated to students up front.</li>
+<li><strong>Error-cascade containment is essential:</strong> the grader must limit how far one upstream cell error propagates into downstream wrong answers, or a single early slip zeroes an otherwise competent model. Score each check-cell cluster against the student's <em>own</em> upstream values where the dependency is isolable.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p><em>"Cell D47 (Q3 revenue) — list every input cell it depends on, and state which single input, if changed by 10%, moves it most."</em></p>
+<p>This question type is the most valuable in the series because it is <strong>ungameable by labelling</strong>. The grader does not read the student's words; it compares the student's claimed dependency list against the actual dependency graph extracted from the golden workbook. A student who writes "volume and price" when the model in fact drives revenue off a single blended ASP line has revealed they did not trace the model — which is exactly the failure that produces analysts who cannot answer "what's your volume assumption?" in a PM meeting.</p>
+<p>The same mechanism provides the strongest single check in exercise 4: <strong>"does the revenue line depend on BOTH a volume cell and a price cell?"</strong> A model that drives revenue off one blended growth rate cannot answer a price/volume question, and the dependency graph shows that instantly, regardless of how the rows are labelled.</p>
+</blockquote></div></details>
+</section>
+
+      <div class="pagenav"><a href="../modules/m05.html"><span class="dir">← Previous</span>Module 05 — Idea Generation</a><a href="../modules/m07.html" style="text-align:right"><span class="dir">Next →</span>Module 07 — Analyze a Business</a></div>
+      <footer class="site">
+        <p>Assessment blueprint for the Fundamental Edge Analyst Academy syllabus.
+        Every quantitative example was independently verified; see
+        <a href="../provenance.html">provenance &amp; corrections</a> for what is
+        sourced, what is unpublished, and what still needs checking.</p>
+      </footer>
+    </div>
+  </main>
+</div>
+<script src="../static/app.js" defer></script>
+</body>
+</html>

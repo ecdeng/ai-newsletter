@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 11 — Applied Valuation · Analyst Academy Blueprint</title>
+<meta name="description" content="Scope. Valuation as a buy-side working tool on a 12–24 month horizon, not a 10-year academic DCF. The DCF is a thinking device; the working method is a forward-multiple / earnings-power / price-target-with-risk-reward approach. Also covers the &quot;Valuation Q&amp;A&quot; and &quot;The Value of Gr">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Module 11 — Applied Valuation · Analyst Academy Blueprint">
+<meta property="og:description" content="Scope. Valuation as a buy-side working tool on a 12–24 month horizon, not a 10-year academic DCF. The DCF is a thinking device; the working method is a forward-multiple / earnings-power / price-target-with-risk-reward approach. Also covers the &quot;Valuation Q&amp;A&quot; and &quot;The Value of Gr">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">
+  <button class="iconbtn" data-nav-toggle aria-label="Open navigation">☰</button>
+  <a class="brand" href="../index.html">Assessment Blueprint</a>
+  <span class="spacer"></span>
+  <button class="iconbtn" data-theme-toggle>☾</button>
+</div>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html">Assessment&nbsp;Blueprint</a>
+    <p class="brand-sub">Fundamental Edge · Analyst Academy
+      <button class="iconbtn" data-theme-toggle style="float:right;margin-top:-.3rem">☾</button>
+    </p>
+    <div class="nav-group"><p class="nav-label">Start</p><nav class="nav"><a class="" href="../index.html">Overview</a><a class="" href="../approach.html">The approach</a></nav></div><div class="nav-group"><p class="nav-label">The blueprint</p><nav class="nav"><a class="" href="../modules.html"><span class="n">15</span>Modules</a></nav><nav class="nav" style="margin:.2rem 0 .4rem .5rem"><a class="" href="../modules/m01.html"><span class="n">01</span>Fundamental Foundations</a><a class="" href="../modules/m02.html"><span class="n">02</span>Life on the Buy-Side</a><a class="" href="../modules/m03.html"><span class="n">03</span>Thesis Development</a><a class="" href="../modules/m04.html"><span class="n">04</span>Why Stocks Move Up and Down</a><a class="" href="../modules/m05.html"><span class="n">05</span>Idea Generation</a><a class="" href="../modules/m06.html"><span class="n">06</span>Buyside Modeling</a><a class="" href="../modules/m07.html"><span class="n">07</span>Analyze a Business</a><a class="" href="../modules/m08.html"><span class="n">08</span>Analyze an Industry</a><a class="" href="../modules/m09.html"><span class="n">09</span>Management &amp; Capital Allocation</a><a class="" href="../modules/m10.html"><span class="n">10</span>Assessing Expectations</a><a class="active" href="../modules/m11.html"><span class="n">11</span>Applied Valuation</a><a class="" href="../modules/m12.html"><span class="n">12</span>Short Selling</a><a class="" href="../modules/m13.html"><span class="n">13</span>Earnings Season</a><a class="" href="../modules/m14.html"><span class="n">14</span>Pitch Like a Pro</a><a class="" href="../modules/m15.html"><span class="n">15</span>Wrapping Up / Bringing It All Together</a></nav><nav class="nav"><a class="" href="../exercises.html"><span class="n">58</span>Exercise catalogue</a><a class="" href="../intensives.html"><span class="n">9</span>Topical intensives</a></nav></div><div class="nav-group"><p class="nav-label">Build</p><nav class="nav"><a class="" href="../infrastructure.html"><span class="n">7</span>Shared infrastructure</a><a class="" href="../case-engine.html">Case engine spec</a><a class="" href="../roadmap.html">Build roadmap</a></nav></div><div class="nav-group"><p class="nav-label">Appendix</p><nav class="nav"><a class="" href="../provenance.html">Provenance &amp; corrections</a><a class="" href="../verification.html">Verification queue</a><a class="" href="../sources.html">Sources</a></nav></div>
+  </aside>
+  <main class="main" id="main">
+    <div class="wrap">
+      
+<p class="eyebrow">Module 11</p>
+<h1>Applied Valuation</h1>
+<p class="lede">4 exercises.
+3 rated advanced.</p>
+
+<div class="toc"><p class="toc-title">Exercises in this module</p><ul><li><a href="#m11-e1derive-the-multiple">★ M11-E1 — Derive the Multiple</a></li><li><a href="#m11-e2the-p-e-roll-forward-calendar-trap">M11-E2 — The P/E Roll-Forward Calendar Trap</a></li><li><a href="#m11-e3scenario-trees-implied-probability-and-the-theatre-dia">M11-E3 — Scenario Trees, Implied Probability and the &quot;Theatre&quot; Diagnostic</a></li><li><a href="#m11-e4critique-this-dcf-eight-planted-errors">M11-E4 — Critique This DCF (eight planted errors)</a></li></ul></div>
+
+<h2 id="coverage">Expected content coverage</h2>
+<div class="prose"><p><strong>Scope.</strong> Valuation as a buy-side working tool on a 12–24 month horizon, not a 10-year academic DCF. The DCF is a thinking device; the working method is a forward-multiple / earnings-power / price-target-with-risk-reward approach. Also covers the <strong>"Valuation Q&amp;A"</strong> and <strong>"The Value of Growth"</strong> intensives.</p>
+<p><strong>The algebra that is the spine of the module.</strong> "Multiples are shorthand for a DCF" is not a slogan, it is a derivation, and the module lives or dies on whether students can do it. From the Gordon growth model P₀ = D₁/(r − g), with D₁ = payout × E₁, and g = b × ROE so that b = g/ROE and payout = 1 − g/ROE:</p>
+<pre><code>Justified forward P/E  = (1 − g/ROE) / (r_e − g)        [EQUITY: ROE with cost of equity]
+Justified trailing P/E = (1 − g/ROE)(1 + g) / (r_e − g)
+EV/NOPAT₁              = (1 − g/ROIC) / (WACC − g)      [ENTERPRISE: ROIC with WACC]
+EV/EBIT₁               = (1 − t)(1 − g/ROIC) / (WACC − g)
+EV/IC₀                 = (ROIC − g) / (WACC − g)
+</code></pre>
+<p><strong>A precision point worth building an item around:</strong> the widely-circulated form "(1 − g/ROIC)/(r − g)" is correct only for an all-equity firm, or when read as <strong>EV/NOPAT with r = WACC</strong>. <strong>Mixing ROIC with a cost of equity is a specific, gradeable error.</strong> The equity version takes ROE and the cost of equity; the enterprise version takes ROIC and WACC.</p>
+<p><strong>The corollary that makes the whole module click:</strong> <strong>ROIC = WACC ⇒ EV/IC = 1.0 for every value of g.</strong> Verified: at ROIC = WACC = 9%, EV/IC is exactly 1.000000 at g = 0, 2, 4, 6 and 8%, and EV/NOPAT is flat at 1/WACC = <strong>11.1111x</strong> — Mauboussin's "commodity multiple." Growth is value-neutral when returns equal the cost of capital, and the algebra says so in one line.</p>
+<p><strong>The grid every student should be able to reproduce</strong> (EV/NOPAT, WACC 9%, all verified):</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>g=0%</th>
+<th>g=2%</th>
+<th>g=4%</th>
+<th>g=6%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ROIC 6%</strong></td>
+<td>11.11x</td>
+<td>9.52x</td>
+<td>6.67x</td>
+<td>0.00x</td>
+</tr>
+<tr>
+<td><strong>ROIC 9% (=WACC)</strong></td>
+<td>11.11x</td>
+<td>11.11x</td>
+<td>11.11x</td>
+<td>11.11x</td>
+</tr>
+<tr>
+<td><strong>ROIC 16%</strong></td>
+<td>11.11x</td>
+<td>12.50x</td>
+<td>15.00x</td>
+<td>20.83x</td>
+</tr>
+<tr>
+<td><strong>ROIC 25%</strong></td>
+<td>11.11x</td>
+<td>13.14x</td>
+<td>16.80x</td>
+<td>25.33x</td>
+</tr>
+</tbody>
+</table>
+<p>At ROIC below WACC, <strong>growth destroys the multiple</strong> (11.11 → 9.52 → 6.67). At ROIC = WACC the row is flat. The market agrees with the algebra: live medians for the S&amp;P ex-financials/real-estate showed high-spread/high-growth at <strong>19.5x</strong>, high-spread/low-growth <strong>14.0x</strong>, low-spread/high-growth <strong>11.7x</strong>, low-spread/low-growth <strong>11.4x</strong> — <strong>being in the high-ROIC-spread half beats being in the high-growth half.</strong></p>
+<p><strong>The value of growth, closed form:</strong></p>
+<pre><code>GV = NOPAT · g · (ROIC − WACC) / [ROIC · WACC · (WACC − g)]      ⇒   sign(GV) = sign(ROIC − WACC)
+</code></pre>
+<p>Verified at NOPAT 180, WACC 9%: (g 4%, ROIC 16%) → <strong>+700.00</strong>, cross-checking exactly against (15.0000 − 11.1111) × 180; (g 4%, ROIC 6%) → <strong>−800.00</strong>; (g 4%, ROIC 9%) → <strong>0.00</strong>; (g 0%, ROIC 16%) → <strong>0.00</strong>. Also: <strong>EPV is the value-driver formula at g = 0, i.e. NOPAT/WACC</strong> — which unifies the earnings-power and multiples sections.</p>
+<table>
+<thead>
+<tr>
+<th>Other topics</th>
+<th>What mastery looks like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DCF mechanics</td>
+<td>FCFF vs. FCFE and matching discount rates; WACC construction and beta instability; mid-year convention; the enterprise-to-equity bridge. <strong>SBC is not a bridge item</strong> — it is an FCFF expense plus a share-count item.</td>
+</tr>
+<tr>
+<td>Terminal value "perception"</td>
+<td>The word is <em>perception</em>, not calculation, which points at the behavioural reading: continuing value is <strong>"commonly in excess of 75 percent"</strong> of DCF value, and <em>"what drives the DCF model is for the most part a dressed up multiple."</em> So re-ratings are repricings of the terminal block — which links directly to M04's perception shifts. McKinsey's range across four industries is <strong>56%–125%</strong>, and a high share is not per se a flaw.</td>
+</tr>
+<tr>
+<td>Choosing a multiple</td>
+<td>Which multiple for which business; vs. own history, peers and market; <strong>regress the peer set on growth and ROIC and read the residual.</strong> Mauboussin, verbatim: analysts <em>"often select a peer group that leads to the desired answer."</em> And: <strong>"You have to earn the right to use a multiple."</strong></td>
+</tr>
+<tr>
+<td>P/E roll-forward</td>
+<td><strong>Flagged vague</strong> — no textbook definition exists. Pin it down explicitly as target multiple × forward EPS at a stated future date, and teach the calendar effect.</td>
+</tr>
+<tr>
+<td>Disaggregating returns</td>
+<td>As M04, with the cross term.</td>
+</tr>
+<tr>
+<td>Risk/reward and scenario trees</td>
+<td>Bull/base/bear with probabilities; expected value; asymmetry; the implied-probability check.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Context worth giving students:</strong> roughly <strong>93% of ~2,000 surveyed CFA members use market multiples; 88% use P/E; 77% use an EV multiple; 79% also use a DCF.</strong> Multiples are the working tool and the DCF is the discipline behind it — which is exactly this module's framing.</p></div>
+
+<h2 id="exercises">Exercises</h2>
+
+<section class="exercise" id="m11-e1derive-the-multiple">
+  <h3>★ M11-E1 — Derive the Multiple</h3>
+  <div class="exrow-meta"><span class="chip chip-flag">★ Flagship</span><span class="chip chip-t3">Advanced</span><span class="chip chip-neutral">Build: Low</span><span class="chip chip-neutral">100 minutes</span><span class="chip chip-accent">Fully auto-gradeable</span><span class="chip chip-accent">LLM-graded</span><span class="chip chip-accent">Critical-failure marker</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Multiples as shorthand for a DCF; value of growth; choosing a multiple</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Make the student derive, not memorise — so that they can answer any "two companies identical except X" question from first principles.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>(a) Derive justified forward P/E from the Gordon model, showing every substitution. (b) Derive EV/IC = (ROIC − g)/(WACC − g). (c) Prove that ROIC = WACC makes EV/IC equal 1.0 for all g, and explain in one sentence what that means economically. (d) Build the four-by-four ROIC × growth grid. (e) Verify one cell by brute force against a 200-year explicit DCF. (f) Compute the value of growth at three ROIC levels using the closed form, cross-checking against the difference between the value-driver multiple and 1/WACC. <strong>100 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Spreadsheet or Python plus written derivation. Numeric parts auto-gradeable; derivations LLM-graded with the worked key supplied.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (70 pts, fully auto):</em> the grid (16 cells), the brute-force reconciliation (must agree to within 0.01%), the three GV figures and their cross-checks.</li>
+<li><em>Qualitative (30 pts, LLM-graded, reference-guided with the full derivation as the reference):</em> algebraic steps must be present and correct, not asserted. <strong>Per the verification evidence, never let an LLM judge a quantitative derivation without the worked key in context</strong> — reference-guided grading cuts the math-grading failure rate dramatically, and an unreferenced LLM judge has been shown to pass a majority of proofs containing critical errors.</li>
+<li><strong>Deterministic first, LLM second:</strong> every number is checked arithmetically before any LLM sees the submission, and the LLM grades only the <em>reasoning</em>.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p><strong>(b) The EV/IC derivation, in three lines.</strong> EV = NOPAT(1 − g/ROIC)/(WACC − g). Substituting NOPAT = ROIC × IC: EV = ROIC × IC × (1 − g/ROIC)/(WACC − g) = IC × (ROIC − g)/(WACC − g). <strong>Therefore EV/IC = (ROIC − g)/(WACC − g).</strong></p>
+<p><strong>(c)</strong> Set ROIC = WACC: EV/IC = (WACC − g)/(WACC − g) = <strong>1.0, for every g.</strong> Economically: a business earning exactly its cost of capital is worth exactly the capital invested in it, no matter how fast it grows — growth neither creates nor destroys value, it just moves cash around. <em>This is the single most important sentence in the module.</em></p>
+<p><strong>(e) Brute-force check.</strong> g = 4%, ROIC = 16%, WACC = 9%: value-driver gives (1 − 0.25)/0.05 = <strong>15.00x</strong>. By construction: reinvestment rate b = 25%, FCF₁ = 75 on NOPAT 100, EV = 75/0.05 = <strong>1,500</strong>, so EV/NOPAT = <strong>15.00x</strong> ✓. A 2,000-year explicit DCF gives <strong>1,499.9999</strong> ✓. IC₀ = 625, so EV/IC = 1,500/625 = <strong>2.40</strong> = (0.16 − 0.04)/0.05 ✓. EV/EBIT at t = 25% = 0.75 × 15 = <strong>11.25x</strong>, checked against EBIT₁ = 133.33 → 1,500/133.33 = <strong>11.25x</strong> ✓.</p>
+</blockquote></div></details>
+</section>
+<section class="exercise" id="m11-e2the-p-e-roll-forward-calendar-trap">
+  <h3>M11-E2 — The P/E Roll-Forward Calendar Trap</h3>
+  <div class="exrow-meta"><span class="chip chip-t2">Intermediate</span><span class="chip chip-neutral">Build: Low</span><span class="chip chip-neutral">55 minutes</span><span class="chip chip-accent">Fully auto-gradeable</span><span class="chip chip-accent">LLM-graded</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">P/E roll-forward; disaggregating returns; price targets</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Teach a method the course names but no textbook defines — and expose the date error that makes price targets silently wrong by double digits.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>Given today's date, a December fiscal year-end, and EPS for FY, FY+1 and FY+2: compute NTM EPS and NTM P/E by day-weighting; then compute the price target three ways (target multiple on FY+1; on FY+2; on NTM-as-of-one-year-forward) and the implied return in each case; compute the price-target jump that occurs on 1 January with no new information; and build the "growing into the multiple" table at a frozen price. <strong>55 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Existing spreadsheet. Fully auto-gradeable.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (85 pts, fully auto):</em> the day-weighting, all three targets and returns, the calendar jump, and the four-year multiple decay table, tolerance 1e-4.</li>
+<li><em>Qualitative (15 pts, LLM-graded):</em> must state which convention they would use and why, and must acknowledge the calendar artefact.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p>Today 21 October 2026; December year-end; price <strong>$100</strong>; EPS FY26 <strong>$5.00</strong>, FY27 <strong>$5.75</strong>, FY28 <strong>$6.6125</strong>. Days to year-end = 71, so the NTM weight on FY26 is <strong>w = 0.19452</strong>.</p>
+<p><strong>NTM EPS</strong> = 0.19452 × 5.00 + 0.80548 × 5.75 = <strong>$5.6041</strong>; <strong>NTM P/E = 17.844x</strong>.</p>
+<p>At an 18x target: <strong>(i)</strong> 18 × FY27 = <strong>$103.50 (+3.50%)</strong>; <strong>(ii)</strong> 18 × FY28 = <strong>$119.03 (+19.02%)</strong>; <strong>(iii)</strong> 18 × NTM-as-of-Oct-2027 ($6.4447) = <strong>$116.01 (+16.01%)</strong>, plus a 1.5% dividend = <strong>17.51% TSR</strong>.</p>
+<p><strong>Method (i) understates the return by 12.5 points</strong> purely through a date mismatch — it applies a 12-month-forward multiple to a number that is already partly historical by the time the target is supposed to be achieved.</p>
+<p><strong>The calendar artefact.</strong> On 31 December the FY+1-based target is <strong>$103.50</strong>; on 1 January, with the year roll, it becomes <strong>$119.03</strong> — a <strong>+15.00% price-target increase on zero information.</strong> Any analyst publishing targets on an FY+1 convention does this every January, and most do not say so.</p>
+<p><strong>"Growing into the multiple," price frozen at $100:</strong> P/E goes <strong>20.00x → 17.39x → 15.12x → 13.15x</strong> across FY26–FY29. The stock gets cheaper by standing still, which is the entire bull case for a compounder and must be stated as a multiple path, not a feeling.</p>
+</blockquote></div></details>
+</section>
+<section class="exercise" id="m11-e3scenario-trees-implied-probability-and-the-theatre-dia">
+  <h3>M11-E3 — Scenario Trees, Implied Probability and the &quot;Theatre&quot; Diagnostic</h3>
+  <div class="exrow-meta"><span class="chip chip-t3">Advanced</span><span class="chip chip-neutral">Build: Low</span><span class="chip chip-neutral">70 minutes</span><span class="chip chip-accent">Fully auto-gradeable</span><span class="chip chip-accent">LLM-graded</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Scenario trees with weighted outcomes; risk/reward framework; terminal value perception</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Build trees that carry information, detect trees that are cosmetic, and back out what probability the market is assigning.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>Given a price, a cost of equity and three scenario prices: compute expected value, raw and probability-weighted asymmetry, and the discounted expected return; back out the market-implied bull probability both naively and discounted; apply the "three-scenario theatre" diagnostic; then re-run with a deeper bear case and a de-rated bear multiple and report what changes. Finally, size the position from the bear case. <strong>70 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Existing spreadsheet. Fully auto-gradeable.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (75 pts, fully auto):</em> all computations, tolerance 1e-4; both implied-probability methods required.</li>
+<li><em>Qualitative (25 pts, LLM-graded):</em> must explain why the naive and discounted implied probabilities differ, and must state that the bear case drives position size.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p>Spot <strong>$50</strong>, 12-month horizon, cost of equity 9%. Bull <strong>$75</strong> (30%), base <strong>$52</strong> (50%), bear <strong>$30</strong> (20%).</p>
+<p>EV = <strong>$54.500 = +9.000%</strong>. But upside to <em>base</em> is only <strong>+4.00%</strong>. Raw asymmetry 25/20 = <strong>1.250:1 — fails a 2:1 screen.</strong> Probability-weighted 8.500/4.000 = <strong>2.125:1</strong>. And discounting: 54.500/1.09 = <strong>$50.0000</strong>, so <strong>alpha is exactly 0.00%</strong> — the +9% raw upside <em>is</em> the 9% cost of equity. The tree looks like an idea and is not one.</p>
+<p><strong>Implied bull probability, two ways.</strong> Naive (EV = spot): 50 = 23p + 47.6 → <strong>p = 10.43%</strong>. Discounted (EV = spot × 1.09): 23p + 47.6 = 54.5 → <strong>p = 30.00%</strong>. <strong>The naive check flatters the analyst by ~20 points of bull probability</strong> because it credits the cost of capital as alpha. Students must use the discounted version.</p>
+<p><strong>Deepen the bear to $38:</strong> EV $56.10, discounted $51.4679, <strong>alpha +2.936%</strong>, asymmetry <strong>2.083:1</strong>, implied bull probability <strong>23.04%</strong> against our 30% — <strong>edge +6.96 points.</strong> Now it is an idea.</p>
+<p><strong>The theatre diagnostic.</strong> A symmetric ±20% tree at 25/50/25 gives EV/base = <strong>1.000</strong> — a literal no-op; the tree contains no information. <strong>If EV/base ≈ 1.00, the tree is cosmetic.</strong> (Here 54.5/52 = 1.0481, so it is doing some work.) A second common cosmetic failure: holding the multiple constant across scenarios. A −25% EPS bear at an unchanged 18x is a −25% price; at a de-rated 13x it is <strong>−45.83%</strong> — <strong>holding the multiple constant halves the measured downside.</strong></p>
+<p><strong>Sizing from the bear.</strong> The practical rule is size = tolerable NAV loss ÷ bear downside. At 0.50% tolerable and a −40% bear: <strong>1.2500% of NAV</strong> (check: 1.25% × 40% = 0.50% ✓). <strong>The bear case determines position size — not the upside, not conviction.</strong> Note why full Kelly is unusable here: with p = 0.55, +20%/−15%, the correct asset form f* = (p·a − q·b)/(a·b) gives <strong>141.7% of capital in one name</strong> (the gambling form f* = (p·b − q)/b is wrong for assets, which lose a <em>fraction</em>, not the whole stake). That absurd output is the argument for fractional Kelly: half-Kelly retains ~75% of the log growth at half the bet, while 2x Kelly earns <strong>approximately zero growth at double the volatility</strong> — strictly dominated, not merely riskier.</p>
+</blockquote></div></details>
+</section>
+<section class="exercise" id="m11-e4critique-this-dcf-eight-planted-errors">
+  <h3>M11-E4 — Critique This DCF (eight planted errors)</h3>
+  <div class="exrow-meta"><span class="chip chip-t3">Advanced</span><span class="chip chip-neutral">Build: Low–Medium</span><span class="chip chip-neutral">100 minutes</span><span class="chip chip-accent">Fully auto-gradeable</span><span class="chip chip-accent">LLM-graded</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">DCF mechanics; terminal value; WACC; the enterprise-to-equity bridge</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Find errors in someone else's valuation — which research consistently suggests is a better-discriminating task than building one from scratch.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>A complete, professional-looking DCF with <strong>eight planted errors</strong>, each independently scored: a faulty risk-free rate; a terminal growth rate above the economy's nominal growth; a forecast period too short for the business's competitive position; a terminal value taken from an EV/EBITDA multiple (i.e. "multiples analysis dressed up as a DCF"); a mid-year convention applied to the explicit period but not the terminal value; SBC added back to FCFF while also being excluded from the share count; a pension deficit omitted from the bridge; and a beta sourced from a period that misrepresents the current capital structure. Identify each, state the direction and approximate magnitude of its effect, and produce a corrected value. <strong>100 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Existing spreadsheet with the flawed model supplied. Fully auto-gradeable per error.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (80 pts, fully auto):</em> 8 pts per error found and correctly signed (64), plus 16 pts for the corrected value within tolerance. <strong>Independent scoring per error</strong> means partial competence is measured rather than lost.</li>
+<li><em>Qualitative (20 pts, LLM-graded):</em> a ranked list of which errors matter most. Full credit requires identifying the terminal-value errors as dominant and saying why — because continuing value is typically well over 75% of the total.</li>
+<li><strong>This is the best-sourced assessment artefact in the module:</strong> each planted error maps to a documented, citable DCF failure mode rather than to invented pedantry.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p>FCFF 100 / 110 / 120 / 128 / 135, WACC 9%, terminal g 2.5%. TV₅ = 138.375/0.065 = <strong>2,128.8462</strong>; PV of explicit period <strong>455.409</strong>; PV of TV <strong>1,383.604</strong>; <strong>EV 1,839.013</strong>, with <strong>TV = 75.24% of value.</strong></p>
+<p><strong>The mid-year trap, which is the one most students miss.</strong> Discounting the terminal value at t = 4.5 instead of t = 5 gives EV <strong>1,919.99</strong>; at t = 5 with a mid-year explicit period, <strong>1,859.07</strong>; fully end-year, <strong>1,839.01</strong>. <strong>The terminal-value exponent choice alone moves the valuation by 4.4%</strong> — more than most of the operating assumptions students spend their time debating.</p>
+<p><strong>The bridge:</strong> 1,839.01 − net debt 500 + associates 120 − minorities 80 + investments 60 − after-tax pension 75 − other 40 + NOLs 30 = <strong>equity 1,354.01</strong>, giving <strong>$13.5401 on basic</strong> but <strong>$12.8954 on diluted (−4.76%)</strong>.</p>
+<p><strong>The implied-exit-multiple cross-check that should be mandatory:</strong> the TV implies an exit EV/EBITDA of <strong>7.10x</strong> on EBITDA of 300. If instead you assert an 8.0x exit multiple, the implied terminal growth is <strong>(0.09 × 2,400 − 135)/(2,400 + 135) = 3.1953%</strong> — so asserting 8.0x is asserting 3.2% perpetual growth. Every DCF should state both numbers so the assumption cannot hide.</p>
+<p><strong>A bonus item worth including, because most question banks get it wrong.</strong> "Does leverage raise P/E?" The condition is exact: with EV 1,000, EBIT 75 and t = 25%, the unlevered equity earnings yield is <strong>5.625%</strong>, so the break-even pre-tax cost of debt is <strong>7.500%</strong>. At 6% debt, P/E <em>falls</em> with leverage (17.778 → 16.374 → 13.675x at debt of 0/300/600). At 10% debt, P/E <em>rises</em> (→ 20.741 → 35.556x). At exactly 7.5%, <strong>P/E is invariant to leverage at 17.7778x.</strong> <strong>An item keyed "leverage raises P/E" as a general rule is mis-keyed.</strong></p>
+</blockquote></div></details>
+</section>
+
+      <div class="pagenav"><a href="../modules/m10.html"><span class="dir">← Previous</span>Module 10 — Assessing Expectations</a><a href="../modules/m12.html" style="text-align:right"><span class="dir">Next →</span>Module 12 — Short Selling</a></div>
+      <footer class="site">
+        <p>Assessment blueprint for the Fundamental Edge Analyst Academy syllabus.
+        Every quantitative example was independently verified; see
+        <a href="../provenance.html">provenance &amp; corrections</a> for what is
+        sourced, what is unpublished, and what still needs checking.</p>
+      </footer>
+    </div>
+  </main>
+</div>
+<script src="../static/app.js" defer></script>
+</body>
+</html>

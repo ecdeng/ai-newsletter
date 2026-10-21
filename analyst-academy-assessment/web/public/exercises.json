@@ -1,0 +1,781 @@
+[
+  {
+    "eid": "M01-E1",
+    "module": "M01",
+    "name": "\"Why Does This Job Exist?\" (research-cost ceiling)",
+    "flagship": false,
+    "difficulty": "Beginner",
+    "build": "Low",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "25 minutes"
+  },
+  {
+    "eid": "M01-E2",
+    "module": "M01",
+    "name": "Efficiency Forms and the Attribution Trap",
+    "flagship": false,
+    "difficulty": "Beginner",
+    "build": "Low",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded",
+      "Human marking"
+    ],
+    "time_limit": "30 minutes"
+  },
+  {
+    "eid": "M01-E3",
+    "module": "M01",
+    "name": "Alpha Load Triage Drill",
+    "flagship": true,
+    "difficulty": "Intermediate",
+    "build": "Medium",
+    "grading_tags": [
+      "Semi-automatic",
+      "LLM-graded",
+      "Human marking"
+    ],
+    "time_limit": "45 minutes"
+  },
+  {
+    "eid": "M01-E4",
+    "module": "M01",
+    "name": "Alpha or Beta? Attribution Autopsy",
+    "flagship": false,
+    "difficulty": "Intermediate",
+    "build": "Low\u2013Medium",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "40 minutes"
+  },
+  {
+    "eid": "M01-E5",
+    "module": "M01",
+    "name": "Pareto P&L Lab",
+    "flagship": false,
+    "difficulty": "Beginner\u2013Intermediate",
+    "build": "Low",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "35 minutes"
+  },
+  {
+    "eid": "M01-E6",
+    "module": "M01",
+    "name": "Mispricing Diagnostic: Form, Forcing Mechanism, Half-Life",
+    "flagship": false,
+    "difficulty": "Intermediate\u2013Advanced",
+    "build": "Low\u2013Medium",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded"
+    ],
+    "time_limit": "40 minutes"
+  },
+  {
+    "eid": "M02-E1",
+    "module": "M02",
+    "name": "Same Idea, Three Seats",
+    "flagship": true,
+    "difficulty": "Intermediate",
+    "build": "Low",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded",
+      "Human marking",
+      "Critical-failure marker"
+    ],
+    "time_limit": "60 minutes"
+  },
+  {
+    "eid": "M02-E2",
+    "module": "M02",
+    "name": "Pod Economics and the Cost-Drag Trap",
+    "flagship": false,
+    "difficulty": "Beginner\u2013Intermediate",
+    "build": "Medium",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded",
+      "Perturbation test"
+    ],
+    "time_limit": "40 minutes"
+  },
+  {
+    "eid": "M02-E3",
+    "module": "M02",
+    "name": "Dollar-Neutral Is Not Beta-Neutral",
+    "flagship": false,
+    "difficulty": "Intermediate",
+    "build": "Low",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded",
+      "Human marking"
+    ],
+    "time_limit": "30 minutes"
+  },
+  {
+    "eid": "M02-E4",
+    "module": "M02",
+    "name": "The MNPI Line: Compliance Station",
+    "flagship": false,
+    "difficulty": "Intermediate",
+    "build": "High",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded",
+      "Checklist",
+      "Global ratings",
+      "Critical-failure marker"
+    ],
+    "time_limit": "35 minutes"
+  },
+  {
+    "eid": "M02-E5",
+    "module": "M02",
+    "name": "Reading the Mandate Off the Cap Table",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Low",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded"
+    ],
+    "time_limit": "45 minutes"
+  },
+  {
+    "eid": "M03-E1",
+    "module": "M03",
+    "name": "Stage-Gate Autopsy: Where Should This Have Died?",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Medium",
+    "grading_tags": [
+      "Semi-automatic",
+      "LLM-graded",
+      "Human marking",
+      "Critical-failure marker"
+    ],
+    "time_limit": "75 minutes"
+  },
+  {
+    "eid": "M03-E2",
+    "module": "M03",
+    "name": "Core Debate Identification",
+    "flagship": true,
+    "difficulty": "Intermediate\u2013Advanced",
+    "build": "Medium",
+    "grading_tags": [
+      "Semi-automatic",
+      "LLM-graded",
+      "Human marking"
+    ],
+    "time_limit": "90 minutes"
+  },
+  {
+    "eid": "M03-E3",
+    "module": "M03",
+    "name": "The Falsification Clause",
+    "flagship": false,
+    "difficulty": "Intermediate",
+    "build": "Low\u2013Medium",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded"
+    ],
+    "time_limit": "50 minutes"
+  },
+  {
+    "eid": "M03-E4",
+    "module": "M03",
+    "name": "Expectations-Before-Debate (the step 5\u21926 ordering test)",
+    "flagship": false,
+    "difficulty": "Intermediate",
+    "build": "Medium",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded"
+    ],
+    "time_limit": ""
+  },
+  {
+    "eid": "M04-E1",
+    "module": "M04",
+    "name": "Return Decomposition with the Cross Term",
+    "flagship": false,
+    "difficulty": "Beginner\u2013Intermediate",
+    "build": "Low",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "50 minutes"
+  },
+  {
+    "eid": "M04-E2",
+    "module": "M04",
+    "name": "Flow or Information? The Move Diagnostic",
+    "flagship": true,
+    "difficulty": "Intermediate",
+    "build": "Medium",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded"
+    ],
+    "time_limit": "60 minutes"
+  },
+  {
+    "eid": "M04-E3",
+    "module": "M04",
+    "name": "The Visibility Re-Rating",
+    "flagship": false,
+    "difficulty": "Intermediate",
+    "build": "Low",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded"
+    ],
+    "time_limit": "40 minutes"
+  },
+  {
+    "eid": "M04-E4",
+    "module": "M04",
+    "name": "Index-Effect Vintage Check",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Low",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded"
+    ],
+    "time_limit": "35 minutes"
+  },
+  {
+    "eid": "M05-E1",
+    "module": "M05",
+    "name": "The 60-Minute Three-Idea Drill",
+    "flagship": true,
+    "difficulty": "Intermediate",
+    "build": "Medium",
+    "grading_tags": [
+      "Semi-automatic",
+      "LLM-graded"
+    ],
+    "time_limit": "60 minutes"
+  },
+  {
+    "eid": "M05-E2",
+    "module": "M05",
+    "name": "Screen Design and the Stacking Trap",
+    "flagship": false,
+    "difficulty": "Intermediate",
+    "build": "Medium",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "55 minutes"
+  },
+  {
+    "eid": "M05-E3",
+    "module": "M05",
+    "name": "Cyclical or Secular? The Normalisation Case",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Medium",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded"
+    ],
+    "time_limit": "70 minutes"
+  },
+  {
+    "eid": "M05-E4",
+    "module": "M05",
+    "name": "The Five-Minute PM Check-In",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "High",
+    "grading_tags": [
+      "LLM-graded",
+      "Checklist",
+      "Global ratings",
+      "Critical-failure marker"
+    ],
+    "time_limit": "5 minutes"
+  },
+  {
+    "eid": "M06-E1",
+    "module": "M06",
+    "name": "The 2-Year Stack Ambiguity",
+    "flagship": true,
+    "difficulty": "Intermediate",
+    "build": "Low",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "55 minutes"
+  },
+  {
+    "eid": "M06-E2",
+    "module": "M06",
+    "name": "Incremental Margin and the Operating-Leverage Identity",
+    "flagship": false,
+    "difficulty": "Intermediate",
+    "build": "Low\u2013Medium",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded",
+      "Perturbation test"
+    ],
+    "time_limit": "60 minutes"
+  },
+  {
+    "eid": "M06-E3",
+    "module": "M06",
+    "name": "The Guidance Bridge: Find the Variance",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Medium",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded"
+    ],
+    "time_limit": "90 minutes"
+  },
+  {
+    "eid": "M06-E4",
+    "module": "M06",
+    "name": "Faded Model Build Series",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Medium\u2013High",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded",
+      "Perturbation test"
+    ],
+    "time_limit": ""
+  },
+  {
+    "eid": "M07-E1",
+    "module": "M07",
+    "name": "The 90-Minute 10-K Brief",
+    "flagship": true,
+    "difficulty": "Intermediate\u2013Advanced",
+    "build": "Medium",
+    "grading_tags": [
+      "Semi-automatic",
+      "LLM-graded"
+    ],
+    "time_limit": "90 minutes"
+  },
+  {
+    "eid": "M07-E2",
+    "module": "M07",
+    "name": "ROIC Decomposition and the Intangibles Fork",
+    "flagship": false,
+    "difficulty": "Intermediate",
+    "build": "Low",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "55 minutes"
+  },
+  {
+    "eid": "M07-E3",
+    "module": "M07",
+    "name": "Cash Economics: When Growth Consumes Cash",
+    "flagship": false,
+    "difficulty": "Intermediate\u2013Advanced",
+    "build": "Low",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded"
+    ],
+    "time_limit": "60 minutes"
+  },
+  {
+    "eid": "M08-E1",
+    "module": "M08",
+    "name": "The Industry P&L Share-Shift Constraint",
+    "flagship": true,
+    "difficulty": "Advanced",
+    "build": "Low\u2013Medium",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "70 minutes"
+  },
+  {
+    "eid": "M08-E2",
+    "module": "M08",
+    "name": "The Booby-Trapped Comp Sheet",
+    "flagship": false,
+    "difficulty": "Intermediate\u2013Advanced",
+    "build": "Low\u2013Medium",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "80 minutes"
+  },
+  {
+    "eid": "M08-E3",
+    "module": "M08",
+    "name": "Pair Construction and Decay",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Low",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded"
+    ],
+    "time_limit": "55 minutes"
+  },
+  {
+    "eid": "M09-E1",
+    "module": "M09",
+    "name": "The Management Scorecard: Guidance, M&A, and Skin",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Medium",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "85 minutes"
+  },
+  {
+    "eid": "M09-E2",
+    "module": "M09",
+    "name": "SBC and the Dilution Definition Trap",
+    "flagship": true,
+    "difficulty": "Intermediate\u2013Advanced",
+    "build": "Low",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "75 minutes"
+  },
+  {
+    "eid": "M09-E3",
+    "module": "M09",
+    "name": "The Buyback Value Test",
+    "flagship": false,
+    "difficulty": "Intermediate",
+    "build": "Low",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded"
+    ],
+    "time_limit": "50 minutes"
+  },
+  {
+    "eid": "M09-E4",
+    "module": "M09",
+    "name": "The Management Meeting Station",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "High",
+    "grading_tags": [
+      "LLM-graded",
+      "Checklist",
+      "Global ratings",
+      "Critical-failure marker"
+    ],
+    "time_limit": ""
+  },
+  {
+    "eid": "M10-E1",
+    "module": "M10",
+    "name": "The Expectations Gap Trap",
+    "flagship": true,
+    "difficulty": "Advanced",
+    "build": "Medium",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "75 minutes"
+  },
+  {
+    "eid": "M10-E2",
+    "module": "M10",
+    "name": "Reverse DCF as a Frontier",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Medium",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "90 minutes"
+  },
+  {
+    "eid": "M10-E3",
+    "module": "M10",
+    "name": "Positioning Triangulation (with the limits stated)",
+    "flagship": false,
+    "difficulty": "Intermediate",
+    "build": "Low",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "60 minutes"
+  },
+  {
+    "eid": "M10-E4",
+    "module": "M10",
+    "name": "Expected vs. Implied: Choosing the Instrument",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Low\u2013Medium",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded"
+    ],
+    "time_limit": "50 minutes"
+  },
+  {
+    "eid": "M11-E1",
+    "module": "M11",
+    "name": "Derive the Multiple",
+    "flagship": true,
+    "difficulty": "Advanced",
+    "build": "Low",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded",
+      "Critical-failure marker"
+    ],
+    "time_limit": "100 minutes"
+  },
+  {
+    "eid": "M11-E2",
+    "module": "M11",
+    "name": "The P/E Roll-Forward Calendar Trap",
+    "flagship": false,
+    "difficulty": "Intermediate",
+    "build": "Low",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "55 minutes"
+  },
+  {
+    "eid": "M11-E3",
+    "module": "M11",
+    "name": "Scenario Trees, Implied Probability and the \"Theatre\" Diagnostic",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Low",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "70 minutes"
+  },
+  {
+    "eid": "M11-E4",
+    "module": "M11",
+    "name": "Critique This DCF (eight planted errors)",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Low\u2013Medium",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "100 minutes"
+  },
+  {
+    "eid": "M12-E1",
+    "module": "M12",
+    "name": "Full Short P&L and the Carry Clock",
+    "flagship": true,
+    "difficulty": "Intermediate",
+    "build": "Low",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "65 minutes"
+  },
+  {
+    "eid": "M12-E2",
+    "module": "M12",
+    "name": "The Asymmetry Engine and the Forced Rebalance",
+    "flagship": false,
+    "difficulty": "Intermediate",
+    "build": "Low",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "50 minutes"
+  },
+  {
+    "eid": "M12-E3",
+    "module": "M12",
+    "name": "Forensic Screen and the Three-Lens Convergence",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Low",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "70 minutes"
+  },
+  {
+    "eid": "M12-E4",
+    "module": "M12",
+    "name": "De-Grossing Recognition, in Real Time",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Medium",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded"
+    ],
+    "time_limit": "50 minutes"
+  },
+  {
+    "eid": "M13-E1",
+    "module": "M13",
+    "name": "The Earnings Event Clock",
+    "flagship": true,
+    "difficulty": "Advanced",
+    "build": "High",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded",
+      "Perturbation test"
+    ],
+    "time_limit": ""
+  },
+  {
+    "eid": "M13-E2",
+    "module": "M13",
+    "name": "Beat Decomposition: How Much of This Was Real?",
+    "flagship": false,
+    "difficulty": "Intermediate",
+    "build": "Low",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "45 minutes"
+  },
+  {
+    "eid": "M13-E3",
+    "module": "M13",
+    "name": "The Read-Through Translation",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Low\u2013Medium",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded",
+      "Checklist"
+    ],
+    "time_limit": "60 minutes"
+  },
+  {
+    "eid": "M14-E1",
+    "module": "M14",
+    "name": "The Capstone Pitch and Defence",
+    "flagship": true,
+    "difficulty": "Advanced",
+    "build": "High",
+    "grading_tags": [
+      "LLM-graded",
+      "Human marking",
+      "Global ratings",
+      "Critical-failure marker"
+    ],
+    "time_limit": "two weeks"
+  },
+  {
+    "eid": "M14-E2",
+    "module": "M14",
+    "name": "The Forced Re-Underwrite (longitudinal; tests what nothing else does)",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Medium\u2013High",
+    "grading_tags": [
+      "Auto-graded component",
+      "LLM-graded",
+      "Human marking",
+      "Critical-failure marker"
+    ],
+    "time_limit": "3 sittings"
+  },
+  {
+    "eid": "M14-E3",
+    "module": "M14",
+    "name": "Poke Holes: The Evaluator Seat",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Low\u2013Medium",
+    "grading_tags": [
+      "Semi-automatic",
+      "LLM-graded"
+    ],
+    "time_limit": "70 minutes"
+  },
+  {
+    "eid": "M15-E1",
+    "module": "M15",
+    "name": "The Idea Stack, and Why Price Alone Re-Ranks It",
+    "flagship": true,
+    "difficulty": "Advanced",
+    "build": "Low\u2013Medium",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "100 minutes"
+  },
+  {
+    "eid": "M15-E2",
+    "module": "M15",
+    "name": "The Three-Year Double Grid",
+    "flagship": false,
+    "difficulty": "Beginner\u2013Intermediate",
+    "build": "Low",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "45 minutes"
+  },
+  {
+    "eid": "M15-E3",
+    "module": "M15",
+    "name": "Attribute This P&L",
+    "flagship": false,
+    "difficulty": "Advanced",
+    "build": "Low",
+    "grading_tags": [
+      "Fully auto-gradeable",
+      "LLM-graded"
+    ],
+    "time_limit": "80 minutes"
+  }
+]

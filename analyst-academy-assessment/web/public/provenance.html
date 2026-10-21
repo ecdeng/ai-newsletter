@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Provenance &amp; corrections · Analyst Academy Blueprint</title>
+<meta name="description" content="Research constraints, depth by module, and the corrections made during this work — including several where the widely-circulated version is wrong.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Provenance &amp; corrections · Analyst Academy Blueprint">
+<meta property="og:description" content="Research constraints, depth by module, and the corrections made during this work — including several where the widely-circulated version is wrong.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="static/style.css">
+<link rel="icon" href="static/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">
+  <button class="iconbtn" data-nav-toggle aria-label="Open navigation">☰</button>
+  <a class="brand" href="index.html">Assessment Blueprint</a>
+  <span class="spacer"></span>
+  <button class="iconbtn" data-theme-toggle>☾</button>
+</div>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="index.html">Assessment&nbsp;Blueprint</a>
+    <p class="brand-sub">Fundamental Edge · Analyst Academy
+      <button class="iconbtn" data-theme-toggle style="float:right;margin-top:-.3rem">☾</button>
+    </p>
+    <div class="nav-group"><p class="nav-label">Start</p><nav class="nav"><a class="" href="index.html">Overview</a><a class="" href="approach.html">The approach</a></nav></div><div class="nav-group"><p class="nav-label">The blueprint</p><nav class="nav"><a class="" href="modules.html"><span class="n">15</span>Modules</a><a class="" href="exercises.html"><span class="n">58</span>Exercise catalogue</a><a class="" href="intensives.html"><span class="n">9</span>Topical intensives</a></nav></div><div class="nav-group"><p class="nav-label">Build</p><nav class="nav"><a class="" href="infrastructure.html"><span class="n">7</span>Shared infrastructure</a><a class="" href="case-engine.html">Case engine spec</a><a class="" href="roadmap.html">Build roadmap</a></nav></div><div class="nav-group"><p class="nav-label">Appendix</p><nav class="nav"><a class="active" href="provenance.html">Provenance &amp; corrections</a><a class="" href="verification.html">Verification queue</a><a class="" href="sources.html">Sources</a></nav></div>
+  </aside>
+  <main class="main" id="main">
+    <div class="wrap">
+      
+<h1>Provenance &amp; corrections</h1>
+<p class="lede">What is sourced, what is unpublished, and what was corrected along the
+way. Read this before quoting any number from the blueprint.</p>
+<div class="prose"><p>This blueprint was built from twelve parallel research passes plus five targeted verification passes. <strong>Two tooling constraints shaped what was achievable, and you should know exactly what they were.</strong></p>
+<ol>
+<li><strong>No source in this project was opened as a document.</strong> <code>WebFetch</code> failed DNS resolution on every host for the entire project, and direct <code>curl</code> was refused by the environment's egress proxy (<code>CONNECT tunnel failed, 403</code>) for every host tested — <code>sec.gov</code>, <code>cfainstitute.org</code>, <code>fundamentedge.com</code>, <code>valueinvestorsclub.com</code> and others. Per the proxy's own guidance, blocked hosts are to be reported rather than routed around, so no workaround was attempted. <strong>All external evidence came through search-result extraction.</strong> Where I reproduce a rubric weight or a statistic, it is a fragment quoted out of the underlying document by a search layer, not my own read of the page.</li>
+<li><strong>Web-search budget is pooled per turn (200 calls shared across all parallel agents).</strong> Early research passes consumed it, so several later passes ran with <strong>zero searches</strong> and wrote from model knowledge, honestly labelled. I re-dispatched verification passes once the budget reset, which closed many of the gaps — but it means research depth is <strong>uneven by module</strong>, and the document says where.</li>
+</ol>
+<p><strong>Research depth by module:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Depth</th>
+<th>Modules</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Good</strong> (real searches, 90–180 sources each)</td>
+<td>M01, M02, M03, M04, M05, M06, M07, M08, M10, M14</td>
+</tr>
+<tr>
+<td><strong>Content strong, sourcing verified in a second pass</strong></td>
+<td>M11, assessment architecture (Part 2)</td>
+</tr>
+<tr>
+<td><strong>Content strong, external sourcing thin or in progress</strong></td>
+<td>M09, M12, M13, M15, the nine intensives</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What is nonetheless reliable:</strong> <strong>every piece of arithmetic in this document was independently computed and verified</strong>, mostly in Python, across multiple passes. Where a worked example appears, the numbers tie, the identities close, and several examples were <em>rejected and rebuilt</em> when verification showed they produced degenerate or impossible results (a scenario tree that implied a 0% bull probability; a maintenance-capex calculation that returned a negative number). The mathematics is the most trustworthy content here; the citations are the least.</p>
+<p><strong>Corrections made during this work that are worth carrying forward</strong>, because the wrong versions are in wide circulation:</p>
+<ul>
+<li><strong>Justified P/E uses ROE with the cost of equity.</strong> The widely-quoted form "(1 − g/ROIC)/(r − g)" is correct only for an all-equity firm, or read as <strong>EV/NOPAT with r = WACC</strong>. Mixing ROIC with a cost of equity is a specific, gradeable error.</li>
+<li><strong>"Leverage raises P/E" is not a general rule</strong> and is mis-keyed in many question banks. The break-even is where the after-tax cost of debt equals the unlevered equity earnings yield; below it, leverage <em>lowers</em> P/E.</li>
+<li><strong>Buyback accretion is already inside EPS growth.</strong> Adding a full shareholder yield on top of a return decomposition double-counts it by roughly 200–300bp a year. Only dividends belong in the separate yield term.</li>
+<li><strong>Kelly's gambling form is wrong for assets.</strong> f* = (p·b − q)/b assumes you lose the entire stake; a losing long loses a <em>fraction</em>. The correct form is *<em>f</em> = (p·a − q·b)/(a·b)**, which for plausible inputs returns &gt;100% of capital in a single name — and <em>that</em> absurdity is the real argument for fractional Kelly.</li>
+<li><strong>The SEC's institutional short reporting is Form SHO</strong> (not "Form SHORT") under Rule 13f-2, with compliance <strong>deferred to 2 January 2028</strong> and first filings due 14 February 2028; the Fifth Circuit <strong>remanded without vacatur</strong> in August 2025.</li>
+<li><strong>Rule 10b-18</strong> (buyback safe harbour) and <strong>Rule 10b5-1</strong> (trading plans) are different rules; "10b5-18" is a conflation.</li>
+<li><strong>The pre-mortem's famous "+30%" figure</strong> is routinely attributed to Klein (2007); the underlying evidence is <strong>Mitchell, Russo &amp; Pennington (1989)</strong>.</li>
+<li><strong>"Work samples are the highest-validity selection method (.54)"</strong> is no longer the best-supported reading; a 2022 re-analysis re-ranked structured interviews above it. The lesson is <strong>structure, not modality</strong>.</li>
+<li><strong>The LLM "panel of judges" recommendation is contested</strong> by 2026 work; start with one strong judge calibrated against a golden set.</li>
+<li><strong>Quinnipiac G.A.M.E. is a portfolio competition</strong> ranked on Sharpe ratio, not a stock-pitch competition; <strong>NIBC is a corporate-transaction pitchbook competition.</strong> Both are commonly mis-described as pitch competitions, including in my own initial research brief.</li>
+<li><strong>Bessembinder's circulating percentages do not reconcile</strong> against his 25,967-stock sample (1,092/25,967 = 4.21%, not the quoted 4.31%). Use the paper's own internally consistent framings.</li>
+</ul>
+<p><strong>One provenance matter you should decide on.</strong> The ordered list of the nine thesis-development steps (M03) was glyph-confirmed <strong>only</strong> on a leaked Fundamental Edge deck marked "strictly confidential," hosted on a third-party study-notes site. The step <em>names</em> have independent corroboration from FE's own public materials; the leaked source is cited nowhere in Part 6. If you are Fundamental Edge, you have the authoritative version. If you are not, you should decide whether that material belongs in your project at all — I have flagged it rather than laundering it. The same applies to a pirated "NVDA Guided Quick Dive" and several re-uploaded module decks found during research and deliberately excluded.</p></div>
+
+      <div class="pagenav"><a href="roadmap.html"><span class="dir">← Previous</span>Build roadmap</a><a href="verification.html" style="text-align:right"><span class="dir">Next →</span>Verification queue</a></div>
+      <footer class="site">
+        <p>Assessment blueprint for the Fundamental Edge Analyst Academy syllabus.
+        Every quantitative example was independently verified; see
+        <a href="provenance.html">provenance &amp; corrections</a> for what is
+        sourced, what is unpublished, and what still needs checking.</p>
+      </footer>
+    </div>
+  </main>
+</div>
+<script src="static/app.js" defer></script>
+</body>
+</html>

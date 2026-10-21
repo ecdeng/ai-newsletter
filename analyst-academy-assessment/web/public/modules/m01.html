@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 01 — Fundamental Foundations · Analyst Academy Blueprint</title>
+<meta name="description" content="Scope. The course&#x27;s legitimacy-and-objective-function module: why fundamental research is paid for, where mispricing comes from, and what the analyst is actually optimising. Light on arithmetic, heavy on the mental model that every later module inherits. The canonical spine a stu">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Module 01 — Fundamental Foundations · Analyst Academy Blueprint">
+<meta property="og:description" content="Scope. The course&#x27;s legitimacy-and-objective-function module: why fundamental research is paid for, where mispricing comes from, and what the analyst is actually optimising. Light on arithmetic, heavy on the mental model that every later module inherits. The canonical spine a stu">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">
+  <button class="iconbtn" data-nav-toggle aria-label="Open navigation">☰</button>
+  <a class="brand" href="../index.html">Assessment Blueprint</a>
+  <span class="spacer"></span>
+  <button class="iconbtn" data-theme-toggle>☾</button>
+</div>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html">Assessment&nbsp;Blueprint</a>
+    <p class="brand-sub">Fundamental Edge · Analyst Academy
+      <button class="iconbtn" data-theme-toggle style="float:right;margin-top:-.3rem">☾</button>
+    </p>
+    <div class="nav-group"><p class="nav-label">Start</p><nav class="nav"><a class="" href="../index.html">Overview</a><a class="" href="../approach.html">The approach</a></nav></div><div class="nav-group"><p class="nav-label">The blueprint</p><nav class="nav"><a class="" href="../modules.html"><span class="n">15</span>Modules</a></nav><nav class="nav" style="margin:.2rem 0 .4rem .5rem"><a class="active" href="../modules/m01.html"><span class="n">01</span>Fundamental Foundations</a><a class="" href="../modules/m02.html"><span class="n">02</span>Life on the Buy-Side</a><a class="" href="../modules/m03.html"><span class="n">03</span>Thesis Development</a><a class="" href="../modules/m04.html"><span class="n">04</span>Why Stocks Move Up and Down</a><a class="" href="../modules/m05.html"><span class="n">05</span>Idea Generation</a><a class="" href="../modules/m06.html"><span class="n">06</span>Buyside Modeling</a><a class="" href="../modules/m07.html"><span class="n">07</span>Analyze a Business</a><a class="" href="../modules/m08.html"><span class="n">08</span>Analyze an Industry</a><a class="" href="../modules/m09.html"><span class="n">09</span>Management &amp; Capital Allocation</a><a class="" href="../modules/m10.html"><span class="n">10</span>Assessing Expectations</a><a class="" href="../modules/m11.html"><span class="n">11</span>Applied Valuation</a><a class="" href="../modules/m12.html"><span class="n">12</span>Short Selling</a><a class="" href="../modules/m13.html"><span class="n">13</span>Earnings Season</a><a class="" href="../modules/m14.html"><span class="n">14</span>Pitch Like a Pro</a><a class="" href="../modules/m15.html"><span class="n">15</span>Wrapping Up / Bringing It All Together</a></nav><nav class="nav"><a class="" href="../exercises.html"><span class="n">58</span>Exercise catalogue</a><a class="" href="../intensives.html"><span class="n">9</span>Topical intensives</a></nav></div><div class="nav-group"><p class="nav-label">Build</p><nav class="nav"><a class="" href="../infrastructure.html"><span class="n">7</span>Shared infrastructure</a><a class="" href="../case-engine.html">Case engine spec</a><a class="" href="../roadmap.html">Build roadmap</a></nav></div><div class="nav-group"><p class="nav-label">Appendix</p><nav class="nav"><a class="" href="../provenance.html">Provenance &amp; corrections</a><a class="" href="../verification.html">Verification queue</a><a class="" href="../sources.html">Sources</a></nav></div>
+  </aside>
+  <main class="main" id="main">
+    <div class="wrap">
+      
+<p class="eyebrow">Module 01</p>
+<h1>Fundamental Foundations</h1>
+<p class="lede">6 exercises.
+1 rated advanced.</p>
+
+<div class="toc"><p class="toc-title">Exercises in this module</p><ul><li><a href="#m01-e1-why-does-this-job-exist-research-cost-ceiling">M01-E1 — &quot;Why Does This Job Exist?&quot; (research-cost ceiling)</a></li><li><a href="#m01-e2efficiency-forms-and-the-attribution-trap">M01-E2 — Efficiency Forms and the Attribution Trap</a></li><li><a href="#m01-e3alpha-load-triage-drill">★ M01-E3 — Alpha Load Triage Drill</a></li><li><a href="#m01-e4alpha-or-beta-attribution-autopsy">M01-E4 — Alpha or Beta? Attribution Autopsy</a></li><li><a href="#m01-e5pareto-p-l-lab">M01-E5 — Pareto P&amp;L Lab</a></li><li><a href="#m01-e6mispricing-diagnostic-form-forcing-mechanism-half-life">M01-E6 — Mispricing Diagnostic: Form, Forcing Mechanism, Half-Life</a></li></ul></div>
+
+<h2 id="coverage">Expected content coverage</h2>
+<div class="prose"><p><strong>Scope.</strong> The course's legitimacy-and-objective-function module: why fundamental research is paid for, where mispricing comes from, and what the analyst is actually optimising. Light on arithmetic, heavy on the mental model that every later module inherits.</p>
+<p><strong>The canonical spine a student should master:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>What mastery looks like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fundamental analysis in market economies</td>
+<td>Prices are an information-aggregation device, not a scoreboard; informative prices ration real capital. Able to answer an LP in 60 seconds: "what does your work do for anyone but your fund?"</td>
+</tr>
+<tr>
+<td>Myth of efficient markets</td>
+<td>Fama (1970) three forms defined <strong>by information set</strong>: weak (past prices), semi-strong (all public info), strong (incl. private). Critical framing: the entire buy-side enterprise is a bet against <strong>semi-strong</strong> efficiency using legally obtainable information. It is <em>not</em> a bet against strong-form efficiency — that bet is illegal.</td>
+</tr>
+<tr>
+<td>Grossman–Stiglitz (1980)</td>
+<td>If prices were fully efficient nobody would pay for information, so nobody would gather it, so prices couldn't be informative. Equilibrium requires noise. Alpha exists <em>in equilibrium</em> and its size is pinned by the marginal cost of research, not by anyone's cleverness.</td>
+</tr>
+<tr>
+<td>Limits to arbitrage</td>
+<td>Shleifer &amp; Vishny (1997): arbitrage is done by specialists running <strong>other people's money</strong>, so it fails precisely when mispricing is largest. Performance-based arbitrage (PBA) is a positive feedback loop. <strong>This is the most operationally important paper for a pod analyst</strong> — the pod drawdown machinery <em>is</em> PBA, mechanised.</td>
+</tr>
+<tr>
+<td>Four reasons markets are not efficient</td>
+<td>See provenance note below. Teach as a <strong>diagnostic</strong>, not a list: the reason determines holding period and sizing. Flow-driven mispricing mean-reverts in days–weeks; information/behavioural in quarters; limits-to-arbitrage mispricing may never close.</td>
+</tr>
+<tr>
+<td>Alpha load</td>
+<td>Caughran's triage term: how much idiosyncratic, fundamentally-driven return is actually available. Assembled from his own statements: a function of (expectations-gap size) × (existence of a forcing mechanism) × (idiosyncratic share of variance). All three must be non-zero.</td>
+</tr>
+<tr>
+<td>Voting vs weighing machine</td>
+<td>Weighing = the earnings stream; voting = the multiple. The identity: (1+r_total) = (1+g_EPS)^T × (M_exit/M_entry). Horizon choice <em>is</em> a choice about which term you are forecasting.</td>
+</tr>
+<tr>
+<td>Recipe: skills, process, judgment</td>
+<td>Skills are learnable fast; process learnable slower; judgment is the bottleneck and only partly teachable. Juniors over-invest in skills because skills are legible and gradeable.</td>
+</tr>
+<tr>
+<td>10% mindset</td>
+<td>A triage doctrine, not an optimism doctrine. Prior on any randomly-encountered name is "fairly priced"; the scarce resource is deep-dive hours, so the highest-leverage skill is fast, well-calibrated killing.</td>
+</tr>
+<tr>
+<td>Pareto distribution</td>
+<td>Bessembinder (2018): 25,967 US stocks, 1926–2016; <strong>42.6%</strong> beat one-month T-bills over their lifetime (≈ three of every seven); the best-performing <strong>4%</strong> account for the entire net wealth gain. Consequence for the analyst: P&amp;L is made by 1–3 positions a year, so batting average is nearly uninformative and sizing the right tail is the job.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Prerequisites.</strong> Residual claim / perpetuity; cost of capital; expected value, variance, Sharpe; what a benchmark and a factor are. No calculus.</p>
+<p><strong>Junior vs. strong.</strong> A junior writes "the market is mispricing this." A strong analyst writes: "the market is mispricing this <em>because</em> [named structural reason], it's worth X% to fair value, the forcing mechanism that closes it is Y on date Z, and the reason it hasn't been arbitraged is [specific constraint on the natural arbitrageur]." The second and fourth clauses are the ones juniors never write.</p>
+<p><strong>Research provenance — read before building an answer key.</strong>
+- <strong>Caughran's actual "four reasons" were not recoverable.</strong> The module heading is confirmed on Fundamental Edge's own site and syllabus PDFs, but the enumerated list appears to exist only inside the paid video. Six of his public positions constrain it (flow-dominated price setting; "as the players at the poker table have shifted, the constraints of those new players have created new alpha pools"; fundamentals dominate beyond ~3 months; information abundance doesn't kill alpha). <strong>Design the exercise so the key is "name four distinct structural sources of mispricing and, for each, the constraint on the natural arbitrageur"</strong> — robust to whatever his four turn out to be, and a better test anyway.
+- <strong>The 80/10/10 prior</strong> (~80% of stocks fairly priced, 10% tails each side) is a search-layer paraphrase of a podcast remark, not a verified verbatim quote. Verify before printing a number.
+- <strong>"10% mindset" is genuinely ambiguous</strong> — it may mean the tails prior, or "be in the top 10% of effort." The heading alone doesn't disambiguate. Resolve with FE.
+- <strong>The voting/weighing quote is misattributed everywhere.</strong> Graham &amp; Dodd (1934) supplied the <em>voting machine</em> half; the short-run/long-run compression traces to Buffett in a 1973 interview. There is no primary source for Graham saying the famous sentence. This makes an excellent trap item.
+- <strong>Bessembinder secondary percentages don't reconcile.</strong> 1,092/25,967 = 4.21%, but sources quote 4.3%; 90/25,967 = 0.347%, but sources quote 0.33% — different denominators. Use the paper's own internally consistent framings ("best-performing 4%", "42.6%", "four of every seven"); do <strong>not</strong> ask students to reconcile 1,092 with 25,967.</p></div>
+
+<h2 id="exercises">Exercises</h2>
+
+<section class="exercise" id="m01-e1-why-does-this-job-exist-research-cost-ceiling">
+  <h3>M01-E1 — &quot;Why Does This Job Exist?&quot; (research-cost ceiling)</h3>
+  <div class="exrow-meta"><span class="chip chip-t1">Beginner</span><span class="chip chip-neutral">Build: Low</span><span class="chip chip-neutral">25 minutes</span><span class="chip chip-accent">Fully auto-gradeable</span><span class="chip chip-accent">LLM-graded</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Fundamental analysis in market economies; Grossman–Stiglitz; goal of harvesting alpha</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Convert the abstract claim "research is costly, therefore alpha exists" into the fund's own arithmetic, so the student understands that their employer's cost base is the floor on the gross alpha they must find.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>Given a one-page fund fact sheet (AUM, research/investment-team cost lines, fee terms), compute (a) research cost as % of AUM, (b) the gross alpha required for the LP to net zero, (c) the gross alpha required for the LP to net a stated 8% target. Then answer in ≤150 words, addressed to a sceptical pension trustee: what does this activity do for anyone other than the fund? <strong>25 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Existing: any spreadsheet. No custom build.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (60 pts, fully auto-gradeable):</em> three numeric answers, tolerance ±0.05pp. Part (b) must correctly gross up for both the management and incentive fee layers — the common error is netting only the incentive fee.</li>
+<li><em>Qualitative (40 pts, LLM-graded against anchors):</em> 20 pts — names the price-informativeness → cost-of-capital → real-investment channel rather than asserting "liquidity"; 15 pts — states that the alpha is compensation for a cost borne, not evidence others are stupid; 5 pts — within word limit. Anchor answers at 40/25/10 supplied to the grader.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p>Fund AUM $1,000m. Annual research + investment-team cost $25m (comp, data, expert networks, travel). Terms: 1.5% management fee, 20% incentive over a zero hurdle.</p>
+<p>(a) 25/1,000 = <strong>2.50% of AUM</strong>.
+(b) For the LP to net zero: gross alpha must cover the 1.5% management fee, and the incentive fee takes 20% of what remains. Let <em>g</em> = gross alpha. LP net = (g − 1.5%) × 0.80 = 0 → <strong>g = 1.50%</strong>. Note the research cost is borne inside the management fee here, and 1.5% &lt; 2.5%, so this fund's fee load does not cover its own research budget — the gap is the GP's to fund or the LP's to bear via pass-through. That observation is worth 10 of the 20 structural points.
+(c) For LP net 8%: (g − 1.5%) × 0.80 = 8.0% → g − 1.5% = 10.0% → <strong>g = 11.50% gross alpha</strong>.</p>
+<p>Teaching payload: an 11.5% gross alpha requirement on a market-neutral book running 4x gross is a ~2.9% return on gross exposure — which is the bottom of the band pods actually target. The student should finish this exercise knowing that the fee stack, not the market, sets the bar.</p>
+</blockquote></div></details>
+</section>
+<section class="exercise" id="m01-e2efficiency-forms-and-the-attribution-trap">
+  <h3>M01-E2 — Efficiency Forms and the Attribution Trap</h3>
+  <div class="exrow-meta"><span class="chip chip-t1">Beginner</span><span class="chip chip-neutral">Build: Low</span><span class="chip chip-neutral">30 minutes</span><span class="chip chip-accent">Auto-graded component</span><span class="chip chip-accent">LLM-graded</span><span class="chip chip-accent">Human marking</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Fama's three forms; myth of efficient markets; voting vs weighing machine</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Stop students strawmanning EMH, and inoculate them against uncritical sourcing.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>18 items. Part A (12 items): for each claim, state which form of efficiency it would contradict if true, or "none." Part B (4 items): identify the joint-hypothesis problem in four alpha claims. Part C (2 items): attribute two famous quotes and state your confidence. <strong>30 minutes, closed book.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Existing: any quiz platform. No custom build.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><p>Entirely auto-gradeable except Part C's confidence justification.
+- <em>Quantitative (90 pts):</em> Parts A and B machine-scored. Part B items require naming the missing factor model — an answer that claims alpha without specifying what it is risk-adjusted against scores zero.
+- <em>Qualitative (10 pts, LLM or human):</em> Part C's reasoning. Full credit requires hedged attribution with a stated reason, not a confident wrong answer.</p></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p><em>Part C, item 1:</em> "In the short run the market is a voting machine, in the long run a weighing machine." Attribute this quote.</p>
+<p><strong>Model answer (full credit):</strong> Commonly attributed to Benjamin Graham, but this is not a verbatim Graham quote and no primary source has been found for it. Graham &amp; Dodd's <em>Security Analysis</em> (1934) supplies the <em>voting machine</em> half — arguing the market should be seen as a voting machine registering choices "partly of reason and partly of emotion," explicitly <em>not</em> a precise weighing machine. The short-run/long-run compression traces to Warren Buffett in a 1973 interview. Keynes is a frequent further misattribution; his adjacent material is the beauty-contest passage in the <em>General Theory</em> (1936), which is a different argument — anticipating others' anticipations, not value-price convergence.</p>
+<p><strong>Zero credit:</strong> "Benjamin Graham, <em>The Intelligent Investor</em>." This is the answer that demonstrates the habit the item is testing for.</p>
+</blockquote></div></details>
+</section>
+<section class="exercise" id="m01-e3alpha-load-triage-drill">
+  <h3>★ M01-E3 — Alpha Load Triage Drill</h3>
+  <div class="exrow-meta"><span class="chip chip-flag">★ Flagship</span><span class="chip chip-t2">Intermediate</span><span class="chip chip-neutral">Build: Medium</span><span class="chip chip-neutral">45 minutes</span><span class="chip chip-accent">Semi-automatic</span><span class="chip chip-accent">LLM-graded</span><span class="chip chip-accent">Human marking</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Alpha load; forms of mispricing; 10% mindset; idea generation</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Build fast, well-calibrated <em>killing</em>. The scarce resource is deep-dive hours; the skill is saying "no alpha load, next" within minutes, repeatedly, without ego.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>Student receives 8 two-page name summaries (business description, 3-year financial summary, current multiple vs. own history and peers, consensus estimates and revision trend, short interest, ownership change, recent news headlines). They must: rank all 8 by alpha load; select the 2 worth a deep dive; for each of the 6 kills, state the single disqualifying reason in one sentence; for each of the 2 keeps, state the expectations gap, the forcing mechanism with a date, and the constraint on the natural arbitrageur. <strong>45 minutes.</strong> Hard stop — the time limit is the point.</p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Custom data packs (templated, reusable). Generated from real historical situations with dates masked, so ground truth exists.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (50 pts, semi-auto):</em> 25 pts — Spearman rank correlation between student ranking and the instructor key, scaled; 15 pts — did the 2 selected names include the 1–2 names that subsequently produced a &gt;20% absolute move within 4 quarters (ground truth from the masked historical record); 10 pts — kill reasons drawn from a valid taxonomy (auto-matched against a controlled vocabulary of ~15 accepted disqualifiers).</li>
+<li><em>Qualitative (50 pts, LLM-graded with human spot-check on 20%):</em> for each keep, 10 pts expectations gap stated as a <em>number vs. a named consensus figure</em> (not "the market is too pessimistic"); 10 pts forcing mechanism with a date; 5 pts arbitrageur constraint identified.</li>
+<li><strong>Scoring asymmetry that makes this work:</strong> a student who deep-dives a name with no alpha load loses more points than one who kills a name that later moved. Over-work is penalised harder than a missed winner. This mirrors the real seat and is the opposite of how students expect to be graded.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p><em>Name D:</em> Specialty industrial distributor. Revenue $2.1bn growing 4–6% organically for six years; EBIT margin stable 11.5–12.2%; ROIC 14%; trades 18.5x NTM EPS vs. 5-year range 14–21x and peer median 19x. Consensus FY+1 EPS $4.12, revised +0.4% over three months. Short interest 2.1% of float. No insider activity. Last four prints: in line, in line, 1% beat, in line.</p>
+<p><strong>Model kill (full credit):</strong> "No alpha load — numbers, multiple and positioning are all mid-range, and there is no identified forcing mechanism; the expectations gap is approximately zero." The point is that nothing is <em>wrong</em> with Name D. It is a perfectly good business that is perfectly fairly priced, which is the modal case under the 10% prior and must be killed in under three minutes.</p>
+<p><strong>Zero credit:</strong> any answer that kills Name D for being "expensive at 18.5x" — it is mid-range versus both its own history and peers, so this reveals the student is screening on valuation level alone, the largest bucket in the universe.</p>
+</blockquote></div></details>
+</section>
+<section class="exercise" id="m01-e4alpha-or-beta-attribution-autopsy">
+  <h3>M01-E4 — Alpha or Beta? Attribution Autopsy</h3>
+  <div class="exrow-meta"><span class="chip chip-t2">Intermediate</span><span class="chip chip-neutral">Build: Low–Medium</span><span class="chip chip-neutral">40 minutes</span><span class="chip chip-accent">Fully auto-gradeable</span><span class="chip chip-accent">LLM-graded</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Alpha load (factor decomposition); goal of harvesting alpha</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Teach the student to distinguish "I was right" from "I was long beta" — the single failure pod risk teams catch instantly.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>Given a 12-position book with realised returns, position betas, sector and style exposures, and the realised factor returns for the period, decompose total return into factor contribution and residual alpha. Then answer: which three positions actually generated alpha, and what share of the headline return was alpha? <strong>40 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Existing: Excel/Sheets with a provided template. Optionally Python.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (80 pts, fully auto-gradeable):</em> decomposition cell-checked against key, tolerance ±0.1pp; the per-position alpha column must tie to the book total (tie-check worth 15 pts on its own).</li>
+<li><em>Qualitative (20 pts, LLM-graded):</em> the written conclusion must state the alpha share and note any pseudo-breadth — positions that look diversified but are one factor bet.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p>A long position returned +20.0% over the year. Market return +12.0%; position beta to market 1.30; sector and style (momentum/growth) contribution calculated at +3.00%.</p>
+<p>Market contribution = 1.30 × 12.0% = <strong>+15.60%</strong>. Total factor = 15.60% + 3.00% = <strong>+18.60%</strong>. Alpha = 20.00% − 18.60% = <strong>+1.40%</strong>. Alpha share = 1.40/20.00 = <strong>7.0%</strong>.</p>
+<p>Written conclusion for full credit: 93% of the "win" was beta the PM could have bought with futures for a couple of basis points. The analyst was paid for 140bps.</p>
+</blockquote></div></details>
+</section>
+<section class="exercise" id="m01-e5pareto-p-l-lab">
+  <h3>M01-E5 — Pareto P&amp;L Lab</h3>
+  <div class="exrow-meta"><span class="chip chip-t1">Beginner–Intermediate</span><span class="chip chip-neutral">Build: Low</span><span class="chip chip-neutral">35 minutes</span><span class="chip chip-accent">Fully auto-gradeable</span><span class="chip chip-accent">LLM-graded</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Pareto distribution and top-performer challenges; goal of harvesting alpha</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Internalise that batting average is nearly uninformative and that truncating the right tail is the most destructive habit available.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>Given a year of 12 closed positions with basis-point contributions, compute batting average, average winner, average loser, slugging ratio and expectancy per position; verify expectancy ties to the total. Then run two stress tests: remove the single best position, and apply a "sell half after +25%" rule to every winner. Write 150 words on what the stress tests imply for position sizing. <strong>35 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Existing: spreadsheet. No custom build.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (70 pts, fully auto-gradeable):</em> all statistics plus the tie-check; both stress tests recomputed. Tolerance ±0.5bp.</li>
+<li><em>Qualitative (30 pts, LLM-graded):</em> must conclude that batting average moved trivially while the year flipped sign, and connect this to dispersion in position size. An answer that recommends "improve the hit rate" scores ≤10.</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p>Contributions (bps of allocated capital): +350, +180, +90, +60, +40, +25, +10, −15, −30, −55, −120, −200. Total = <strong>+335bps</strong>.</p>
+<p>Batting average = 7/12 = <strong>58.3%</strong>. Average winner = 755/7 = <strong>+107.86bps</strong>. Average loser = −420/5 = <strong>−84.00bps</strong>. Slugging = 107.86/84.00 = <strong>1.284x</strong>. Expectancy = (0.5833 × 107.86) + (0.4167 × −84.00) = 62.92 − 35.00 = <strong>+27.92bps</strong>. Tie-check: 27.92 × 12 = <strong>335.0bps</strong> ✓.</p>
+<p><strong>Stress test 1 — remove only the best position (+350):</strong> total = 335 − 350 = <strong>−15bps</strong>. A full year of work goes negative. Batting average barely moves: 6/11 = <strong>54.5%</strong>; expectancy = <strong>−1.36bps</strong>.</p>
+<p>Teaching payload: batting average moved 3.8 points while the year moved from +335bps to −15bps. Sizing the right tail <em>is</em> the job.</p>
+</blockquote></div></details>
+</section>
+<section class="exercise" id="m01-e6mispricing-diagnostic-form-forcing-mechanism-half-life">
+  <h3>M01-E6 — Mispricing Diagnostic: Form, Forcing Mechanism, Half-Life</h3>
+  <div class="exrow-meta"><span class="chip chip-t3">Intermediate–Advanced</span><span class="chip chip-neutral">Build: Low–Medium</span><span class="chip chip-neutral">40 minutes</span><span class="chip chip-accent">Auto-graded component</span><span class="chip chip-accent">LLM-graded</span></div>
+  <div class="field"><p class="field-label">Topics covered</p><div class="field-body">Four reasons markets are not efficient; forms of mispricing; limits to arbitrage</div></div>
+  <div class="field"><p class="field-label">Learning objective</p><div class="field-body"><p>Convert the "why are markets inefficient" list from recitation into a diagnostic that sets holding period and sizing.</p></div></div>
+  <div class="field"><p class="field-label">Student task</p><div class="field-body"><p>Eight short historical vignettes (dates and tickers masked). For each: classify the form of mispricing from a supplied six-form taxonomy; name the forcing mechanism; name the constraint preventing the natural arbitrageur from acting; and assign an expected half-life from {hours–weeks, 1–4 quarters, 1–3 years, may never close}. <strong>40 minutes.</strong></p></div></div>
+  <div class="field"><p class="field-label">Tools and environment</p><div class="field-body"><p>Existing quiz platform; custom vignette bank.</p></div></div>
+  <div class="field"><p class="field-label">Grading rubric</p><div class="field-body"><ul>
+<li><em>Quantitative (60 pts, auto-gradeable):</em> four tagged fields per vignette against a key. Partial credit where two classifications are defensible — the key stores accepted alternates with reasons.</li>
+<li><em>Qualitative (40 pts, LLM-graded):</em> the arbitrageur-constraint field is the one that separates students. Full credit names a <em>specific</em> constraint (borrow cost, mandate restriction, index rule, drawdown limit, redemption terms, capacity), not "people are irrational."</li>
+</ul></div></div>
+  <details class="disclose"><summary>Example and worked answer</summary><div class="disclose-inner"><blockquote>
+<p><em>Vignette 5:</em> A mid-cap trades down 23% over nine sessions on no company news. Over the same window, a large multi-manager platform is widely reported to be reducing risk; the name screens in the top decile of "crowded hedge fund long" baskets; short interest is 3% of float; consensus estimates are unchanged; the next earnings date is seven weeks away.</p>
+<p><strong>Model answer:</strong> Form = <em>technical/flow</em> (de-grossing, not fundamentals — estimates unchanged and no news). Forcing mechanism = exhaustion of the forced selling, plus the earnings print in seven weeks as a fundamental re-anchor. Arbitrageur constraint = the natural buyers are the same crowded funds now under their own risk limits, so the capital that would normally arbitrage this is being withdrawn exactly when the mispricing is largest — textbook performance-based arbitrage. Expected half-life = hours–weeks.</p>
+<p><strong>Common wrong answer:</strong> classifying it as <em>estimate/level</em> mispricing. Estimates are explicitly unchanged; nothing about the numbers is wrong. Marking this as a fundamental mispricing is the error that leads a junior to write a 30-page deep dive on what is a two-week flow event.</p>
+</blockquote></div></details>
+</section>
+
+      <div class="pagenav"><a href="../modules.html"><span class="dir">← Previous</span>All modules</a><a href="../modules/m02.html" style="text-align:right"><span class="dir">Next →</span>Module 02 — Life on the Buy-Side</a></div>
+      <footer class="site">
+        <p>Assessment blueprint for the Fundamental Edge Analyst Academy syllabus.
+        Every quantitative example was independently verified; see
+        <a href="../provenance.html">provenance &amp; corrections</a> for what is
+        sourced, what is unpublished, and what still needs checking.</p>
+      </footer>
+    </div>
+  </main>
+</div>
+<script src="../static/app.js" defer></script>
+</body>
+</html>
