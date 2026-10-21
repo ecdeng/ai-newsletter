@@ -26,6 +26,30 @@ npx vercel --prod
 When prompted, accept the defaults; `vercel.json` already sets `cleanUrls`,
 caching for `/static/*`, and a couple of sane security headers.
 
+## Publishing to here.now
+
+`publish_herenow.py` calls the here.now public API directly (create → upload →
+finalize); it needs no installer and no bundled scripts.
+
+```bash
+cd analyst-academy-assessment/web
+python3 publish_herenow.py                 # anonymous site, EXPIRES IN 24 HOURS
+HERENOW_API_KEY=... python3 publish_herenow.py          # permanent
+HERENOW_API_KEY=... python3 publish_herenow.py --slug my-slug   # update in place
+```
+
+Two things worth knowing, both learned the hard way:
+
+- **Without an API key the Site is anonymous and expires after 24 hours.** The
+  create response says so in `publishStatus.persistence` / `expiresAt`. Set
+  `HERENOW_API_KEY` for a permanent Site.
+- **Uploads go straight to `*.r2.cloudflarestorage.com`, not to here.now.** In a
+  sandbox or behind an egress allowlist, both hosts must be allowed, or the
+  create call succeeds, every upload fails, and finalize reports missing files.
+
+`index.html` must sit at the root of the published directory, which is why the
+script publishes `public/` rather than the repo folder above it.
+
 ## Regenerating after editing the markdown
 
 The site is generated, so edit the markdown — never the HTML.
